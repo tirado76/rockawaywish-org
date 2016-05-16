@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rockaway Wish - @ViewBag.Title</title>
+    <meta name="description" content="My ASP.NET Application" />
+    @Styles.Render("~/bundles/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    @RenderSection("stylesheets", required: false)
+    <style>
+    form { margin: 0px; padding: 0px }
+        </style>
+
+</head>
+<body>
+    @*<script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '129782760744533',
+            xfbml      : true,
+            version    : 'v2.5'
+          });
+        };
+
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "//connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+          </script>*@
+
+    <!-- Hamburger Menu-->
+    <button class="burger-toggle"><span></span></button>
+
+    <!-- Side Navigation -->
+    <nav class="side-nav">
+        <div class="wrap">
+            @Html.Partial("_SideNavigation")
+            <br>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            @*<p>&copy; @DateTime.Now.Year - Rockaway Wish LLC</p>*@
+        </footer>
+    </div>
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

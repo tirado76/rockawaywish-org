@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rockaway Wish - @ViewBag.Title</title>
+    <meta name="description" content="My ASP.NET Application" />
+    @Styles.Render("~/bundles/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+    @*<script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '129782760744533',
+            xfbml      : true,
+            version    : 'v2.5'
+          });
+        };
+
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "//connect.facebook.net/en_US/sdk.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+          </script>*@
+
+    <!-- Hamburger Menu-->
+    <button class="burger-toggle"><span></span></button>
+
+    <!-- Side Navigation -->
+    <nav class="side-nav">
+        <div class="wrap">
+            <ul>
+                <li><a href="About" title="About"><span>About</span></a></li>
+                <li><a href="About" title="About"><span>Photos</span></a></li>
+                <li><a href="About" title="About"><span>Contact</span></a></li>
+            </ul>
+        </div>
+    </nav>
+                <div class="navbar navbar-inverse navbar-fixed-bottom">
+
+                    <div class="container">
+                        <div class="navbar-header">
+
+                            @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>*@
+                            @*<img src="@Url.Content("~/Content/img/logo.png")" style="padding: 10px 50px 10px 0px" />*@
+                            @*@Html.ActionLink("Rockaway WISH", "Index", "Home", null, new { @class = "navbar-brand" })*@
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="#"><span class="glyphicon glyphicon-star"></span> About</a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-star-empty"></span> Photos</a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-star"></span> Contact</a></li>
+                            </ul>
+                            @Html.Partial("_LoginPartial")
+                        </div>
+                    </div>
+                    <div class="container body-content">
+                        @RenderBody()
+                        <hr />
+                        <footer>
+                            @*<p>&copy; @DateTime.Now.Year - Rockaway Wish LLC</p>*@
+                        </footer>
+                    </div>
+                </div>
+                @*@Scripts.Render("~/bundles/jquery")*@
+                @Scripts.Render("~/bundles/bootstrap")
+                @RenderSection("scripts", required: false)
+
+</body>
+</html>
