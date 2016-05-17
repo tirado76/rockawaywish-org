@@ -59,7 +59,7 @@
     <Compile Include="AspNetUserLogin.cs">
       <DependentUpon>RockawayWishDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ContactU.cs">
+    <Compile Include="ContactUs.cs">
       <DependentUpon>RockawayWishDB.tt</DependentUpon>
     </Compile>
     <Compile Include="C__MigrationHistory.cs">

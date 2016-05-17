@@ -12,7 +12,7 @@ namespace RockawayWish.Database.Tests
         private int duesYear = 2015;
         private decimal duesAmount = 50;
         private int duesId = 1;
-        private string userId = "1234";
+        private Guid userId = Guid.NewGuid();
         private int paymentTypeId = 1;
         private int userDuesID = 1;
 

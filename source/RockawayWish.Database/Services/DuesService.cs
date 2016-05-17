@@ -16,6 +16,7 @@ namespace RockawayWish.Database.Services
         }
         IDuesRepository _Repository;
 
+        // DUES
         public int InsertDues(int duesYear, decimal duesAmount)
         {
             return _Repository.InsertDues(duesYear, duesAmount);
@@ -28,6 +29,9 @@ namespace RockawayWish.Database.Services
         {
             return _Repository.DeleteDues(duesId);
         }
+
+
+        // USER DUES
         public int InsertUserDues(Guid userId, int duesId, int paymentTypeId)
         {
             return _Repository.InsertUserDues(userId, duesId, paymentTypeId);
@@ -36,5 +40,21 @@ namespace RockawayWish.Database.Services
         {
             return _Repository.DeleteUserDues(userDuesId);
         }
+
+
+        // PAYMENT TYPE
+        public int InsertPaymentType(string paymentTypeName)
+        {
+            return _Repository.InsertPaymentType(paymentTypeName);
+        }
+        public int UpdatePaymentType(int paymentTypeId, string paymentTypeName)
+        {
+            return _Repository.UpdatePaymentType(paymentTypeId, paymentTypeName);
+        }
+        public int DeletePayamentType(int paymentTypeId)
+        {
+            return _Repository.DeletePaymentType(paymentTypeId);
+        }
+
     }
 }
