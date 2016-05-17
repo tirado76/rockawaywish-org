@@ -11,8 +11,8 @@ GO
 IF OBJECT_ID('FK_Events_EventLocation_EventLocationId') IS NOT NULL
 	ALTER TABLE Events DROP CONSTRAINT FK_Events_EventLocation_EventLocationId;
 GO
-IF OBJECT_ID('FK_EventLocation_States_StateId') IS NOT NULL
-	ALTER TABLE EventLocation DROP CONSTRAINT FK_EventLocation_States_StateId;
+IF OBJECT_ID('FK_EventLocations_States_StateId') IS NOT NULL
+	ALTER TABLE EventLocations DROP CONSTRAINT FK_EventLocations_States_StateId;
 GO
 IF OBJECT_ID('FK_ContactUs_States_StateId') IS NOT NULL
 	ALTER TABLE ContactUs DROP CONSTRAINT FK_ContactUs_States_StateId;
@@ -203,7 +203,7 @@ GO
 CREATE TABLE UsersDues
 (
 	UsersDuesId			INT IDENTITY(1001, 1) NOT NULL,
-	Id					UNIQUEIDENTIFIER NOT NULL,
+	UserId					UNIQUEIDENTIFIER NOT NULL,
 	DuesId				INT NOT NULL,
 	PaymentTypeId		INT NOT NULL,
 	DuesPaidDate		DATETIME NOT NULL,
@@ -224,7 +224,7 @@ GO
 IF OBJECT_ID('UDX_Dues_DuesYear') IS NOT NULL
 	DROP INDEX UsersDues.UDX_UsersDues_Id_DuesId;
 GO
-CREATE UNIQUE INDEX UDX_UsersDues_Id_DuesId ON UsersDues(Id, DuesId);
+CREATE UNIQUE INDEX UDX_UsersDues_Id_DuesId ON UsersDues(UserId, DuesId);
 GO
 
 -- ******** UsersDues SAMPLE DATA
@@ -236,7 +236,7 @@ SET @UserId = 'b2fda7f2-b07b-4466-8e88-9cdca4d3fd5e';
 DECLARE @PaymentTypeId INT;
 SELECT TOP 1 @PaymentTypeId = PaymentTypeId FROM PaymentType;
 
-INSERT INTO UsersDues (Id, DuesId, PaymentTypeId, DuesPaidDate) VALUES (@UserId, @DuesId, @PaymentTypeId, GETDATE());
+INSERT INTO UsersDues (UserId, DuesId, PaymentTypeId, DuesPaidDate) VALUES (@UserId, @DuesId, @PaymentTypeId, GETDATE());
 GO
 
 
@@ -245,11 +245,11 @@ GO
 
 
 -- ******** TABLE EventLocation PRIMARY KEY
-IF OBJECT_ID('EventLocation') IS NOT NULL
-	DROP TABLE EventLocation;
+IF OBJECT_ID('EventLocations') IS NOT NULL
+	DROP TABLE EventLocations;
 GO
 
-CREATE TABLE EventLocation
+CREATE TABLE EventLocations
 (
 	EventLocationId			INT IDENTITY(1001, 1) NOT NULL,
 	EventLocationName		VARCHAR(100) NOT NULL,
@@ -263,19 +263,19 @@ CREATE TABLE EventLocation
 GO
 
 -- ******** DUES PRIMARY KEY
-ALTER TABLE EventLocation ADD CONSTRAINT PK_EventLocation PRIMARY KEY (EventLocationId);
+ALTER TABLE EventLocations ADD CONSTRAINT PK_EventLocations PRIMARY KEY (EventLocationId);
 GO
 -- ******** FOREIGN KEYS ( EventLocation(StateId) --> States(StateId)
-ALTER TABLE EventLocation ADD CONSTRAINT FK_EventLocation_States_StateId FOREIGN KEY (EventLocationStateId) REFERENCES States(StateId);
+ALTER TABLE EventLocations ADD CONSTRAINT FK_EventLocations_States_StateId FOREIGN KEY (EventLocationStateId) REFERENCES States(StateId);
 GO
 -- ******** DUES UNIQUE INDEX TO AVOId DUPLICATE EventLocation
-IF OBJECT_ID('UDX_EventLocation_EventLocationName') IS NOT NULL
-	DROP INDEX EventLocation.EventLocationName;
+IF OBJECT_ID('UDX_EventLocations_EventLocationName') IS NOT NULL
+	DROP INDEX EventLocations.EventLocationName;
 GO
-CREATE UNIQUE INDEX UDX_EventLocation_EventLocationName ON EventLocation(EventLocationName);
+CREATE UNIQUE INDEX UDX_EventLocations_EventLocationName ON EventLocations(EventLocationName);
 GO
 
-INSERT INTO EventLocation 
+INSERT INTO EventLocations 
 	(EventLocationName, EventLocationAddress, EventLocationAddress2, EventLocationCity, EventLocationStateId, EventLocationZipCode)
 VALUES
 	('Richie''s House', '102-00 Shore Front Parkway', '#4J', 'Rockaway Park', 1033, '07640');
@@ -302,18 +302,18 @@ GO
 ALTER TABLE Events ADD CONSTRAINT PK_Events PRIMARY KEY (EventId);
 GO
 -- ******** FOREIGN KEYS ( Events(EventLocationId) --> EventLocation(EventLocationId)
-ALTER TABLE Events ADD CONSTRAINT FK_Events_EventLocation_EventLocationId FOREIGN KEY (EventLocationId) REFERENCES EventLocation(EventLocationId);
+ALTER TABLE Events ADD CONSTRAINT FK_Events_EventLocation_EventLocationId FOREIGN KEY (EventLocationId) REFERENCES EventLocations(EventLocationId);
 GO
 -- ******** DUES UNIQUE INDEX TO AVOId DUPLICATE EventLocation
-IF OBJECT_ID('UDX_EventLocation_EventLocationName') IS NOT NULL
-	DROP INDEX EventLocation.EventLocationName;
+IF OBJECT_ID('UDX_EventLocations_EventLocationName') IS NOT NULL
+	DROP INDEX EventLocations.EventLocationName;
 GO
-CREATE UNIQUE INDEX UDX_EventLocation_EventLocationId_EventDateTime ON Events(EventLocationId, EventDateTime);
+CREATE UNIQUE INDEX UDX_EventLocations_EventLocationId_EventDateTime ON Events(EventLocationId, EventDateTime);
 GO
 
 -- ******** EVENTS SAMPLE DATAT
 DECLARE @EventLocationId INT;
-SELECT TOP 1 @EventLocationId = EventLocationId FROM EventLocation;
+SELECT TOP 1 @EventLocationId = EventLocationId FROM EventLocations;
 INSERT INTO EventS (EventLocationId, EventDateTime, EventDescription) VALUES (@EventLocationId, GETDATE(), 'RockawayWish first event');
 
 
