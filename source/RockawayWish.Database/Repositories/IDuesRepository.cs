@@ -10,7 +10,9 @@ namespace RockawayWish.Database.Repositories
     public interface IDuesRepository
     {
         int InsertDues(int duesYear, decimal duesAmount);
-        int UpdateDues(int DuesId, int duesYear, decimal duesAmount);
-        int DeleteDues(int DuesId);
+        int UpdateDues(int duesId, int duesYear, decimal duesAmount);
+        int DeleteDues(int duesId);
+        int InsertUserDues(string userId, int duesId, int paymentTypeId);
+        int DeleteUserDues(int userDuesId);
     }
 }

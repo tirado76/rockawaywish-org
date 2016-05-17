@@ -80,6 +80,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RockawayWishDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Services\DuesService.cs" />
     <Compile Include="sysdiagram.cs">
       <DependentUpon>RockawayWishDB.tt</DependentUpon>
     </Compile>

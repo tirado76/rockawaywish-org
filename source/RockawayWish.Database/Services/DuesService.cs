@@ -3,38 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RockawayWish.Database;
 
-namespace RockawayWish.Database.Repositories
+using RockawayWish.Database.Repositories;
+
+namespace RockawayWish.Database.Services
 {
-    public class DuesRepository : IDuesRepository
+    public class DuesService
     {
-        public DuesRepository()
+        public DuesService()
         {
-            _DBContext = new RockawayWishDBContext();
+            _Repository = new DuesRepository();
         }
-        private RockawayWishDBContext _DBContext;
+        IDuesRepository _Repository;
 
         public int InsertDues(int duesYear, decimal duesAmount)
         {
-            return 0;
+            return _Repository.InsertDues(duesYear, duesAmount);
         }
         public int UpdateDues(int duesId, int duesYear, decimal duesAmount)
         {
-            return 0;
+            return _Repository.UpdateDues(duesId, duesYear, duesAmount);
         }
         public int DeleteDues(int duesId)
         {
-            return 0;
+            return _Repository.DeleteDues(duesId);
         }
         public int InsertUserDues(string userId, int duesId, int paymentTypeId)
         {
-            return 0;
+            return _Repository.InsertUserDues(userId, duesId, paymentTypeId);
         }
         public int DeleteUserDues(int userDuesId)
         {
-            return 0;
+            return _Repository.DeleteUserDues(userDuesId);
         }
-
     }
 }

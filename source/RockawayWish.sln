@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Database", "Ro
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{7A6676E2-96A6-47F4-A4D4-86A19FA22B99}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Database.Tests", "RockawayWish.Database.Tests\RockawayWish.Database.Tests.csproj", "{48033798-B8AF-4D6E-A442-5111F88F7781}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{12D49DA6-1A96-4670-B4F4-D1EBD0F86816}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12D49DA6-1A96-4670-B4F4-D1EBD0F86816}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12D49DA6-1A96-4670-B4F4-D1EBD0F86816}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48033798-B8AF-4D6E-A442-5111F88F7781}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48033798-B8AF-4D6E-A442-5111F88F7781}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48033798-B8AF-4D6E-A442-5111F88F7781}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48033798-B8AF-4D6E-A442-5111F88F7781}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,5 +36,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A82917E1-BA9B-4AA6-88DF-E4BDEA8AEB58} = {DCEE6C6A-96BA-4367-AF5C-93BC95F0ECE8}
 		{12D49DA6-1A96-4670-B4F4-D1EBD0F86816} = {7A6676E2-96A6-47F4-A4D4-86A19FA22B99}
+		{48033798-B8AF-4D6E-A442-5111F88F7781} = {7A6676E2-96A6-47F4-A4D4-86A19FA22B99}
 	EndGlobalSection
 EndGlobal
