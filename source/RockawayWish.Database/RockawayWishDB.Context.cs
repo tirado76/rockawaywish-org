@@ -31,12 +31,13 @@ namespace RockawayWish.Database
         public DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public DbSet<AspNetUser> AspNetUsers { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
-        public DbSet<ContactU> ContactUs { get; set; }
-        public DbSet<Due> Dues { get; set; }
-        public DbSet<EventLocation> EventLocations { get; set; }
-        public DbSet<Event> Events { get; set; }
+        public DbSet<ContactUs> ContactUs1 { get; set; }
+        public DbSet<Dues> Dues1 { get; set; }
+        public DbSet<EventLocations> EventLocations1 { get; set; }
+        public DbSet<Events> Events1 { get; set; }
         public DbSet<PaymentType> PaymentTypes { get; set; }
-        public DbSet<State> States { get; set; }
+        public DbSet<States> States1 { get; set; }
         public DbSet<UsersDue> UsersDues { get; set; }
+        public DbSet<PaymentTypes> PaymentTypes1 { get; set; }
     }
 }

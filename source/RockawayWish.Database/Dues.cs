@@ -12,9 +12,9 @@ namespace RockawayWish.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class Due
+    public partial class Dues
     {
-        public Due()
+        public Dues()
         {
             this.UsersDues = new HashSet<UsersDue>();
         }

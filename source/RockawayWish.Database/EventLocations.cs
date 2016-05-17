@@ -12,11 +12,11 @@ namespace RockawayWish.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class EventLocation
+    public partial class EventLocations
     {
-        public EventLocation()
+        public EventLocations()
         {
-            this.Events = new HashSet<Event>();
+            this.Events = new HashSet<Events>();
         }
     
         public int EventLocationId { get; set; }
@@ -28,7 +28,7 @@ namespace RockawayWish.Database
         public string EventLocationZipCode { get; set; }
         public System.DateTime create_dt { get; set; }
     
-        public virtual State State { get; set; }
-        public virtual ICollection<Event> Events { get; set; }
+        public virtual States State { get; set; }
+        public virtual ICollection<Events> Events { get; set; }
     }
 }

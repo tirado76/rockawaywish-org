@@ -12,20 +12,19 @@ namespace RockawayWish.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class State
+    public partial class ContactUs
     {
-        public State()
-        {
-            this.ContactUs = new HashSet<ContactU>();
-            this.EventLocations = new HashSet<EventLocation>();
-        }
-    
-        public int StateId { get; set; }
-        public string StateName { get; set; }
-        public string StateAbbr { get; set; }
+        public int ContactUsId { get; set; }
+        public string ContactUsName { get; set; }
+        public string ContactUsAddress { get; set; }
+        public string ContactUsAddress2 { get; set; }
+        public string ContactUsCity { get; set; }
+        public int ContactUsStateId { get; set; }
+        public string ContactUsZipCode { get; set; }
+        public string ContactUsPhone { get; set; }
+        public string ContactUsFax { get; set; }
         public System.DateTime create_dt { get; set; }
     
-        public virtual ICollection<ContactU> ContactUs { get; set; }
-        public virtual ICollection<EventLocation> EventLocations { get; set; }
+        public virtual States State { get; set; }
     }
 }

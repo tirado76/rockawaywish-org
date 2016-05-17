@@ -14,16 +14,18 @@
         <AssociationConnector Association="RockawayWishModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="RockawayWishModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="RockawayWishModel.AspNetUserRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="RockawayWishModel.ContactU" Width="1.5" PointX="12.625" PointY="1.125" />
-        <EntityTypeShape EntityType="RockawayWishModel.Due" Width="1.5" PointX="5.375" PointY="10.25" />
-        <EntityTypeShape EntityType="RockawayWishModel.EventLocation" Width="1.5" PointX="12.625" PointY="5" />
-        <EntityTypeShape EntityType="RockawayWishModel.Event" Width="1.5" PointX="14.875" PointY="5.375" />
-        <EntityTypeShape EntityType="RockawayWishModel.State" Width="1.5" PointX="10.375" PointY="3.5" />
+        <EntityTypeShape EntityType="RockawayWishModel.ContactUs" Width="1.5" PointX="12.625" PointY="1.125" />
+        <EntityTypeShape EntityType="RockawayWishModel.Dues" Width="1.5" PointX="5.375" PointY="10.25" />
+        <EntityTypeShape EntityType="RockawayWishModel.EventLocations" Width="1.5" PointX="12.625" PointY="5" />
+        <EntityTypeShape EntityType="RockawayWishModel.Events" Width="1.5" PointX="14.875" PointY="5.375" />
+        <EntityTypeShape EntityType="RockawayWishModel.States" Width="1.5" PointX="10.375" PointY="3.5" />
         <EntityTypeShape EntityType="RockawayWishModel.UsersDue" Width="1.5" PointX="7.625" PointY="7" />
         <AssociationConnector Association="RockawayWishModel.FK_ContactUs_States_StateId" />
         <AssociationConnector Association="RockawayWishModel.FK_Dues_UsersDues_DuesId" />
         <AssociationConnector Association="RockawayWishModel.FK_EventLocations_States_StateId" />
         <AssociationConnector Association="RockawayWishModel.FK_Events_EventLocation_EventLocationId" />
+        <EntityTypeShape EntityType="RockawayWishModel.PaymentTypes" Width="1.5" PointX="5.375" PointY="7.5" />
+        <AssociationConnector Association="RockawayWishModel.FK_UsersDues_PaymentTypes_PaymentTypeId" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -21,7 +21,8 @@ namespace RockawayWish.Database
         public System.DateTime DuesPaidDate { get; set; }
         public System.DateTime create_dt { get; set; }
     
-        public virtual Due Due { get; set; }
+        public virtual Dues Due { get; set; }
         public virtual PaymentType PaymentType { get; set; }
+        public virtual PaymentTypes PaymentType1 { get; set; }
     }
 }

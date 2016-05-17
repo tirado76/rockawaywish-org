@@ -12,14 +12,17 @@ namespace RockawayWish.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class Event
+    public partial class PaymentTypes
     {
-        public int EventId { get; set; }
-        public int EventLocationId { get; set; }
-        public System.DateTime EventDateTime { get; set; }
-        public string EventDescription { get; set; }
+        public PaymentTypes()
+        {
+            this.UsersDues = new HashSet<UsersDue>();
+        }
+    
+        public int PaymentTypeId { get; set; }
+        public string PaymentTypeName { get; set; }
         public System.DateTime create_dt { get; set; }
     
-        public virtual EventLocation EventLocation { get; set; }
+        public virtual ICollection<UsersDue> UsersDues { get; set; }
     }
 }
