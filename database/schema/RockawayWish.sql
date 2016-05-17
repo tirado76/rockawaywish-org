@@ -5,8 +5,8 @@ GO
 IF OBJECT_ID('FK_Dues_UsersDues_DuesId') IS NOT NULL
 	ALTER TABLE UsersDues DROP CONSTRAINT FK_Dues_UsersDues_DuesId;
 GO
-IF OBJECT_ID('FK_UsersDues_PaymentType_PaymentTypeId') IS NOT NULL
-	ALTER TABLE UsersDues DROP CONSTRAINT FK_UsersDues_PaymentType_PaymentTypeId;
+IF OBJECT_ID('FK_UsersDues_PaymentTypes_PaymentTypeId') IS NOT NULL
+	ALTER TABLE UsersDues DROP CONSTRAINT FK_UsersDues_PaymentTypes_PaymentTypeId;
 GO
 IF OBJECT_ID('FK_Events_EventLocation_EventLocationId') IS NOT NULL
 	ALTER TABLE Events DROP CONSTRAINT FK_Events_EventLocation_EventLocationId;
@@ -163,11 +163,11 @@ GO
 
 
 -- ******** TABLE PaymentType PRIMARY KEY
-IF OBJECT_ID('PaymentType') IS NOT NULL
-	DROP TABLE PaymentType;
+IF OBJECT_ID('PaymentTypes') IS NOT NULL
+	DROP TABLE PaymentTypes;
 GO
 
-CREATE TABLE PaymentType
+CREATE TABLE PaymentTypes
 (
 	PaymentTypeId			INT IDENTITY(1001, 1) NOT NULL,
 	PaymentTypeName			VARCHAR(50) NOT NULL,
@@ -175,20 +175,20 @@ CREATE TABLE PaymentType
 );
 GO
 
--- ******** PaymentType PRIMARY KEY
-ALTER TABLE PaymentType ADD CONSTRAINT PK_PaymentType PRIMARY KEY (PaymentTypeId);
+-- ******** PaymentTypes PRIMARY KEY
+ALTER TABLE PaymentTypes ADD CONSTRAINT PK_PaymentType PRIMARY KEY (PaymentTypeId);
 GO
 -- ******** PaymentType UNIQUE INDEX TO AVOId DUPLICATE PaymentType
-IF OBJECT_ID('UDX_PaymentType_PaymentTypeName') IS NOT NULL
-	DROP INDEX PaymentType.UDX_PaymentType_PaymentTypeName;
+IF OBJECT_ID('UDX_PaymentTypes_PaymentTypeName') IS NOT NULL
+	DROP INDEX PaymentTypes.UDX_PaymentType_PaymentTypeName;
 GO
-CREATE UNIQUE INDEX UDX_PaymentType_PaymentTypeName ON PaymentType(PaymentTypeName);
+CREATE UNIQUE INDEX UDX_PaymentTypes_PaymentTypeName ON PaymentTypes(PaymentTypeName);
 GO
 
 -- ******** PaymentType SAMPLE DATA
-INSERT INTO PaymentType (PaymentTypeName) VALUES ('Cash');
-INSERT INTO PaymentType (PaymentTypeName) VALUES ('Master Card');
-INSERT INTO PaymentType (PaymentTypeName) VALUES ('Visa');
+INSERT INTO PaymentTypes (PaymentTypeName) VALUES ('Cash');
+INSERT INTO PaymentTypes (PaymentTypeName) VALUES ('Master Card');
+INSERT INTO PaymentTypes (PaymentTypeName) VALUES ('Visa');
 
 
 
@@ -217,8 +217,8 @@ GO
 -- ******** FOREIGN KEYS ( UsersDues(DuesId) --> Dues(DuesId)
 ALTER TABLE UsersDues ADD CONSTRAINT FK_Dues_UsersDues_DuesId FOREIGN KEY (DuesId) REFERENCES Dues(DuesId);
 GO
--- ******** FOREIGN KEYS ( UsersDues(PaymentTypeId) --> PaymentType(PaymentTypeId)
-ALTER TABLE UsersDues ADD CONSTRAINT FK_UsersDues_PaymentType_PaymentTypeId FOREIGN KEY (PaymentTypeId) REFERENCES PaymentType(PaymentTypeId);
+-- ******** FOREIGN KEYS ( UsersDues(PaymentTypeId) --> PaymentTypes(PaymentTypeId)
+ALTER TABLE UsersDues ADD CONSTRAINT FK_UsersDues_PaymentTypes_PaymentTypeId FOREIGN KEY (PaymentTypeId) REFERENCES PaymentTypes(PaymentTypeId);
 GO
 -- ******** DUES UNIQUE INDEX TO AVOId DUPLICATE UsersDues
 IF OBJECT_ID('UDX_Dues_DuesYear') IS NOT NULL
@@ -234,7 +234,7 @@ DECLARE @UserId UNIQUEIDENTIFIER;
 --SELECT TOP 1 @UserId = UserId FROM MembershipDB..Users;
 SET @UserId = 'b2fda7f2-b07b-4466-8e88-9cdca4d3fd5e';
 DECLARE @PaymentTypeId INT;
-SELECT TOP 1 @PaymentTypeId = PaymentTypeId FROM PaymentType;
+SELECT TOP 1 @PaymentTypeId = PaymentTypeId FROM PaymentTypes;
 
 INSERT INTO UsersDues (UserId, DuesId, PaymentTypeId, DuesPaidDate) VALUES (@UserId, @DuesId, @PaymentTypeId, GETDATE());
 GO
@@ -366,8 +366,9 @@ VALUES
 
 SELECT * FROM ASPNetUsers;
 SELECT * FROM Dues;
-SELECT * FROM PaymentType;
+SELECT * FROM PaymentTypes;
 SELECT * FROM UsersDues;
+SELECT * FROM EventLocations;
 SELECT * FROM Events;
 SELECT * FROM ContactUs;
 SELECT * FROM States;

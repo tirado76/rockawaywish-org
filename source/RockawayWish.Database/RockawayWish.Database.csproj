@@ -59,7 +59,7 @@
     <Compile Include="AspNetUserLogin.cs">
       <DependentUpon>RockawayWishDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ContactUs.cs">
+    <Compile Include="ContactU.cs">
       <DependentUpon>RockawayWishDB.tt</DependentUpon>
     </Compile>
     <Compile Include="C__MigrationHistory.cs">
@@ -74,6 +74,7 @@
     <Compile Include="EventLocation.cs">
       <DependentUpon>RockawayWishDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Events.cs" />
     <Compile Include="PaymentType.cs">
       <DependentUpon>RockawayWishDB.tt</DependentUpon>
     </Compile>
