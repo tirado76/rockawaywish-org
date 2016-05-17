@@ -4,55 +4,30 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RockawayWishModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="RockawayWishModelStoreContainer">
-          <EntitySet Name="__MigrationHistory" EntityType="RockawayWishModel.Store.__MigrationHistory" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="AspNetRoles" EntityType="RockawayWishModel.Store.AspNetRoles" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="AspNetUserClaims" EntityType="RockawayWishModel.Store.AspNetUserClaims" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="AspNetUserLogins" EntityType="RockawayWishModel.Store.AspNetUserLogins" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="AspNetUserRoles" EntityType="RockawayWishModel.Store.AspNetUserRoles" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="AspNetUsers" EntityType="RockawayWishModel.Store.AspNetUsers" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="sysdiagrams" EntityType="RockawayWishModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="RockawayWishModel.Store.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="RockawayWishModel.Store.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="RockawayWishModel.Store.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
-            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="RockawayWishModel.Store.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
-          </AssociationSet>
-        </EntityContainer>
+    <Schema Namespace="RockawayWishModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
             <PropertyRef Name="ContextKey" />
           </Key>
-          <Property Name="MigrationId" Type="nvarchar" Nullable="false" MaxLength="150" />
-          <Property Name="ContextKey" Type="nvarchar" Nullable="false" MaxLength="300" />
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
           <Property Name="Model" Type="varbinary(max)" Nullable="false" />
-          <Property Name="ProductVersion" Type="nvarchar" Nullable="false" MaxLength="32" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="128" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetUserClaims">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="ClaimType" Type="nvarchar(max)" />
           <Property Name="ClaimValue" Type="nvarchar(max)" />
         </EntityType>
@@ -62,23 +37,23 @@
             <PropertyRef Name="ProviderKey" />
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="LoginProvider" Type="nvarchar" Nullable="false" MaxLength="128" />
-          <Property Name="ProviderKey" Type="nvarchar" Nullable="false" MaxLength="128" />
-          <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetUserRoles">
           <Key>
             <PropertyRef Name="UserId" />
             <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="UserId" Type="nvarchar" Nullable="false" MaxLength="128" />
-          <Property Name="RoleId" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetUsers">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Hometown" Type="nvarchar(max)" />
           <Property Name="Email" Type="nvarchar" MaxLength="256" />
           <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
@@ -90,23 +65,110 @@
           <Property Name="LockoutEndDateUtc" Type="datetime" />
           <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactUs">
+          <Key>
+            <PropertyRef Name="ContactUsId" />
+          </Key>
+          <Property Name="ContactUsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactUsName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ContactUsAddress" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ContactUsAddress2" Type="varchar" MaxLength="100" />
+          <Property Name="ContactUsCity" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ContactUsStateId" Type="int" Nullable="false" />
+          <Property Name="ContactUsZipCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="ContactUsPhone" Type="varchar" MaxLength="20" />
+          <Property Name="ContactUsFax" Type="varchar" MaxLength="20" />
+          <Property Name="create_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dues">
+          <Key>
+            <PropertyRef Name="DuesId" />
+          </Key>
+          <Property Name="DuesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DuesYear" Type="int" Nullable="false" />
+          <Property Name="DuesAmount" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="create_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventLocation">
+          <Key>
+            <PropertyRef Name="EventLocationId" />
+          </Key>
+          <Property Name="EventLocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventLocationName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EventLocationAddress" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EventLocationAddress2" Type="varchar" MaxLength="100" />
+          <Property Name="EventLocationCity" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EventLocationStateId" Type="int" Nullable="false" />
+          <Property Name="EventLocationZipCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="create_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Events">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventLocationId" Type="int" Nullable="false" />
+          <Property Name="EventDateTime" Type="datetime" Nullable="false" />
+          <Property Name="EventDescription" Type="varchar(max)" Nullable="false" />
+          <Property Name="create_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="PaymentTypeId" />
+          </Key>
+          <Property Name="PaymentTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentTypeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="create_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="States">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="StateAbbr" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="create_dt" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="UsersDues">
+          <Key>
+            <PropertyRef Name="UsersDuesId" />
+          </Key>
+          <Property Name="UsersDuesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DuesId" Type="int" Nullable="false" />
+          <Property Name="PaymentTypeId" Type="int" Nullable="false" />
+          <Property Name="DuesPaidDate" Type="datetime" Nullable="false" />
+          <Property Name="create_dt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ContactUs_States_StateId">
+          <End Role="States" Type="Self.States" Multiplicity="1" />
+          <End Role="ContactUs" Type="Self.ContactUs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="ContactUs">
+              <PropertyRef Name="ContactUsStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="RockawayWishModel.Store.AspNetUsers" Multiplicity="1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="AspNetUserClaims" Type="RockawayWishModel.Store.AspNetUserClaims" Multiplicity="*" />
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -117,10 +179,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="RockawayWishModel.Store.AspNetUsers" Multiplicity="1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="AspNetUserLogins" Type="RockawayWishModel.Store.AspNetUserLogins" Multiplicity="*" />
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -131,10 +193,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
-          <End Role="AspNetRoles" Type="RockawayWishModel.Store.AspNetRoles" Multiplicity="1">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="AspNetUserRoles" Type="RockawayWishModel.Store.AspNetUserRoles" Multiplicity="*" />
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetRoles">
               <PropertyRef Name="Id" />
@@ -145,10 +207,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="RockawayWishModel.Store.AspNetUsers" Multiplicity="1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="AspNetUserRoles" Type="RockawayWishModel.Store.AspNetUserRoles" Multiplicity="*" />
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AspNetUsers">
               <PropertyRef Name="Id" />
@@ -158,8 +220,107 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+        <Association Name="FK_Dues_UsersDues_DuesId">
+          <End Role="Dues" Type="Self.Dues" Multiplicity="1" />
+          <End Role="UsersDues" Type="Self.UsersDues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dues">
+              <PropertyRef Name="DuesId" />
+            </Principal>
+            <Dependent Role="UsersDues">
+              <PropertyRef Name="DuesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventLocation_States_StateId">
+          <End Role="States" Type="Self.States" Multiplicity="1" />
+          <End Role="EventLocation" Type="Self.EventLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="States">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="EventLocation">
+              <PropertyRef Name="EventLocationStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_EventLocation_EventLocationId">
+          <End Role="EventLocation" Type="Self.EventLocation" Multiplicity="1" />
+          <End Role="Events" Type="Self.Events" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventLocation">
+              <PropertyRef Name="EventLocationId" />
+            </Principal>
+            <Dependent Role="Events">
+              <PropertyRef Name="EventLocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersDues_PaymentType_PaymentTypeId">
+          <End Role="PaymentType" Type="Self.PaymentType" Multiplicity="1" />
+          <End Role="UsersDues" Type="Self.UsersDues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="PaymentTypeId" />
+            </Principal>
+            <Dependent Role="UsersDues">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RockawayWishModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactUs" EntityType="Self.ContactUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dues" EntityType="Self.Dues" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventLocation" EntityType="Self.EventLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentType" EntityType="Self.PaymentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersDues" EntityType="Self.UsersDues" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ContactUs_States_StateId" Association="Self.FK_ContactUs_States_StateId">
+            <End Role="States" EntitySet="States" />
+            <End Role="ContactUs" EntitySet="ContactUs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dues_UsersDues_DuesId" Association="Self.FK_Dues_UsersDues_DuesId">
+            <End Role="Dues" EntitySet="Dues" />
+            <End Role="UsersDues" EntitySet="UsersDues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventLocation_States_StateId" Association="Self.FK_EventLocation_States_StateId">
+            <End Role="States" EntitySet="States" />
+            <End Role="EventLocation" EntitySet="EventLocation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_EventLocation_EventLocationId" Association="Self.FK_Events_EventLocation_EventLocationId">
+            <End Role="EventLocation" EntitySet="EventLocation" />
+            <End Role="Events" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersDues_PaymentType_PaymentTypeId" Association="Self.FK_UsersDues_PaymentType_PaymentTypeId">
+            <End Role="PaymentType" EntitySet="PaymentType" />
+            <End Role="UsersDues" EntitySet="UsersDues" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RockawayWishModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -181,6 +342,33 @@
           <AssociationSet Name="AspNetUserRoles" Association="RockawayWishModel.AspNetUserRoles">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="ContactUs" EntityType="RockawayWishModel.ContactU" />
+          <EntitySet Name="Dues" EntityType="RockawayWishModel.Due" />
+          <EntitySet Name="EventLocations" EntityType="RockawayWishModel.EventLocation" />
+          <EntitySet Name="Events" EntityType="RockawayWishModel.Event" />
+          <EntitySet Name="PaymentTypes" EntityType="RockawayWishModel.PaymentType" />
+          <EntitySet Name="States" EntityType="RockawayWishModel.State" />
+          <EntitySet Name="UsersDues" EntityType="RockawayWishModel.UsersDue" />
+          <AssociationSet Name="FK_ContactUs_States_StateId" Association="RockawayWishModel.FK_ContactUs_States_StateId">
+            <End Role="State" EntitySet="States" />
+            <End Role="ContactU" EntitySet="ContactUs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dues_UsersDues_DuesId" Association="RockawayWishModel.FK_Dues_UsersDues_DuesId">
+            <End Role="Due" EntitySet="Dues" />
+            <End Role="UsersDue" EntitySet="UsersDues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventLocation_States_StateId" Association="RockawayWishModel.FK_EventLocation_States_StateId">
+            <End Role="State" EntitySet="States" />
+            <End Role="EventLocation" EntitySet="EventLocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Events_EventLocation_EventLocationId" Association="RockawayWishModel.FK_Events_EventLocation_EventLocationId">
+            <End Role="EventLocation" EntitySet="EventLocations" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersDues_PaymentType_PaymentTypeId" Association="RockawayWishModel.FK_UsersDues_PaymentType_PaymentTypeId">
+            <End Role="PaymentType" EntitySet="PaymentTypes" />
+            <End Role="UsersDue" EntitySet="UsersDues" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
@@ -285,6 +473,151 @@
           <End Role="AspNetRoles" Type="RockawayWishModel.AspNetRole" Multiplicity="*" />
           <End Role="AspNetUsers" Type="RockawayWishModel.AspNetUser" Multiplicity="*" />
         </Association>
+        <EntityType Name="ContactU">
+          <Key>
+            <PropertyRef Name="ContactUsId" />
+          </Key>
+          <Property Name="ContactUsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactUsName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ContactUsAddress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ContactUsAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ContactUsCity" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ContactUsStateId" Type="Int32" Nullable="false" />
+          <Property Name="ContactUsZipCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ContactUsPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ContactUsFax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="create_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="State" Relationship="RockawayWishModel.FK_ContactUs_States_StateId" FromRole="ContactU" ToRole="State" />
+        </EntityType>
+        <EntityType Name="Due">
+          <Key>
+            <PropertyRef Name="DuesId" />
+          </Key>
+          <Property Name="DuesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DuesYear" Type="Int32" Nullable="false" />
+          <Property Name="DuesAmount" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+          <Property Name="create_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="UsersDues" Relationship="RockawayWishModel.FK_Dues_UsersDues_DuesId" FromRole="Due" ToRole="UsersDue" />
+        </EntityType>
+        <EntityType Name="EventLocation">
+          <Key>
+            <PropertyRef Name="EventLocationId" />
+          </Key>
+          <Property Name="EventLocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventLocationName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EventLocationAddress" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EventLocationAddress2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EventLocationCity" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EventLocationStateId" Type="Int32" Nullable="false" />
+          <Property Name="EventLocationZipCode" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="create_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="State" Relationship="RockawayWishModel.FK_EventLocation_States_StateId" FromRole="EventLocation" ToRole="State" />
+          <NavigationProperty Name="Events" Relationship="RockawayWishModel.FK_Events_EventLocation_EventLocationId" FromRole="EventLocation" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventLocationId" Type="Int32" Nullable="false" />
+          <Property Name="EventDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EventDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="create_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="EventLocation" Relationship="RockawayWishModel.FK_Events_EventLocation_EventLocationId" FromRole="Event" ToRole="EventLocation" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="PaymentTypeId" />
+          </Key>
+          <Property Name="PaymentTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentTypeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="create_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="UsersDues" Relationship="RockawayWishModel.FK_UsersDues_PaymentType_PaymentTypeId" FromRole="PaymentType" ToRole="UsersDue" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StateAbbr" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="create_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ContactUs" Relationship="RockawayWishModel.FK_ContactUs_States_StateId" FromRole="State" ToRole="ContactU" />
+          <NavigationProperty Name="EventLocations" Relationship="RockawayWishModel.FK_EventLocation_States_StateId" FromRole="State" ToRole="EventLocation" />
+        </EntityType>
+        <EntityType Name="UsersDue">
+          <Key>
+            <PropertyRef Name="UsersDuesId" />
+          </Key>
+          <Property Name="UsersDuesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="DuesId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentTypeId" Type="Int32" Nullable="false" />
+          <Property Name="DuesPaidDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="create_dt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Due" Relationship="RockawayWishModel.FK_Dues_UsersDues_DuesId" FromRole="UsersDue" ToRole="Due" />
+          <NavigationProperty Name="PaymentType" Relationship="RockawayWishModel.FK_UsersDues_PaymentType_PaymentTypeId" FromRole="UsersDue" ToRole="PaymentType" />
+        </EntityType>
+        <Association Name="FK_ContactUs_States_StateId">
+          <End Type="RockawayWishModel.State" Role="State" Multiplicity="1" />
+          <End Type="RockawayWishModel.ContactU" Role="ContactU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="ContactU">
+              <PropertyRef Name="ContactUsStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dues_UsersDues_DuesId">
+          <End Type="RockawayWishModel.Due" Role="Due" Multiplicity="1" />
+          <End Type="RockawayWishModel.UsersDue" Role="UsersDue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Due">
+              <PropertyRef Name="DuesId" />
+            </Principal>
+            <Dependent Role="UsersDue">
+              <PropertyRef Name="DuesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventLocation_States_StateId">
+          <End Type="RockawayWishModel.State" Role="State" Multiplicity="1" />
+          <End Type="RockawayWishModel.EventLocation" Role="EventLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="EventLocation">
+              <PropertyRef Name="EventLocationStateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Events_EventLocation_EventLocationId">
+          <End Type="RockawayWishModel.EventLocation" Role="EventLocation" Multiplicity="1" />
+          <End Type="RockawayWishModel.Event" Role="Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventLocation">
+              <PropertyRef Name="EventLocationId" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="EventLocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersDues_PaymentType_PaymentTypeId">
+          <End Type="RockawayWishModel.PaymentType" Role="PaymentType" Multiplicity="1" />
+          <End Type="RockawayWishModel.UsersDue" Role="UsersDue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="PaymentTypeId" />
+            </Principal>
+            <Dependent Role="UsersDue">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -366,6 +699,88 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="ContactUs">
+            <EntityTypeMapping TypeName="RockawayWishModel.ContactU">
+              <MappingFragment StoreEntitySet="ContactUs">
+                <ScalarProperty Name="create_dt" ColumnName="create_dt" />
+                <ScalarProperty Name="ContactUsFax" ColumnName="ContactUsFax" />
+                <ScalarProperty Name="ContactUsPhone" ColumnName="ContactUsPhone" />
+                <ScalarProperty Name="ContactUsZipCode" ColumnName="ContactUsZipCode" />
+                <ScalarProperty Name="ContactUsStateId" ColumnName="ContactUsStateId" />
+                <ScalarProperty Name="ContactUsCity" ColumnName="ContactUsCity" />
+                <ScalarProperty Name="ContactUsAddress2" ColumnName="ContactUsAddress2" />
+                <ScalarProperty Name="ContactUsAddress" ColumnName="ContactUsAddress" />
+                <ScalarProperty Name="ContactUsName" ColumnName="ContactUsName" />
+                <ScalarProperty Name="ContactUsId" ColumnName="ContactUsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dues">
+            <EntityTypeMapping TypeName="RockawayWishModel.Due">
+              <MappingFragment StoreEntitySet="Dues">
+                <ScalarProperty Name="create_dt" ColumnName="create_dt" />
+                <ScalarProperty Name="DuesAmount" ColumnName="DuesAmount" />
+                <ScalarProperty Name="DuesYear" ColumnName="DuesYear" />
+                <ScalarProperty Name="DuesId" ColumnName="DuesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventLocations">
+            <EntityTypeMapping TypeName="RockawayWishModel.EventLocation">
+              <MappingFragment StoreEntitySet="EventLocation">
+                <ScalarProperty Name="create_dt" ColumnName="create_dt" />
+                <ScalarProperty Name="EventLocationZipCode" ColumnName="EventLocationZipCode" />
+                <ScalarProperty Name="EventLocationStateId" ColumnName="EventLocationStateId" />
+                <ScalarProperty Name="EventLocationCity" ColumnName="EventLocationCity" />
+                <ScalarProperty Name="EventLocationAddress2" ColumnName="EventLocationAddress2" />
+                <ScalarProperty Name="EventLocationAddress" ColumnName="EventLocationAddress" />
+                <ScalarProperty Name="EventLocationName" ColumnName="EventLocationName" />
+                <ScalarProperty Name="EventLocationId" ColumnName="EventLocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="RockawayWishModel.Event">
+              <MappingFragment StoreEntitySet="Events">
+                <ScalarProperty Name="create_dt" ColumnName="create_dt" />
+                <ScalarProperty Name="EventDescription" ColumnName="EventDescription" />
+                <ScalarProperty Name="EventDateTime" ColumnName="EventDateTime" />
+                <ScalarProperty Name="EventLocationId" ColumnName="EventLocationId" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTypes">
+            <EntityTypeMapping TypeName="RockawayWishModel.PaymentType">
+              <MappingFragment StoreEntitySet="PaymentType">
+                <ScalarProperty Name="create_dt" ColumnName="create_dt" />
+                <ScalarProperty Name="PaymentTypeName" ColumnName="PaymentTypeName" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="RockawayWishModel.State">
+              <MappingFragment StoreEntitySet="States">
+                <ScalarProperty Name="create_dt" ColumnName="create_dt" />
+                <ScalarProperty Name="StateAbbr" ColumnName="StateAbbr" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersDues">
+            <EntityTypeMapping TypeName="RockawayWishModel.UsersDue">
+              <MappingFragment StoreEntitySet="UsersDues">
+                <ScalarProperty Name="create_dt" ColumnName="create_dt" />
+                <ScalarProperty Name="DuesPaidDate" ColumnName="DuesPaidDate" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+                <ScalarProperty Name="DuesId" ColumnName="DuesId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UsersDuesId" ColumnName="UsersDuesId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -383,6 +798,7 @@
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

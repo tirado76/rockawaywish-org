@@ -28,7 +28,7 @@ namespace RockawayWish.Database.Services
         {
             return _Repository.DeleteDues(duesId);
         }
-        public int InsertUserDues(string userId, int duesId, int paymentTypeId)
+        public int InsertUserDues(Guid userId, int duesId, int paymentTypeId)
         {
             return _Repository.InsertUserDues(userId, duesId, paymentTypeId);
         }
