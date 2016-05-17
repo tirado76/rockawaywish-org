@@ -25,6 +25,6 @@ namespace RockawayWish.Database
         public string ContactUsFax { get; set; }
         public System.DateTime create_dt { get; set; }
     
-        public virtual States State { get; set; }
+        public virtual States States { get; set; }
     }
 }

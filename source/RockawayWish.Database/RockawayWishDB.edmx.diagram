@@ -4,29 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0dc948cd662445de93965ae118531e3a" Name="Diagram1" ShowGrid="true">
-        <EntityTypeShape EntityType="RockawayWishModel.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RockawayWishModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RockawayWishModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="RockawayWishModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RockawayWishModel.AspNetUser" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="RockawayWishModel.sysdiagram" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
-        <AssociationConnector Association="RockawayWishModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="RockawayWishModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
-        <AssociationConnector Association="RockawayWishModel.AspNetUserRoles" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="RockawayWishModel.ContactUs" Width="1.5" PointX="12.625" PointY="1.125" />
-        <EntityTypeShape EntityType="RockawayWishModel.Dues" Width="1.5" PointX="5.375" PointY="10.25" />
-        <EntityTypeShape EntityType="RockawayWishModel.EventLocations" Width="1.5" PointX="12.625" PointY="5" />
-        <EntityTypeShape EntityType="RockawayWishModel.Events" Width="1.5" PointX="14.875" PointY="5.375" />
-        <EntityTypeShape EntityType="RockawayWishModel.States" Width="1.5" PointX="10.375" PointY="3.5" />
-        <EntityTypeShape EntityType="RockawayWishModel.UsersDue" Width="1.5" PointX="7.625" PointY="7" />
-        <AssociationConnector Association="RockawayWishModel.FK_ContactUs_States_StateId" />
-        <AssociationConnector Association="RockawayWishModel.FK_Dues_UsersDues_DuesId" />
-        <AssociationConnector Association="RockawayWishModel.FK_EventLocations_States_StateId" />
-        <AssociationConnector Association="RockawayWishModel.FK_Events_EventLocation_EventLocationId" />
-        <EntityTypeShape EntityType="RockawayWishModel.PaymentTypes" Width="1.5" PointX="5.375" PointY="7.5" />
-        <AssociationConnector Association="RockawayWishModel.FK_UsersDues_PaymentTypes_PaymentTypeId" />
-        </Diagram>
+      <Diagram DiagramId="7190d1edac654b58bdd3cf81264d2469" Name="Diagram1" >
+        <EntityTypeShape EntityType="RockawayWishDB.ContactUs" Width="1.5" PointX="5" PointY="8.875" />
+        <EntityTypeShape EntityType="RockawayWishDB.Dues" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="RockawayWishDB.EventLocations" Width="1.5" PointX="5" PointY="5.125" />
+        <EntityTypeShape EntityType="RockawayWishDB.Events" Width="1.5" PointX="7.25" PointY="5.5" />
+        <EntityTypeShape EntityType="RockawayWishDB.PaymentTypes" Width="1.5" PointX="0.75" PointY="5.375" />
+        <EntityTypeShape EntityType="RockawayWishDB.States" Width="1.5" PointX="2.75" PointY="7.5" />
+        <EntityTypeShape EntityType="RockawayWishDB.UsersDues" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="RockawayWishDB.FK_ContactUs_States_StateId" />
+        <AssociationConnector Association="RockawayWishDB.FK_Dues_UsersDues_DuesId" />
+        <AssociationConnector Association="RockawayWishDB.FK_EventLocations_States_StateId" />
+        <AssociationConnector Association="RockawayWishDB.FK_Events_EventLocation_EventLocationId" />
+        <AssociationConnector Association="RockawayWishDB.FK_UsersDues_PaymentTypes_PaymentTypeId" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

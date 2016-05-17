@@ -74,9 +74,6 @@
     <Compile Include="Events.cs">
       <DependentUpon>RockawayWishDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="PaymentType.cs">
-      <DependentUpon>RockawayWishDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="PaymentTypes.cs">
       <DependentUpon>RockawayWishDB.tt</DependentUpon>
     </Compile>
@@ -136,6 +133,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rockawish.Models\RockawayWish.Models.csproj">
+      <Project>{1ddcbb5e-9df4-4142-966b-a31a7d95e6a6}</Project>
+      <Name>RockawayWish.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

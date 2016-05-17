@@ -12,12 +12,16 @@ namespace RockawayWish.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class UsersDues
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int UsersDuesId { get; set; }
+        public System.Guid UserId { get; set; }
+        public int DuesId { get; set; }
+        public int PaymentTypeId { get; set; }
+        public System.DateTime DuesPaidDate { get; set; }
+        public System.DateTime create_dt { get; set; }
+    
+        public virtual Dues Dues { get; set; }
+        public virtual PaymentTypes PaymentTypes { get; set; }
     }
 }

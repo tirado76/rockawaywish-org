@@ -16,7 +16,7 @@ namespace RockawayWish.Database
     {
         public Dues()
         {
-            this.UsersDues = new HashSet<UsersDue>();
+            this.UsersDues = new HashSet<UsersDues>();
         }
     
         public int DuesId { get; set; }
@@ -24,6 +24,6 @@ namespace RockawayWish.Database
         public decimal DuesAmount { get; set; }
         public System.DateTime create_dt { get; set; }
     
-        public virtual ICollection<UsersDue> UsersDues { get; set; }
+        public virtual ICollection<UsersDues> UsersDues { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace RockawayWish.Database
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class RockawayWishDBContext : DbContext
+    public partial class RockawayWishDBContainer : DbContext
     {
-        public RockawayWishDBContext()
-            : base("name=RockawayWishDBContext")
+        public RockawayWishDBContainer()
+            : base("name=RockawayWishDBContainer")
         {
         }
     
@@ -25,19 +25,12 @@ namespace RockawayWish.Database
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
-        public DbSet<AspNetRole> AspNetRoles { get; set; }
-        public DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
-        public DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
-        public DbSet<AspNetUser> AspNetUsers { get; set; }
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
-        public DbSet<ContactUs> ContactUs1 { get; set; }
-        public DbSet<Dues> Dues1 { get; set; }
-        public DbSet<EventLocations> EventLocations1 { get; set; }
-        public DbSet<Events> Events1 { get; set; }
-        public DbSet<PaymentType> PaymentTypes { get; set; }
-        public DbSet<States> States1 { get; set; }
-        public DbSet<UsersDue> UsersDues { get; set; }
-        public DbSet<PaymentTypes> PaymentTypes1 { get; set; }
+        public DbSet<ContactUs> ContactUs { get; set; }
+        public DbSet<Dues> Dues { get; set; }
+        public DbSet<EventLocations> EventLocations { get; set; }
+        public DbSet<Events> Events { get; set; }
+        public DbSet<PaymentTypes> PaymentTypes { get; set; }
+        public DbSet<States> States { get; set; }
+        public DbSet<UsersDues> UsersDues { get; set; }
     }
 }

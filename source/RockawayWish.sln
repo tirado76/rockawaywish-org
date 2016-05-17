@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Database.Tests", "RockawayWish.Database.Tests\RockawayWish.Database.Tests.csproj", "{48033798-B8AF-4D6E-A442-5111F88F7781}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rockawish.Models", "Rockawish.Models\Rockawish.Models.csproj", "{1DDCBB5E-9DF4-4142-966B-A31A7D95E6A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Models", "Rockawish.Models\RockawayWish.Models.csproj", "{1DDCBB5E-9DF4-4142-966B-A31A7D95E6A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

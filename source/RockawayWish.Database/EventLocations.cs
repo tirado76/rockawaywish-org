@@ -28,7 +28,7 @@ namespace RockawayWish.Database
         public string EventLocationZipCode { get; set; }
         public System.DateTime create_dt { get; set; }
     
-        public virtual States State { get; set; }
+        public virtual States States { get; set; }
         public virtual ICollection<Events> Events { get; set; }
     }
 }

@@ -16,13 +16,13 @@ namespace RockawayWish.Database
     {
         public PaymentTypes()
         {
-            this.UsersDues = new HashSet<UsersDue>();
+            this.UsersDues = new HashSet<UsersDues>();
         }
     
         public int PaymentTypeId { get; set; }
         public string PaymentTypeName { get; set; }
         public System.DateTime create_dt { get; set; }
     
-        public virtual ICollection<UsersDue> UsersDues { get; set; }
+        public virtual ICollection<UsersDues> UsersDues { get; set; }
     }
 }

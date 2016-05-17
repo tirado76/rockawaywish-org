@@ -20,6 +20,6 @@ namespace RockawayWish.Database
         public string EventDescription { get; set; }
         public System.DateTime create_dt { get; set; }
     
-        public virtual EventLocations EventLocation { get; set; }
+        public virtual EventLocations EventLocations { get; set; }
     }
 }

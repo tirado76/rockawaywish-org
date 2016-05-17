@@ -362,6 +362,18 @@ VALUES
 	('Richie''s House', '102-00 Shore Front Parkway', '#4J', 'Rockaway Park', 1033, '07640', '(999) 999-9999', '(999) 999-9999');
 
 
+-- ******** VIEW vw_Users
+IF OBJECT_ID('vw_Users') IS NOT NULL
+	DROP VIEW vw_Users;
+GO
+
+CREATE VIEW vw_Users
+AS
+	
+	SELECT * FROM MembershipDB..Users;
+GO
+
+
 
 
 SELECT * FROM ASPNetUsers;
@@ -372,4 +384,4 @@ SELECT * FROM EventLocations;
 SELECT * FROM Events;
 SELECT * FROM ContactUs;
 SELECT * FROM States;
-
+SELECT * FROM vw_Users;
