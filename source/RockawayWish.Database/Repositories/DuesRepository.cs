@@ -20,28 +20,36 @@ namespace RockawayWish.Database.Repositories
         //DUES
         public int InsertDues(int duesYear, decimal duesAmount)
         {
-            Dues objDues = new Dues
-            {
-                DuesYear = duesYear,
-                DuesAmount = duesAmount
-            };
 
-            // Add the new object to the Orders collection.
-            _DBContext.Dues1..Orders.InsertOnSubmit(objDues);
-
-            // Submit the change to the database.
             try
             {
-                _DBContext.SubmitChanges();
+                if ((from tb in _DBContext.Dues where tb.DuesYear == duesYear
+                     select tb).Count() > 0)
+                {
+                    //_UserModel.Message = "Dues year '" + duesYear.ToString() + "' already exists";
+                    return 0;
+                }
+                else
+                {
+                    Dues objDues = new Dues
+                    {
+                        DuesYear = duesYear,
+                        DuesAmount = duesAmount
+                    };
+
+                    _DBContext.Dues.Add(objDues);
+
+                    return 1;
+                }
+
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                // Make some adjustments.
-                // ...
-                // Try again.
-                _DBContext.SubmitChanges();
-            } return 0;
+                return 0;
+            }
+            
+            return 1;
         }
         public int UpdateDues(int duesId, int duesYear, decimal duesAmount)
         {

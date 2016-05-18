@@ -47,22 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AspNetRole.cs">
-      <DependentUpon>RockawayWishDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AspNetUser.cs">
-      <DependentUpon>RockawayWishDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AspNetUserClaim.cs">
-      <DependentUpon>RockawayWishDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AspNetUserLogin.cs">
-      <DependentUpon>RockawayWishDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="ContactUs.cs">
-      <DependentUpon>RockawayWishDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="C__MigrationHistory.cs">
       <DependentUpon>RockawayWishDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Dues.cs">
@@ -99,37 +84,20 @@
     <Compile Include="States.cs">
       <DependentUpon>RockawayWishDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
+    <Compile Include="UsersDues.cs">
       <DependentUpon>RockawayWishDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="UsersDue.cs">
-      <DependentUpon>RockawayWishDB.tt</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="RockawayWishDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>RockawayWishDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
+    <EntityDeploy Include="RockawayWishDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RockawayWishDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="RockawayWishDB.edmx.diagram">
       <DependentUpon>RockawayWishDB.edmx</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="RockawayWishDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RockawayWishDB.edmx</DependentUpon>
-      <LastGenOutput>RockawayWishDB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="RockawayWishDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>RockawayWishDB.edmx</DependentUpon>
-      <LastGenOutput>RockawayWishDB.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -139,6 +107,18 @@
       <Project>{1ddcbb5e-9df4-4142-966b-a31a7d95e6a6}</Project>
       <Name>RockawayWish.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RockawayWishDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RockawayWishDB.Context.cs</LastGenOutput>
+      <DependentUpon>RockawayWishDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="RockawayWishDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RockawayWishDB.cs</LastGenOutput>
+      <DependentUpon>RockawayWishDB.edmx</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

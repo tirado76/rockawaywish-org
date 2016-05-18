@@ -173,7 +173,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="RockawayWishDB" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
-        <EntityContainer Name="RockawayWishDBContainer" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RockawayWishDBContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ContactUs" EntityType="RockawayWishDB.ContactUs" />
           <EntitySet Name="Dues" EntityType="RockawayWishDB.Dues" />
           <EntitySet Name="EventLocations" EntityType="RockawayWishDB.EventLocations" />
@@ -354,7 +354,7 @@
       <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
         <Alias Key="Model" Value="RockawayWishDB" />
         <Alias Key="Target" Value="RockawayWishDB.Store" />
-        <EntityContainerMapping CdmEntityContainer="RockawayWishDBContainer" StorageEntityContainer="RockawayWishDBStoreContainer">
+        <EntityContainerMapping CdmEntityContainer="RockawayWishDBContext" StorageEntityContainer="RockawayWishDBStoreContainer">
           <EntitySetMapping Name="ContactUs">
             <EntityTypeMapping TypeName="RockawayWishDB.ContactUs">
               <MappingFragment StoreEntitySet="ContactUs">

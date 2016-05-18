@@ -13,10 +13,10 @@ namespace RockawayWish.Database
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class RockawayWishDBContainer : DbContext
+    public partial class RockawayWishDBContext : DbContext
     {
-        public RockawayWishDBContainer()
-            : base("name=RockawayWishDBContainer")
+        public RockawayWishDBContext()
+            : base("name=RockawayWishDBContext")
         {
         }
     

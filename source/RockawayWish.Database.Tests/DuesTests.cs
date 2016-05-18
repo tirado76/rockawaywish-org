@@ -13,7 +13,10 @@ namespace RockawayWish.Database.Tests
         private decimal duesAmount = 50;
         private int duesId = 1;
         private Guid userId = Guid.NewGuid();
+
         private int paymentTypeId = 1;
+        private string paymentTypeName = "Visa";
+
         private int userDuesID = 1;
 
         [TestMethod]
@@ -24,6 +27,7 @@ namespace RockawayWish.Database.Tests
             Assert.IsTrue(retVal != 0);
         }
 
+        [Ignore]
         [TestMethod]
         public void UpdateDues()
         {
@@ -32,6 +36,7 @@ namespace RockawayWish.Database.Tests
             Assert.IsTrue(retVal != 0);
         }
 
+        [Ignore]
         [TestMethod]
         public void DeleteDues()
         {
@@ -39,7 +44,8 @@ namespace RockawayWish.Database.Tests
 
             Assert.IsTrue(retVal != 0);
         }
-        
+
+        [Ignore]
         [TestMethod]
         public void InsertUserDues()
         {
@@ -48,6 +54,7 @@ namespace RockawayWish.Database.Tests
             Assert.IsTrue(retVal != 0);
         }
 
+        [Ignore]
         [TestMethod]
         public void UpdateUserDues()
         {
@@ -56,12 +63,41 @@ namespace RockawayWish.Database.Tests
             Assert.IsTrue(retVal != 0);
         }
 
+        [Ignore]
         [TestMethod]
         public void DeleteUserDues()
         {
             int retVal = _Service.DeleteUserDues(userDuesID);
 
             Assert.IsTrue(retVal != 0);
+        }
+
+
+        [Ignore]
+        [TestMethod]
+        public void InsertPaymentTypes()
+        {
+            int retVal = _Service.InsertPaymentType(paymentTypeName);
+
+            Assert.IsTrue(retVal != 0);
+        }
+
+        [Ignore]
+        [TestMethod]
+        public void UpdatePaymentTypes()
+        {
+            int retVal = 0;
+
+            Assert.IsTrue(retVal != 0);
+        }
+
+        [Ignore]
+        [TestMethod]
+        public void DeletePaymentTypes()
+        {
+            //int retVal = _Service.DeletePaymentType(paymentTypeId, paymentTypeName);
+
+            //Assert.IsTrue(retVal != 0);
         }
     }
 }
