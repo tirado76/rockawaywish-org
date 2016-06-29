@@ -1,12 +1,12 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-@section stylesheets{
-    <style type="text/css">
-        body { 
-            background-image: url('/content/img/home-bg2.jpg'); 
-            background-repeat: no-repeat; 
-            background-size: 100% auto;
-        }
-    </style>
-}
+
+@Html.Partial("_HomeCarousel")
+
+@Html.Partial("_AboutUs")
+
+@Html.Partial("_BoardMembers")
+
+@Html.Partial("_ContactUs")
+

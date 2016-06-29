@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ASP.NET_MVC5_Bootstrap3_3_4_LESS")]
-[assembly: AssemblyDescription("Default ASP.NET MVC5 Template with Bootstrap 3.3.4 LESS")]
+[assembly: AssemblyTitle("RockawayWish.Web")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Krzysztof Osowicki")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("RockawayWish.Web")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2413551e-7825-41ac-af10-beb3d6a4cd79")]
+[assembly: Guid("363aa64d-e7e7-4957-b1d4-3edef7222d64")]
 
 // Version information for an assembly consists of the following four values:
 //
