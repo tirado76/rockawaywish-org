@@ -167,24 +167,12 @@
   <ItemGroup>
     <Content Include="css\animate.css" />
     <Content Include="css\bootstrap.min.css" />
-    <Content Include="css\custom.css" />
-    <Content Include="css\flexslider.css" />
-    <Content Include="css\font-awesome.css" />
     <Content Include="css\font-awesome.min.css" />
-    <Content Include="css\hover-min.css" />
-    <Content Include="css\hover.css" />
-    <Content Include="css\jquery.bxslider.css" />
-    <Content Include="css\jquery.fancybox.css" />
     <Content Include="css\jquery.sidr.dark.css" />
     <Content Include="css\main.css" />
-    <Content Include="css\onepage-scroll.css" />
-    <Content Include="css\owl.carousel.css" />
-    <Content Include="css\owl.theme.css" />
     <Content Include="css\prettyPhoto.css" />
-    <Content Include="css\red.css" />
     <Content Include="css\reset.css" />
     <Content Include="css\responsive.css" />
-    <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
