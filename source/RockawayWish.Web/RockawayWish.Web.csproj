@@ -332,9 +332,6 @@
     <Content Include="images\services\service-bg.jpg" />
     <Content Include="images\slider\b6.jpg" />
     <Content Include="images\slider\nycmarathon.jpg" />
-    <Content Include="images\slider\s1.jpg" />
-    <Content Include="images\slider\s2.jpg" />
-    <Content Include="images\slider\s3.jpg" />
     <Content Include="images\slider\slide1.jpg" />
     <Content Include="images\slider\slide2.jpg" />
     <Content Include="images\slider\slide3.jpg" />
@@ -390,7 +387,9 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -421,7 +420,12 @@
   <ItemGroup>
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="app.config" />
+    <Content Include="app.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="app.prod.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Properties\PublishProfiles\TITAN.pubxml" />
     <Content Include="Views\Shared\_Donate.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
@@ -432,6 +436,15 @@
     <Content Include="Views\Home\Donate.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\PageNotFound.cshtml" />
+    <Content Include="Web.prod..config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.prod..Debug.config">
+      <DependentUpon>Web.prod..config</DependentUpon>
+    </Content>
+    <Content Include="Web.prod..Release.config">
+      <DependentUpon>Web.prod..config</DependentUpon>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

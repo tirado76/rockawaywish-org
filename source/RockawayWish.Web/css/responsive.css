@@ -3,7 +3,7 @@
 
 /* Large Devices, Wide Screens */
 @media (min-width : 1200px) {
-	
+
 }
 
 
@@ -60,7 +60,7 @@
 	    line-height: 30px;
 	}
 	.carousel-caption p {
-	    font-size: 30px;
+	    font-size: 20px;
 	    line-height: 45px;
 	}
 	.overlay-slide {
@@ -140,23 +140,20 @@
 
 	.carousel-caption h3 {
 	    font-size: 20px;
-	    line-height: 30px;
 	}
 	.carousel-caption p {
-	    font-size: 35px;
-	    line-height: 45px;
+	    font-size: 14px;
 	}
 	.carousel-caption h2{
     	font-size: 16px;
-		line-height: 34px;
+		/*line-height: 34px;*/
 		width: 50%;
 	}
 	.carousel-caption h2:after{
 	    content: "";
 	    position: absolute;
 	    width: 2px;
-	    height: 55px;
-	    background: #EE3B24;
+	    height: 20px;
 	    left: 5px;
 	    top: -10px;
 	}
@@ -165,7 +162,6 @@
 	    position: absolute;
 	    width: 2px;
 	    height: 55px;
-	    background: #EE3B24;
 	    right: 5px;
 	    top: -10px;
 	}
