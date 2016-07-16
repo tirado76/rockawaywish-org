@@ -5,13 +5,7 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WEb", "WEb", "{DCEE6C6A-96BA-4367-AF5C-93BC95F0ECE8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{7A6676E2-96A6-47F4-A4D4-86A19FA22B99}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Models", "Rockawish.Models\RockawayWish.Models.csproj", "{1DDCBB5E-9DF4-4142-966B-A31A7D95E6A6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Web", "RockawayWish.Web\RockawayWish.Web.csproj", "{87AF22FF-555D-4A5E-B693-ED262800B797}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractiveMembership.Admin.Web", "..\..\tiradointeractive-membership\source\InteractiveMembership.Admin.Web\InteractiveMembership.Admin.Web.csproj", "{FAC0D788-F1FE-4B05-83D8-D052D8776BE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,25 +13,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1DDCBB5E-9DF4-4142-966B-A31A7D95E6A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1DDCBB5E-9DF4-4142-966B-A31A7D95E6A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1DDCBB5E-9DF4-4142-966B-A31A7D95E6A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1DDCBB5E-9DF4-4142-966B-A31A7D95E6A6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{87AF22FF-555D-4A5E-B693-ED262800B797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{87AF22FF-555D-4A5E-B693-ED262800B797}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87AF22FF-555D-4A5E-B693-ED262800B797}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87AF22FF-555D-4A5E-B693-ED262800B797}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FAC0D788-F1FE-4B05-83D8-D052D8776BE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FAC0D788-F1FE-4B05-83D8-D052D8776BE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FAC0D788-F1FE-4B05-83D8-D052D8776BE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FAC0D788-F1FE-4B05-83D8-D052D8776BE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{1DDCBB5E-9DF4-4142-966B-A31A7D95E6A6} = {7A6676E2-96A6-47F4-A4D4-86A19FA22B99}
 		{87AF22FF-555D-4A5E-B693-ED262800B797} = {DCEE6C6A-96BA-4367-AF5C-93BC95F0ECE8}
-		{FAC0D788-F1FE-4B05-83D8-D052D8776BE9} = {DCEE6C6A-96BA-4367-AF5C-93BC95F0ECE8}
 	EndGlobalSection
 EndGlobal
