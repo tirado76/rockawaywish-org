@@ -421,6 +421,7 @@
   <ItemGroup>
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="app.config" />
     <None Include="Properties\PublishProfiles\TITAN.pubxml" />
     <Content Include="Views\Shared\_Donate.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
