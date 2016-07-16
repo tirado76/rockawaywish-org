@@ -17,5 +17,53 @@ namespace RockawayWish.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             //BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception ex = Server.GetLastError().GetBaseException();
+
+            string errMsg = string.Empty;
+            if (ex != null)
+            {
+                // log error
+
+                HttpException httpError = ex as HttpException;
+
+                if (httpError != null)
+                {
+                    // get error code
+                    int errorCode = httpError.GetHttpCode();
+
+                    // check if 404 error
+                    // if so, redirect to 404 page
+                    if (errorCode == 404)
+                    {
+                        Response.Clear();
+                        Response.Status = "404 Page Not Found";
+                        Response.StatusCode = 404;
+                        HttpContext.Current.Response.Redirect("~/Error/PageNotFound");
+                        return;
+                    }
+                    else
+                    {
+                        // somehow log the error
+                        // exception is null
+                        errMsg = Server.UrlEncode("Server Error Code: " + errorCode);
+                        Response.Redirect("~/Error/?err=" + errMsg);
+                    }
+                }
+                else
+                {
+                    errMsg = Server.UrlEncode("Not a server error: " + ex.Message);
+                    // exception is null
+                    Response.Redirect("~/Error/?err=" + errMsg);
+                }
+            }
+            else
+            {
+                // exception is null
+                errMsg = Server.UrlEncode("Unable to detect error.");
+                Response.Redirect("~/Error/?err=" + errMsg);
+            }
+        }
     }
 }
