@@ -1,0 +1,36 @@
+﻿@using InteractiveMembership.Core.Constants;
+@model InteractiveMembership.Core.Models.UserModel
+
+<section id="member-info">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-sm-8 col-sm-offset-2">
+                <h2 class="title-one">Member Center</h2>
+                <h5><a href="@Url.Content("~/members/payments")">Dues and payments</a> | <a href="@Url.Content("~/members/info")">Profile Information</a></h5>
+                <h3>Profile Information</h3>
+                <table class="table" style="text-align: center">
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.FirstName)</td>
+                        <td>@Html.DisplayFor(model => model.FirstName)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.LastName)</td>
+                        <td>@Html.DisplayFor(model => model.LastName)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.Email)</td>
+                        <td>@Html.DisplayFor(model => model.Email)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.Password)</td>
+                        <td><a href="@Url.Content("~/members/resetpassword")">Click here to reset password</a></td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.IsActive)</td>
+                        <td>@Html.DisplayFor(model => model.IsActive)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section><!--/#Our-Team-->

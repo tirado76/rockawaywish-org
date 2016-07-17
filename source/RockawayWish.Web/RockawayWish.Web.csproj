@@ -448,6 +448,7 @@
     </Content>
     <Content Include="Views\Members\Index.cshtml" />
     <Content Include="Views\Members\Payments.cshtml" />
+    <Content Include="Views\Members\Info.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

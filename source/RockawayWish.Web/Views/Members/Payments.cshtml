@@ -1,14 +1,13 @@
 ﻿@using InteractiveMembership.Core.Models;
 @model RockawayWish.Web.Models.UserPaymentsViewModel
 
-<section id="our-team">
+<section id="member-payments">
     <div class="container">
         <div class="row text-center">
             <div class="col-sm-8 col-sm-offset-2">
-                <h2 class="title-one">Dues &amp; Payments</h2>
-                <p> Here is a history of your dues and payments</p>
-                <br />
-
+                <h2 class="title-one">Member Center</h2>
+                <h5><a href="@Url.Content("~/members/payments")">Dues and payments</a> | <a href="@Url.Content("~/members/info")">Profile Information</a></h5>
+                <h3>Dues &amp; Payments</h3>
 
                 @if (Model.DuesPaymentList != null && Model.DuesPaymentList.Count > 0)
                 {
@@ -78,7 +77,8 @@
                         else
                         {
                             <p style="padding: 10px; color: #ff0000; font-weight: bold;">No payments.</p>
-                            <p style="padding-left: 40px;">+ @Html.ActionLink("Make Payment", "Create", new { appId = Model.ApplicationId, userId = Model.UserId, paymentId = new Guid(duesId), paymentTypeId = 1 })</p>
+                    
+                            <p>@Html.ActionLink("Make Payment", "Create", new { appId = Model.ApplicationId, userId = Model.UserId, paymentId = new Guid(duesId), paymentTypeId = 1 }, new { @class = "btn btn-primary" })</p>
                         }
                     }
                 }

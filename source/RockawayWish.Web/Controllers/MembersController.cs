@@ -29,6 +29,13 @@ namespace RockawayWish.Web.Controllers
             return View();
         }
 
+        public ActionResult Info()
+        {
+            UserModel model = new UsersProvider().GetById(this.ApplicationId, this.UserId).Result;
+
+            return View(model);
+
+        }
         public ActionResult Payments()
         {
             UserPaymentsViewModel vm = new UserPaymentsViewModel();

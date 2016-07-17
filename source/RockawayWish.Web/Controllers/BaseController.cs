@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using InteractiveMembership.Core.Constants;
+
 namespace RockawayWish.Web.Controllers
 {
     public class BaseController : Controller
@@ -25,6 +27,13 @@ namespace RockawayWish.Web.Controllers
                     }
                 }
                 return new Guid();
+            }
+        }
+        internal Guid ApplicationId
+        {
+            get
+            {
+                return new Guid(Config.ApplicationId);
             }
         }
     }

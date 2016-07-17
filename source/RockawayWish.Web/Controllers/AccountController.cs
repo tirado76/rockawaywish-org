@@ -176,22 +176,51 @@ namespace RockawayWish.Web.Controllers
             return View();
         }
 
-        [Authorize]
-        public ActionResult ResetPassword()
+        [AllowAnonymous]
+        public ActionResult ResetPassword(string tu, string ta)
         {
-            return View();
+            ResetPasswordViewModel vm = new ResetPasswordViewModel();
+            // make sure is user is valid
+            UserModel userModel = new UsersProvider().GetById(new Guid(ta), new Guid(tu)).Result;
+
+            vm.Status = userModel.Status;
+            vm.Message = userModel.Message;
+            vm.UserId = new Guid(tu);
+            vm.ApplicationId = new Guid(ta);
+
+
+            return View(vm);
         }
 
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult ResetPassword(ForgotPasswordViewModel model)
+        public ActionResult ResetPassword(ResetPasswordViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                return Redirect("~/account/ResetPasswordConfirmation");
+                return View(model);
             }
-            return View();
+
+            // get userinfo
+            var user = new UsersProvider().GetById(this.ApplicationId, model.UserId).Result;
+
+            // update user
+            if (user.Status == 0)
+            {
+                var result = new UsersProvider().Update(model.ApplicationId, model.UserId, user.IsActive, user.IsUser, user.IsDonator, user.IsAdmin, user.IsSuperAdmin, null, model.Password, null, null).Result;
+                if (result.Status == 0)
+                {
+                    return Redirect("~/account/ResetPasswordConfirmation");
+                }
+
+                ModelState.AddModelError("", result.Message);
+            }
+            else
+            {
+                ModelState.AddModelError("", user.Message);
+            }
+
+            return View(model);
         }
 
         [AllowAnonymous]

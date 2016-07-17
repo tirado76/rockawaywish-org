@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace RockawayWish.Web.Models
@@ -59,7 +60,6 @@ namespace RockawayWish.Web.Models
 
     public class ResetPasswordViewModel
     {
-        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -76,6 +76,10 @@ namespace RockawayWish.Web.Models
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }
+        public int Status { get; set; }
+        public string Message { get; set; }
+        public Guid UserId { get; set; }
+        public Guid ApplicationId { get; set; }
     }
 
     public class ForgotPasswordViewModel
@@ -84,5 +88,9 @@ namespace RockawayWish.Web.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        public int Status { get; set; }
+        public string Message { get; set; }
+
     }
 }
