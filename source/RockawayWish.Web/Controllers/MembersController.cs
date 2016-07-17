@@ -70,9 +70,11 @@ namespace RockawayWish.Web.Controllers
             else
                 vm.UserModel = new UsersProvider().GetById(vm.ApplicationId, vm.UserId).Result;
 
-
+            
 
             return View(vm);
         }
+
+
     }
 }
