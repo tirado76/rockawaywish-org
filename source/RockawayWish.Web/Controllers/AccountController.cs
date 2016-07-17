@@ -52,15 +52,23 @@ namespace RockawayWish.Web.Controllers
                 var validateToken = await _userProvider.ValidateToken(new Guid(Config.ApplicationId), requestToken.UserId, requestToken.AccessToken);
                 if (validateToken.Status == 0)
                 {
+                    if (!validateToken.IsUser && !validateToken.IsAdmin && !validateToken.IsSuperAdmin)
+                    {
+                        ModelState.AddModelError("", "Access Denied");
+                        return View(model);
+                    }
+
                     string ticketName = string.Format("{0}|{1}|{2}", string.Format("{0} {1}", validateToken.FirstName, validateToken.LastName), validateToken.UserId.ToString(), requestToken.AccessToken);
                     //string ticketName = string.Format("{0}|{1}|{2}|{3}", model.FirstName, model.LastName, result.UserId.ToString(), model.Email);
                     SetAuthenticatation(ticketName, true);
 
-                    // redirect user to home page
                     return Redirect("~/account/profile");
                 }
-                ModelState.AddModelError("", "Invalid login attempt.");
-                return View(model);
+                else
+                {
+                    ModelState.AddModelError("", validateToken.Message);
+                    return View(model);
+                }
             }
             else
             {
@@ -86,41 +94,13 @@ namespace RockawayWish.Web.Controllers
             if (ModelState.IsValid)
             {
                 // register user
-                var result = await _userProvider.Create(new Guid(Config.ApplicationId), model.Email, model.Password, model.FirstName, model.LastName, true);
+                var result = await _userProvider.Create(new Guid(Config.ApplicationId), model.Email, model.Password, model.FirstName, model.LastName, false, false, false, false, false);
 
                 if (result.Status == 0)
                 {
-                    // request access token
-                    var requestToken = await _userProvider.RequestToken(new Guid(Config.ApplicationId), model.Email, model.Password);
-                    if (requestToken.Status == 0)
-                    {
-                        // validate access token and retrieve user object
-                        var validateToken = await _userProvider.ValidateToken(new Guid(Config.ApplicationId), result.UserId, requestToken.AccessToken);
-                        if (validateToken.Status == 0)
-                        {
-                            // authenticate user
-                            string ticketName = string.Format("{0}|{1}|{2}", string.Format("{0} {1}", validateToken.FirstName, validateToken.LastName), validateToken.UserId.ToString(), requestToken.AccessToken);
-                            //string ticketName = string.Format("{0}|{1}|{2}|{3}", model.FirstName, model.LastName, result.UserId.ToString(), model.Email);
-                            SetAuthenticatation(ticketName, true);
+                    // redirect user to home page
+                    return Redirect("~/account/RegisterConfirmation");
 
-                            // redirect user to home page
-                            return Redirect("~/account/RegisterConfirmation");
-
-                            //FormsAuthentication.RedirectFromLoginPage(model.Email, true);
-
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("", validateToken.Message);
-
-                        }
-
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", requestToken.Message);
-
-                    }
                 }
                 else
                 {
@@ -141,7 +121,6 @@ namespace RockawayWish.Web.Controllers
 
         public async Task<ActionResult> SignOut()
         {
-
             if (Request.IsAuthenticated)
             {
                     // request access token
@@ -158,10 +137,11 @@ namespace RockawayWish.Web.Controllers
 
             if (!string.IsNullOrEmpty(url))
             {
-                if (url.ToLower().Contains("/registerconfirmation"))
+                if (url.ToLower().Contains("/account/profile"))
                     return Redirect("~/");
 
-                return Redirect(string.Format("~{0}", url));
+                url = string.Format("~{0}", url);
+                return Redirect(url);
             }
             else
             {
