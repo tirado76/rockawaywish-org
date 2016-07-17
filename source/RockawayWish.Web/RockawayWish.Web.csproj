@@ -167,10 +167,12 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\UserPaymentsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -429,7 +431,6 @@
     <None Include="Properties\PublishProfiles\TITAN.pubxml" />
     <Content Include="Views\Shared\_Donate.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Profile.cshtml" />
     <None Include="Views\Account\RegisterConfirmation.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
@@ -445,6 +446,8 @@
     <Content Include="Web.prod..Release.config">
       <DependentUpon>Web.prod..config</DependentUpon>
     </Content>
+    <Content Include="Views\Members\Index.cshtml" />
+    <Content Include="Views\Members\Payments.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,96 @@
+﻿@using InteractiveMembership.Core.Models;
+@model RockawayWish.Web.Models.UserPaymentsViewModel
+
+<section id="our-team">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-sm-8 col-sm-offset-2">
+                <h2 class="title-one">Dues &amp; Payments</h2>
+                <p> Here is a history of your dues and payments</p>
+                <br />
+
+
+                @if (Model.DuesPaymentList != null && Model.DuesPaymentList.Count > 0)
+                {
+                    string pairKey;
+                    string duesTitle;
+                    string duesId;
+
+                    List<UserPaymentsModel> lsUserPayments = new List<UserPaymentsModel>(); ;
+                    char[] delimitter = { '|' };
+                    foreach (KeyValuePair<string, List<UserPaymentsModel>> pair in Model.DuesPaymentList)
+                    {
+                        pairKey = pair.Key;
+                        lsUserPayments = pair.Value;
+
+                        string[] strArr = pairKey.Split(delimitter);
+                        duesTitle = strArr[0];
+                        duesId = strArr[1];
+
+                        <div style="background-color: #ddd; padding: 10px; font-weight: bold">
+                            @duesTitle
+                            @*@if (lsUserPayments.Count() == 0)
+                            {
+                                <span style="text-align: right; float: right;">@Html.ActionLink("Delete", "Delete", "UserDues", new { userId = Model.UserId, duesId = duesId, appId = Model.ApplicationId }, null)</span>
+                            }*@
+                        </div>
+
+                        if (lsUserPayments != null && lsUserPayments.Count() > 0)
+                        {
+                            foreach (var userPayment in lsUserPayments)
+                            {
+                                <div style="padding: 10px;">
+                                    <table class="table" style="text-align: center">
+                                        <tr>
+                                            <th style="text-align: center">
+                                                @Html.DisplayNameFor(model => userPayment.PaymentDate)
+                                            </th>
+                                            <th style="text-align: center">
+                                                @Html.DisplayNameFor(model => userPayment.PaymentMethod)
+                                            </th>
+                                            <th style="text-align: center">
+                                                @Html.DisplayNameFor(model => userPayment.PaymentAmount)
+                                            </th>
+                                            @*<th></th>*@
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                @userPayment.PaymentDate.ToShortDateString()
+                                                @*@Html.DisplayFor(modelItem => userPayment.PaymentDate)*@
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => userPayment.PaymentMethod)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => userPayment.PaymentAmount)
+                                            </td>
+                                            @*<td>
+                                                @Html.ActionLink("Edit", "Edit", new { userId = userPayment.UserId, paymentId = userPayment.PaymentId, appId = userPayment.ApplicationId }) |
+                                                @Html.ActionLink("Details", "Details", new { userId = userPayment.UserId, paymentId = userPayment.PaymentId, appId = userPayment.ApplicationId })
+                                                <span>| @Html.ActionLink("Delete", "Delete", new { userId = userPayment.UserId, paymentId = userPayment.PaymentId, appId = userPayment.ApplicationId })</span>
+                                            </td>*@
+                                        </tr>
+                                    </table>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <p style="padding: 10px; color: #ff0000; font-weight: bold;">No payments.</p>
+                            <p style="padding-left: 40px;">+ @Html.ActionLink("Make Payment", "Create", new { appId = Model.ApplicationId, userId = Model.UserId, paymentId = new Guid(duesId), paymentTypeId = 1 })</p>
+                        }
+                    }
+                }
+                else
+                {
+                    <p style="padding: 10px; color: #ff0000; font-weight: bold;">No dues have been applied.</p>
+                    @*<p style="padding-left: 40px;">+ @Html.ActionLink("Add dues to user", "Create", "UserDues", new { appId = Model.ApplicationId, userId = Model.UserId }, null)</p>*@
+                }
+
+
+
+            </div>
+        </div>
+    </div>
+</section><!--/#Our-Team-->

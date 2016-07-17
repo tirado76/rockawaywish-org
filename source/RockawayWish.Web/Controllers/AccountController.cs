@@ -62,7 +62,7 @@ namespace RockawayWish.Web.Controllers
                     //string ticketName = string.Format("{0}|{1}|{2}|{3}", model.FirstName, model.LastName, result.UserId.ToString(), model.Email);
                     SetAuthenticatation(ticketName, true);
 
-                    return Redirect("~/account/profile");
+                    return Redirect("~/members");
                 }
                 else
                 {
@@ -137,7 +137,7 @@ namespace RockawayWish.Web.Controllers
 
             if (!string.IsNullOrEmpty(url))
             {
-                if (url.ToLower().Contains("/account/profile"))
+                if (url.ToLower().Contains("/members"))
                     return Redirect("~/");
 
                 url = string.Format("~{0}", url);
@@ -151,11 +151,6 @@ namespace RockawayWish.Web.Controllers
 
         }
 
-        [Authorize]
-        public ActionResult Profile()
-        {
-            return View();
-        }
 
 
         public ActionResult ForgotPassword()
