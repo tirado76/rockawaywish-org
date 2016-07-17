@@ -332,14 +332,11 @@
     <Content Include="images\prettyPhoto\light_square\loader.gif" />
     <Content Include="images\prettyPhoto\light_square\sprite.png" />
     <Content Include="images\services\service-bg.jpg" />
-    <Content Include="images\slider\b6.jpg" />
-    <Content Include="images\slider\nycmarathon.jpg" />
     <Content Include="images\slider\slide1.jpg" />
     <Content Include="images\slider\slide2.jpg" />
     <Content Include="images\slider\slide3.jpg" />
     <Content Include="images\slider\slide4.jpg" />
-    <Content Include="images\slider\Wish1_carousel.jpg" />
-    <Content Include="images\slider\Wish_group.jpg" />
+    <Content Include="images\slider\slide5.jpg" />
     <Content Include="images\team\pic1.jpg" />
     <Content Include="images\team\pic2.jpg" />
     <Content Include="images\team\pic3.jpg" />
@@ -437,14 +434,14 @@
     <Content Include="Views\Home\Donate.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\PageNotFound.cshtml" />
-    <Content Include="Web.prod..config">
+    <Content Include="Web.prod.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Web.prod..Debug.config">
-      <DependentUpon>Web.prod..config</DependentUpon>
+    <Content Include="Web.prod.Debug.config">
+      <DependentUpon>Web.prod.config</DependentUpon>
     </Content>
-    <Content Include="Web.prod..Release.config">
-      <DependentUpon>Web.prod..config</DependentUpon>
+    <Content Include="Web.prod.Release.config">
+      <DependentUpon>Web.prod.config</DependentUpon>
     </Content>
     <Content Include="Views\Members\Index.cshtml" />
     <Content Include="Views\Members\Payments.cshtml" />

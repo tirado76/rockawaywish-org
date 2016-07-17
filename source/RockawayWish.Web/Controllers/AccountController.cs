@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -165,8 +166,35 @@ namespace RockawayWish.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                return Redirect("~/account/ForgotPasswordConfirmation");
             }
+
+            // get user 
+            var user = new UsersProvider().Get(this.ApplicationId).Result.Where(x => x.Email.ToLower().Equals(model.Email.ToLower())).FirstOrDefault();
+
+            if (user != null)
+            {
+                // send email
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("<p>It seems that you have forgotten your Password.</p>");
+                sb.AppendLine("<p><a href=\"" + string.Format("{0}?tu={1}&ta={2}", this.ResetPasswordEndpoint, user.UserId, user.ApplicationId) + "\">Click here to reset it</a></p>");
+                var result = this.SendEmail(model.Email, this.ResetPasswordSubject, sb.ToString());
+
+                if (result.Status == 0)
+                {
+                    return Redirect("~/account/ForgotPasswordConfirmation");
+                }
+                else
+                {
+                    ModelState.AddModelError("", result.Message);
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Email doesn't exist");
+            }
+
+
+            
             return View();
         }
 
