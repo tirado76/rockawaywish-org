@@ -1,211 +1,318 @@
-@media (min-width:992px) and (max-width:1199px){
-	.efffect h3{
-		font-size:15px;
-		margin-top:10px
-	}
+/* Responsive styles
+================================================== */
+
+/* Large Devices, Wide Screens */
+@media (min-width : 1200px) {
+
 }
-@media (min-width:768px) and (max-width:991px){
-	#navigation .navbar-nav.navbar-right li{
-		padding:0 0;
+
+
+/* Medium Devices, Desktops */
+@media (min-width : 992px) {
+
+	/*ul.navbar-nav a {
+    	padding: 15px 0px 10px 19px;
+	}*/
+	/*portfolio*/
+	
+	.single-portfolio figcaption .links a {
+	    float: left;
+	    margin: 0px 5px 0px 0px;
 	}
-	.header-bottom #subscribe-form .mail-field{
-		width:70%
-	}
-	.header-bottom .btn-primary{
-		float:right
-	}
-	.about-us .tab-content .pull-left.media-object{
-		float:inherit;
-		width:100%;
-		margin-bottom:15px
-	}
-	.single-member{
-		height:515px;
-		margin-bottom:30px
-	}
-	.efffect h3,.efffect h4{
-		display:none
-	}
-	.mask a i{
-		margin-top:28px
-	}
+
 }
-@media (max-width:767px){
-	#navigation .navbar-nav.navbar-right{
-		margin-top:0
+
+/* Small Devices, Tablets */
+@media (min-width : 768px) and (max-width: 991px) {
+	
+	.navbar-header{
+		width: 20%;
 	}
-	.media,.media-body{
-		overflow:inherit!important
+	.navbar-brand {
+    	height: 48px;
 	}
-	#navigation .navbar-inverse .navbar-nav .active a,
-	#navigation .navbar-inverse .navbar-nav .active a:focus,
-	#navigation .navbar-nav.navbar-right li a:hover{
-		border:none
+	ul.navbar-nav a {
+	    padding: 15px 0px 10px 10px;
 	}
-	.call-to-action p,.header-bottom #subscribe-form p{
-		font-size:14px
-	}.header-bottom #subscribe-form .mail-field{
-		display:inline;
-		float:none;
-		margin-bottom:13px;
-		margin-right:0;
-		width:100%
+	
+	/*main Slider*/
+	#slider_part {
+    	height: 530px;
+    	margin-top: 70px;
 	}
-	#main-carousel .carousel-inner h2{
-		border-bottom:0;font-size:30px
+	.carousel-caption {
+    	top: 30%;
 	}
-	.slider-btn{
-		font-size:16px;
-		height:45px;
-		line-height:45px;
-		width:150px
+	.carousel-caption h2{
+    	font-size: 30px;
+		line-height: 55px;
+		width: 30%;
+		margin-bottom: 40px;
 	}
-	.title-one{
-		font-size:24px
+	.carousel-caption h2:after{
+	    height: 80px;
 	}
-	#about-us p{
-		font-size:14px
-	}.nav-tabs li{
-		width:33%
+	.carousel-caption h2:before{
+	    height: 80px;
 	}
-	.nav-tabs li a{
-		text-align:center
+	.carousel-caption h3 {
+	    font-size: 40px;
+	    line-height: 30px;
 	}
-	.nav-tabs li a i{
-		display:block
+	.carousel-caption p {
+	    font-size: 20px;
+	    line-height: 45px;
 	}
-	.about-us .tab-content .pull-left.media-object{
-		background-color:#F6F6F6;
-		display:block;float:inherit!important;margin-right:0;
-		width:100%
+	.overlay-slide {
+    	height: 100%;
 	}
-	#services h2{
-		font-size:24px
+	.carousel-indicators {
+    	bottom: 15%;
 	}
-	.member-right{
-		left:55%
+	.carousel-control.right {
+    	right: 32px;
 	}
-	.single-member{
-		margin-bottom:25px;
-		height:600px
+
+	/*ABout us*/
+	.feature_content .btn-main{
+		margin-bottom: 40px;
 	}
-	#portfolio .portfolio-filter{
-		padding:0
+
+	/*portfolio*/
+	
+	.single-portfolio figcaption .links a {
+	    float: left;
+	    margin: 0px 5px 0px 0px;
 	}
-	#portfolio .portfolio-filter li{
-		margin-bottom:10px
+	/*count*/
+	.facts-wrap {
+    	margin: 0px auto 65px;
 	}
-	.efffect h3{
-		margin-top:18%
+
+	.video-text {
+    	margin-top: 30px;
 	}
-	#clients-carousel .carousel-inner img{
-		width:100%
+
+	/*pricing*/
+	.pricing{
+		margin: 0 auto;
+		width: 50%;
 	}
-	.single-blog ul li{
-		margin-bottom:10px
+	.cyprass-carousel-controller {
+	    left: 41%;
 	}
-	#gmap iframe{
-		height:225px
+	.testimonial-slide .testimonial-text {
+	    font-size: 14px;
+	    padding-top: 20px;
+	    text-align: justify;
+	    max-width: 651px;
+	    padding: 0px 20px 0px 20px;
 	}
-	.contact-address{
-		padding-left:10px;
-		padding-right:10px
+	
+
+	/*backt top*/
+	#back-top {
+    	right: 12px;
 	}
-	.pattern{
-		height:960px
+
+	
+	/*-- Landing ---*/
+
+	.hero-text{
+		width: 95%;
 	}
-	#footer p{
-		font-size:14px
+	.hero-title{
+		font-size: 36px;
 	}
+	.hero-buttons a.btn {
+		padding: 10px 20px;
+	}
+
+	.app-gallery figure.effect-oscar a{
+		margin-top: 105px;
+	}
+
+
 }
-@media (max-width:479px){
-	body section{
-		overflow:hidden
+
+/* Small Devices Potrait */
+@media (max-width : 767px){
+
+	.carousel-caption h3 {
+	    font-size: 20px;
 	}
-	#navigation .navbar-nav.navbar-right li a{
-		padding:5px 15px;
+	.carousel-caption p {
+	    font-size: 14px;
 	}
-	.media,.media-body{
-		overflow:inherit!important
+	.carousel-caption h2{
+    	font-size: 16px;
+		/*line-height: 34px;*/
+		width: 50%;
 	}
-	#navigation .navbar-inverse .navbar-nav .active a,
-	#navigation .navbar-inverse .navbar-nav .active a:focus,
-	#navigation .navbar-nav.navbar-right li a:hover{
-		border:none
+	.carousel-caption h2:after{
+	    content: "";
+	    position: absolute;
+	    width: 2px;
+	    height: 20px;
+	    left: 5px;
+	    top: -10px;
 	}
-	.call-to-action p,
-	.header-bottom #subscribe-form p{
-		font-size:14px
+	.carousel-caption h2:before{
+	    content: "";
+	    position: absolute;
+	    width: 2px;
+	    height: 55px;
+	    right: 5px;
+	    top: -10px;
 	}
-	.header-bottom #subscribe-form .mail-field{
-		display:inline;
-		float:none;
-		margin-bottom:13px;
-		margin-right:0;
-		width:100%
+	/*main Slider*/
+	#slider_part {
+    	height: 250px;
+    	margin-top: 75px;
 	}
-	#main-carousel .carousel-inner h2{
-		border-bottom:0;
-		font-size:30px
+	.carousel-caption {
+    	top: 20%;
 	}
-	.slider-btn{
-		font-size:16px;
-		height:45px;
-		line-height:45px;
-		width:150px
+	.overlay-slide {
+    	height: 100%;
 	}
-	.title-one{
-		font-size:24px
+	.carousel-caption p {
+	    font-size: 12px;
+	    line-height: 14px;
+	    margin-top: 20px;
 	}
-	#about-us p{
-		font-size:14px
+	.carousel-indicators li {
+	    width: 15px !important;
+	    height: 15px !important;
 	}
-	.nav-tabs li{
-		width:33%
+	.carousel-indicators {
+    	width: 25%;
 	}
-	.nav-tabs li a{
-		text-align:center
+	.carousel-indicators {
+	    left: 37%;
+	    bottom: 9%;
 	}
-	.nav-tabs li a i{
-		display:block
+	
+	.slides-control .carousel-control i {
+	    line-height: 15px;
+	    font-size: 20px;
+	    width: 30px;
+	    height: 30px;
 	}
-	.about-us .tab-content .pull-left.media-object{
-		background-color:#F6F6F6;
-		display:block;
-		float:inherit!important;
-		margin-right:0;
-		width:100%
+	.carousel-control.right {
+    	right: 30px;
 	}
-	#services h2{
-		font-size:24px
+	
+	/*header*/
+  	.navbar-brand img {
+	    height: 45px;
+	    /*height: 65px;*/
 	}
-	.member-right{
-		left:55%
+
+	.feature_title {
+    	width: 60%;
+    	font-size: 30px;
 	}
-	.single-member{
-		margin-bottom:25px;
-		height:450px
+	.feature_content .btn-main{
+		margin-bottom: 40px;
 	}
-	#portfolio .portfolio-filter li{
-		margin-bottom:10px
+	
+	#service{
+		padding-bottom: 0px;
+		padding-top: 40px;
 	}
-	.efffect h3{
-		margin-top:8%
+	
+	/*count*/
+	.facts-wrap {
+    	margin: 0px auto 65px;
 	}
-	.single-blog ul li{
-		margin-bottom:10px
+
+	.video-text {
+    	margin-top: 30px;
 	}
-	#gmap iframe{
-		height:225px
+
+	/*pricing table*/
+	.single_table {
+    	width: 287px;
 	}
-	.contact-address{
-		padding-left:10px;
-		padding-right:10px
+	.single_table ul li.price {
+   		font-size: 40px;
 	}
-	.pattern{
-		height:960px
+	.single_table .plan_wraper {
+	    height: 64px;
+	    left: 38%;
 	}
-	#footer p{
-		font-size:14px
+	.single_table ul li {
+    font-size: 16px;
 	}
+	.grey_bg{
+		-webkit-transform: none;
+		-ms-transform: none;
+		-o-transform: none;
+		transform: none;
+	}
+
+	/*Testimonial */
+	.cyprass-carousel-controller {
+	    left: 33%;
+	}
+	.testimonial-slide .testimonial-text {
+	    font-size: 14px;
+	    padding-top: 20px;
+	    text-align: justify;
+	    max-width: 431px;
+	    padding: 0px 20px 0px 20px;
+	}
+	/*client*/
+	.client_logo {
+	    padding: 0px;
+	    margin: 0 auto;
+	    width: 50%;
+	}
+	
+	#client {
+    	padding: 0px 0px;
+	}
+	
+	/*blog*/
+	#banner {
+	    height: 400px;
+	}
+	.blog-header {
+	    margin-top: 95px;
+	}
+	#portfolio-slider li img {
+	    height: 250px !important;
+	}
+	.bx-wrapper .bx-controls-direction a {
+    	top: 42%;
+	}
+	.bx-wrapper .bx-viewport {
+	    height: 250px !important;
+	}
+	.bx-wrapper .bx-pager {
+    	top: 60%;
+	}
+	.share1 {
+	    height: 88px;
+	    padding: 5px 20px 30px 20px;
+	}
+	.blog-desc{
+		margin-top: -90px;
+	}
+
+	/*footer*/
+	.footer_b {
+	    padding-bottom: 21px;
+	}
+	.footer_mid{
+		float: left !important;
+	}
+	
+	/*backt top*/
+	#back-top {
+    	right: 12px;
+	}
+
 }
+	

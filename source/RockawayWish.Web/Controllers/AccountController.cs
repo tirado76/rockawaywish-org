@@ -27,6 +27,7 @@ namespace RockawayWish.Web.Controllers
         }
         // GET: /Account/Login
         [AllowAnonymous]
+        [Route("signin")]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -38,6 +39,7 @@ namespace RockawayWish.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [Route("signin")]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
@@ -80,6 +82,7 @@ namespace RockawayWish.Web.Controllers
         }
         // GET: /Account/Register
         [AllowAnonymous]
+        [Route("register")]
         public ActionResult Register()
         {
             return View();
@@ -90,6 +93,7 @@ namespace RockawayWish.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [Route("register")]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -115,11 +119,13 @@ namespace RockawayWish.Web.Controllers
         }
 
         [AllowAnonymous]
+        [Route("registerconfirmation")]
         public ActionResult RegisterConfirmation()
         {
             return View();
         }
 
+        [Route("signout")]
         public async Task<ActionResult> SignOut()
         {
             if (Request.IsAuthenticated)
@@ -162,6 +168,7 @@ namespace RockawayWish.Web.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [Route("forgotpassword")]
         public ActionResult ForgotPassword(ForgotPasswordViewModel model)
         {
             if (ModelState.IsValid)
@@ -205,6 +212,7 @@ namespace RockawayWish.Web.Controllers
         }
 
         [AllowAnonymous]
+        [Route("resetpassword")]
         public ActionResult ResetPassword(string tu, string ta)
         {
             ResetPasswordViewModel vm = new ResetPasswordViewModel();
