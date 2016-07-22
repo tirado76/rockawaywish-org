@@ -6,8 +6,9 @@
         <div class="row text-center">
             <div class="col-sm-8 col-sm-offset-2">
                 <h2 class="title-one">Member Center</h2>
-                <h5><a href="@Url.Content("~/members/payments")">Dues and payments</a> | <a href="@Url.Content("~/members/info")">Profile Information</a></h5>
-                <h3>Dues &amp; Payments</h3>
+                @*<h5><a href="@Url.Content("~/members/payments")">Dues and payments</a> | <a href="@Url.Content("~/members/info")">Profile Information</a></h5>
+                <hr />*@
+                <h3 style="padding: 10px; font-weight: bold">Dues &amp; Payments</h3>
 
                 @if (Model.DuesPaymentList != null && Model.DuesPaymentList.Count > 0)
                 {
@@ -17,46 +18,40 @@
 
                     List<UserPaymentsModel> lsUserPayments = new List<UserPaymentsModel>(); ;
                     char[] delimitter = { '|' };
-                    foreach (KeyValuePair<string, List<UserPaymentsModel>> pair in Model.DuesPaymentList)
-                    {
-                        pairKey = pair.Key;
-                        lsUserPayments = pair.Value;
-
-                        string[] strArr = pairKey.Split(delimitter);
-                        duesTitle = strArr[0];
-                        duesId = strArr[1];
-
-                        <div style="background-color: #ddd; padding: 10px; font-weight: bold">
-                            @duesTitle
-                            @*@if (lsUserPayments.Count() == 0)
+                    <div style="padding: 10px;">
+                        <table class="table" style="text-align: center">
+                            <tr>
+                                <th style="text-align: center">
+                                    Dues
+                                </th>
+                                <th style="text-align: center">
+                                    <label>Payment Date</label>
+                                </th>
+                                <th style="text-align: center">
+                                    <label>Payment Method</label>
+                                </th>
+                                <th style="text-align: center">
+                                    <label>Amount</label>
+                                </th>
+                            </tr>
+                            @foreach (KeyValuePair <string, List<UserPaymentsModel>> pair in Model.DuesPaymentList)
                             {
-                                <span style="text-align: right; float: right;">@Html.ActionLink("Delete", "Delete", "UserDues", new { userId = Model.UserId, duesId = duesId, appId = Model.ApplicationId }, null)</span>
-                            }*@
-                        </div>
+                                pairKey = pair.Key;
+                                lsUserPayments = pair.Value;
 
-                        if (lsUserPayments != null && lsUserPayments.Count() > 0)
-                        {
-                            foreach (var userPayment in lsUserPayments)
-                            {
-                                <div style="padding: 10px;">
-                                    <table class="table" style="text-align: center">
-                                        <tr>
-                                            <th style="text-align: center">
-                                                @Html.DisplayNameFor(model => userPayment.PaymentDate)
-                                            </th>
-                                            <th style="text-align: center">
-                                                @Html.DisplayNameFor(model => userPayment.PaymentMethod)
-                                            </th>
-                                            <th style="text-align: center">
-                                                @Html.DisplayNameFor(model => userPayment.PaymentAmount)
-                                            </th>
-                                            @*<th></th>*@
-                                        </tr>
+                                string[] strArr = pairKey.Split(delimitter);
+                                duesTitle = strArr[0];
+                                duesId = strArr[1];
 
+
+                                if (lsUserPayments != null && lsUserPayments.Count() > 0)
+                                {
+                                    foreach (var userPayment in lsUserPayments)
+                                    {
                                         <tr>
+                                            <td>@duesTitle</td>
                                             <td>
                                                 @userPayment.PaymentDate.ToShortDateString()
-                                                @*@Html.DisplayFor(modelItem => userPayment.PaymentDate)*@
                                             </td>
                                             <td>
                                                 @Html.DisplayFor(modelItem => userPayment.PaymentMethod)
@@ -64,42 +59,36 @@
                                             <td>
                                                 @Html.DisplayFor(modelItem => userPayment.PaymentAmount)
                                             </td>
-                                            @*<td>
-                                                @Html.ActionLink("Edit", "Edit", new { userId = userPayment.UserId, paymentId = userPayment.PaymentId, appId = userPayment.ApplicationId }) |
-                                                @Html.ActionLink("Details", "Details", new { userId = userPayment.UserId, paymentId = userPayment.PaymentId, appId = userPayment.ApplicationId })
-                                                <span>| @Html.ActionLink("Delete", "Delete", new { userId = userPayment.UserId, paymentId = userPayment.PaymentId, appId = userPayment.ApplicationId })</span>
-                                            </td>*@
                                         </tr>
-                                    </table>
-                                </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td>@duesTitle</td>
+                                        <td style="padding: 10px; color: #ff0000; font-weight: bold;">
+                                            No payments.
+                                        </td>
+                                        <td colspan="2">
+                                            <a class="btn btn-primary" href="@Url.Content(string.Format("~/members/payment/?appId={0}&userId={1}&paymentId={2}", Model.ApplicationId, Model.UserId, duesId.ToString()))">Make Payment</a>
+                                        @*@Html.ActionLink("Make Payment", "Payment", new { appId = Model.ApplicationId, userId = Model.UserId, paymentId = new Guid(duesId), paymentTypeId = 1 }, new { @class = "btn btn-primary" })*@
+                                        </td>
+                                    </tr>
+                                }
                             }
-                        }
-                        else
-                        {
-                            <p style="padding: 10px; color: #ff0000; font-weight: bold;">No payments.</p>
-                    
-                            @*<p>@Html.ActionLink("Make Payment", "Create", new { appId = Model.ApplicationId, userId = Model.UserId, paymentId = new Guid(duesId), paymentTypeId = 1 }, new { @class = "btn btn-primary" })</p>*@
-                <p>
-                      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_s-xclick">
-        <input type="hidden" name="hosted_button_id" value="434AZPJHHTFH4">
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-    </form></p>
-
-                        }
-                    }
+                            </table>
+                        </div>
                 }
                 else
                 {
                     <p style="padding: 10px; color: #ff0000; font-weight: bold;">No dues have been applied.</p>
-                    @*<p style="padding-left: 40px;">+ @Html.ActionLink("Add dues to user", "Create", "UserDues", new { appId = Model.ApplicationId, userId = Model.UserId }, null)</p>*@
- 
                 }
 
+                <h5>@*<a href="@Url.Content("~/members/payments")">Dues and payments</a> |*@ <a href="@Url.Content("~/members/info")">Profile Information</a></h5>
 
 
             </div>
+
         </div>
     </div>
-</section><!--/#Our-Team-->
+</section>

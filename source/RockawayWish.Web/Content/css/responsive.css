@@ -185,13 +185,13 @@
 	    width: 15px !important;
 	    height: 15px !important;
 	}
-	.carousel-indicators {
+	/*.carousel-indicators {
     	width: 25%;
 	}
 	.carousel-indicators {
 	    left: 37%;
 	    bottom: 9%;
-	}
+	}*/
 	
 	.slides-control .carousel-control i {
 	    line-height: 15px;

@@ -177,12 +177,16 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\responsive-carousel.css" />
     <Content Include="Content\css\site.css" />
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\responsive.css" />
+    <Content Include="Content\images\home-pattern.png" />
+    <Content Include="Content\images\pattern.png" />
+    <Content Include="Content\images\pink-star.png" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -294,6 +298,10 @@
     <Content Include="Views\Members\Index.cshtml" />
     <Content Include="Views\Members\Payments.cshtml" />
     <Content Include="Views\Members\Info.cshtml" />
+    <Content Include="Views\Members\CancelPayment.cshtml" />
+    <Content Include="Views\Shared\_PayPalSubsribeButton.cshtml" />
+    <Content Include="Views\Members\Payment.cshtml" />
+    <Content Include="Views\Members\CompletePayment.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

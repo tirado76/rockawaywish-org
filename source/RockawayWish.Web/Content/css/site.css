@@ -74,10 +74,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .slider-btn {
-	background-color:#fc7700;
+	background-color:#FFA1D5;
 	color: #FFF;
 	-webkit-box-shadow: inset 0 0 0 2px #fc7700;
-	box-shadow: inset 0 0 0 2px #fc7700;
+	box-shadow: inset 0 0 0 2px #000;
 	text-transform: uppercase;
 	width: 190px;
 	text-align: center;
@@ -95,7 +95,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .slider-btn:hover {
-	background-color:pink;
+	background-color: #FFA1D5;
 	-webkit-box-shadow: inset 0 0 0 2px #43484E;
 	box-shadow: inset 0 0 0 2px #43484E;
 	color:#fff
@@ -245,10 +245,10 @@ h1, h2, h3, h4, h5, h6 {
 
 #navigation .navbar {
   /*background:rgba(255, 255, 255, 0.952941);*/
-  background:#fff;
+  background:#FFA1D5;
   border-radius: 0;
   border-bottom: 0;
-  box-shadow: rgba(0, 0, 0, 0.298039) 0px 0px 3px;
+  box-shadow: rgba(0, 0, 0, 0.298039) 10px 0px 10px;
   padding-bottom: 8px;
 }
 
@@ -271,7 +271,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #navigation .navbar-nav.navbar-right li a {
-	color: #43484E;
+	color: #000;
 	font-family: 'Roboto',sans-serif;
 	font-size: 14px;
 	padding: 0;
@@ -286,8 +286,8 @@ h1, h2, h3, h4, h5, h6 {
 #navigation .navbar-inverse .navbar-nav  .active  a,  
 #navigation .navbar-inverse .navbar-nav  .active  a:focus, 
 #navigation .navbar-nav.navbar-right li a:hover {
-	color: #fff;
-	background-color: #FE99CC;
+	color: #FF2A7F;
+	background-color: #fff;
 }
 
 
@@ -313,14 +313,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #main-carousel .carousel-inner .item {
-	background-size:cover;
-	height: 100%;
-	background-position: 50% 50%;
-	background-repeat:no-repeat;
 }
 
 #main-carousel .carousel-indicators { 
-	bottom:15px
+	bottom:20%;
 }
 
 #main-carousel .carousel-indicators li{
@@ -352,6 +348,7 @@ h1, h2, h3, h4, h5, h6 {
 	z-index: 11;
 }
 
+
 #main-carousel .carousel-caption > div{
     vertical-align: middle;
     display: table-cell;
@@ -364,13 +361,14 @@ h1, h2, h3, h4, h5, h6 {
 	font-size: 55px;
 	font-weight: 800;
 	margin-bottom: 40px;
-	text-shadow: none;
+    text-shadow: 3px 3px #000;
 	text-transform: uppercase;
 }
 
 #main-carousel .carousel-inner h2 span{
   color:#7ab700;
 }
+
 
 #main-carousel .carousel-inner p {
 	color: #f6f6f6;
@@ -379,9 +377,14 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 300;
 	margin-bottom: 59px;
 	margin-top: 0;
-	text-shadow:none;
+    text-shadow: 2px 2px #000;
 }
+#main-carousel .carousel-inner .item {
 
+    /*background-repeat: no-repeat;
+    background-size: cover;*/
+    /*background-position: 0px 0px;*/
+}
 #main-carousel .carousel-left{
 	left:-50px;
 }
@@ -423,16 +426,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .carousel-right {
+	color: pink;
   right:65px
 }
 
 .carousel-left {
+	color: pink;
   left:65px
 }
 
 #main-carousel .carousel-left:hover,
 #main-carousel .carousel-right:hover{
-	color: #F6F6F6;
+	/*color: #F6F6F6;*/
+	color: pink;
 }
 
 
@@ -453,7 +459,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .title-one {
-	color: #666666;
+	color: #FF2A7F;
 	display: inline-block;
 	font-size: 32px;
 	padding-bottom:10px;
@@ -464,19 +470,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .title-one:after {
-	color: #fc7700;
-	content: "||";
+	color: #FE99CC;
+	content: "";
+    width: 25px;
+    height: 25px;
 	position: absolute;
 	right: -40px;
 	top: -2px;
+    background-image: url('/Content/images/pink-star.png')
 }
 
 .title-one:before {
-	color: #fc7700;
-	content: "||";
+	color: #FE99CC;
+	content: "";
+    width: 25px;
+    height: 25px;
 	left: -40px;
 	position: absolute;
 	top: 0;
+    background-image: url('/Content/images/pink-star.png')
 }
 
 
@@ -568,7 +580,7 @@ h1, h2, h3, h4, h5, h6 {
 .social-icons a {
 	color: #FE99CC;
 	font-size: 20px;
-	border: 1px solid #FE99CC;
+	border: 1px solid #000;
 	border-radius: 50%;
 	text-align: center;
 	padding: 6px;
@@ -581,8 +593,8 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .social-icons a:hover {
-  color: #fc7700;
-  border: 1px solid #fc7700;
+  color: #fff;
+  border: 1px solid #fff;
 }
 
 .contact-address .social-icons, 
@@ -667,12 +679,16 @@ h1, h2, h3, h4, h5, h6 {
 ======================*/
 
 #footer {
-	background-color:#f6f6f6;
+	background-color:#FFA1D5;
 	padding:25px 0;
-	color:#43484E;
+	color:#000;
 	font-size:16px;
-	position:relative;
+	/*position:relative;*/
 	margin-top:1px;
+    position:fixed;
+    width: 100%;
+ bottom:0;
+ left:0;
 }
 
 #footer p {
@@ -680,7 +696,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #footer a {
-	color:#fc7700
+	color:#000
+}
+#footer a:hover {
+	color:#fff
 }
 
 

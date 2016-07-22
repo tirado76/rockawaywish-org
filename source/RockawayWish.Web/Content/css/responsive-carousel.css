@@ -1,0 +1,56 @@
+﻿.responsive-image{
+width: 100%;
+background-repeat: no-repeat;
+         position: absolute;
+         background-color: black;
+         background-size: cover;
+         background-position: center center;
+
+} 
+
+
+/* Retina display */
+@media screen and (min-width: 1024px){
+    .responsive-image{
+        /*background-image: url('../img/retina.jpg');*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*border: solid 3px red;*/
+
+    }
+}
+
+/* Desktop */
+@media screen and (min-width: 980px) and (max-width: 1024px){
+    .responsive-image{
+    /*border: solid 3px white;*/
+        /*background-image: url('../img/desktop.jpg');*/
+    }
+}
+
+/* Tablet */
+@media screen and (min-width: 760px) and (max-width: 980px){
+    .responsive-image{
+    /*border: solid 3px green;*/
+        /*background-image: url('../img/tablet.jpg');*/
+    }
+}
+
+/* Mobile HD */
+@media screen and (min-width: 350px) and (max-width: 760px){
+    .responsive-image{
+        /*background-image: url('../img/mobile-hd.jpg');*/
+        /*border: solid 3px purple;*/
+    }
+    #footer{
+        font-size: 12px
+    }
+}
+
+/* Mobile LD */
+@media screen and (max-width: 350px){
+    .responsive-image{
+    border: solid 3px yellow;
+        /*background-image: url('../img/mobile-ld.jpg');*/
+    }
+} 

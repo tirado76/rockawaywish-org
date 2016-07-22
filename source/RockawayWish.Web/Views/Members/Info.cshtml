@@ -6,8 +6,7 @@
         <div class="row text-center">
             <div class="col-sm-8 col-sm-offset-2">
                 <h2 class="title-one">Member Center</h2>
-                <h5><a href="@Url.Content("~/members/payments")">Dues and payments</a> | <a href="@Url.Content("~/members/info")">Profile Information</a></h5>
-                <h3>Profile Information</h3>
+                <h3 style="padding: 10px; font-weight: bold">Profile Information</h3>
                 <table class="table" style="text-align: center">
                     <tr>
                         <td>@Html.DisplayNameFor(model => model.FirstName)</td>
@@ -30,6 +29,7 @@
                         <td>@Html.DisplayFor(model => model.IsActive)</td>
                     </tr>
                 </table>
+                <h5><a href="@Url.Content("~/members/payments")">Dues and payments</a> @*| <a href="@Url.Content("~/members/info")">Profile Information</a>*@</h5>
             </div>
         </div>
     </div>

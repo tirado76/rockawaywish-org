@@ -1,0 +1,67 @@
+﻿@using InteractiveMembership.Core.Models;
+@model RockawayWish.Web.Models.UserPaymentsViewModel
+
+<section id="member-payments">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-sm-8 col-sm-offset-2">
+                <h2 class="title-one">Member Center</h2>
+                <h3 style="background-color: #FFA1D5; padding: 10px; font-weight: bold">Dues &amp; Payments</h3>
+                <h5><a href="@Url.Content("~/members/payments")">Dues and payments</a> | <a href="@Url.Content("~/members/info")">Profile Information</a></h5>
+
+                @if (Model.DuesPaymentList != null && Model.DuesPaymentList.Count > 0)
+                {
+                    string pairKey;
+                    string duesTitle;
+                    string duesId;
+
+                    List<UserPaymentsModel> lsUserPayments = new List<UserPaymentsModel>(); ;
+                    char[] delimitter = { '|' };
+                    <div style="padding: 10px;">
+                            @foreach (KeyValuePair<string, List<UserPaymentsModel>> pair in Model.DuesPaymentList)
+                            {
+                                pairKey = pair.Key;
+                                lsUserPayments = pair.Value;
+
+                                string[] strArr = pairKey.Split(delimitter);
+                                duesTitle = strArr[0];
+                                duesId = strArr[1];
+
+
+                                if (lsUserPayments != null && lsUserPayments.Count() > 0)
+                                {
+                                    foreach (var userPayment in lsUserPayments)
+                                    {
+                                        <tr>
+                                            <td>@duesTitle</td>
+                                            <td>
+                                                &nbsp;
+                                            </td>
+                                            <td>
+                                                &nbsp;
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <div style="margin-top: 50px;"><h2>@duesTitle</h2></div>
+                                    <div style="margin-top: 50px;">
+                                        @Html.Partial("_PayPalSubsribeButton")
+                                    </div>
+                                }
+                            }
+                    </div>
+                }
+                else
+                {
+                    <p style="padding: 10px; color: #ff0000; font-weight: bold;">No dues have been applied.</p>
+                }
+
+
+
+            </div>
+
+        </div>
+    </div>
+</section>

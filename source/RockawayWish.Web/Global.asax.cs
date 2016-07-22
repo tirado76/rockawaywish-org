@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+
+using InteractiveMembership.Data.Providers;
+using RockawayWish.Web.Controllers;
 
 namespace RockawayWish.Web
 {
@@ -25,6 +29,10 @@ namespace RockawayWish.Web
             if (ex != null)
             {
                 // log error
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("<p>An error occurred</p>");
+                sb.AppendFormat("<p>{0}</p>", ex.Message);
+                var result = new BaseController().SendEmail("richie@tiradointeractive.com", "An error occurred", sb.ToString());
 
                 HttpException httpError = ex as HttpException;
 

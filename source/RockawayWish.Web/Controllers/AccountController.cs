@@ -26,7 +26,6 @@ namespace RockawayWish.Web.Controllers
             return View();
         }
         // GET: /Account/Login
-        [AllowAnonymous]
         [Route("signin")]
         public ActionResult Login(string returnUrl)
         {
@@ -37,7 +36,6 @@ namespace RockawayWish.Web.Controllers
         //
         // POST: /Account/Login
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         [Route("signin")]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
@@ -81,7 +79,6 @@ namespace RockawayWish.Web.Controllers
 
         }
         // GET: /Account/Register
-        [AllowAnonymous]
         [Route("register")]
         public ActionResult Register()
         {
@@ -118,7 +115,6 @@ namespace RockawayWish.Web.Controllers
             return View(model);
         }
 
-        [AllowAnonymous]
         [Route("registerconfirmation")]
         public ActionResult RegisterConfirmation()
         {
@@ -160,13 +156,13 @@ namespace RockawayWish.Web.Controllers
 
 
 
+        [Route("forgotpassword")]
         public ActionResult ForgotPassword()
         {
             return View();
         }
 
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         [Route("forgotpassword")]
         public ActionResult ForgotPassword(ForgotPasswordViewModel model)
@@ -205,13 +201,11 @@ namespace RockawayWish.Web.Controllers
             return View();
         }
 
-        [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
         {
             return View();
         }
 
-        [AllowAnonymous]
         [Route("resetpassword")]
         public ActionResult ResetPassword(string tu, string ta)
         {
@@ -230,6 +224,7 @@ namespace RockawayWish.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Route("resetpassword")]
         public ActionResult ResetPassword(ResetPasswordViewModel model)
         {
             if (!ModelState.IsValid)
@@ -253,13 +248,24 @@ namespace RockawayWish.Web.Controllers
             }
             else
             {
+
                 ModelState.AddModelError("", user.Message);
             }
 
-            return View(model);
+            ResetPasswordViewModel vm = new ResetPasswordViewModel();
+            // make sure is user is valid
+            UserModel userModel = new UsersProvider().GetById(model.ApplicationId, model.UserId).Result;
+
+            vm.Status = userModel.Status;
+            vm.Message = userModel.Message;
+            vm.UserId = userModel.UserId;
+            vm.ApplicationId = model.ApplicationId;
+
+
+            return View(vm);
+            //return View(model);
         }
 
-        [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
             return View();

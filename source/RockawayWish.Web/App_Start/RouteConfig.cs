@@ -13,6 +13,8 @@ namespace RockawayWish.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.IgnoreRoute("favicon.ico");
+
             routes.MapMvcAttributeRoutes();
 
             routes.MapRoute(
