@@ -192,15 +192,6 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\images\blank.gif" />
-    <Content Include="Content\images\color01.png" />
-    <Content Include="Content\images\controls.png" />
-    <Content Include="Content\images\fancybox_loading%402x.gif" />
-    <Content Include="Content\images\fancybox_loading.gif" />
-    <Content Include="Content\images\fancybox_overlay.png" />
-    <Content Include="Content\images\fancybox_sprite%402x.png" />
-    <Content Include="Content\images\fancybox_sprite.png" />
-    <Content Include="Content\images\glyphicons-halflings-white.png" />
-    <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\images\home-pattern.png" />
     <Content Include="Content\images\ico\apple-touch-icon-114-precomposed.png" />
     <Content Include="Content\images\ico\apple-touch-icon-144-precomposed.png" />
@@ -209,7 +200,6 @@
     <Content Include="Content\images\ico\favicon.png" />
     <Content Include="Content\images\logo2.png" />
     <Content Include="Content\images\logo.png" />
-    <Content Include="Content\images\map1.png" />
     <Content Include="Content\images\slider\slide1.jpg" />
     <Content Include="Content\images\slider\slide2.jpg" />
     <Content Include="Content\images\slider\slide3.jpg" />
@@ -218,6 +208,8 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\html5shiv.js" />
+    <Content Include="js\jquery.isotope.js" />
+    <Content Include="js\jquery.isotope.min.js" />
     <Content Include="js\jquery.js" />
     <Content Include="js\jquery.singlePageNav.js" />
     <Content Include="js\main.js" />
@@ -239,15 +231,15 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Web.config">
+    <None Include="Web.config">
       <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.Debug.config">
+    </None>
+    <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
+    </None>
+    <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
-    </Content>
+    </None>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -271,12 +263,12 @@
   <ItemGroup>
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\fonts\fontawesome-webfont.ttf" />
-    <Content Include="app.config">
+    <None Include="app.config">
       <SubType>Designer</SubType>
-    </Content>
-    <Content Include="app.prod.config">
+    </None>
+    <None Include="app.prod.config">
       <SubType>Designer</SubType>
-    </Content>
+    </None>
     <None Include="Properties\PublishProfiles\TITAN.pubxml" />
     <Content Include="Views\Shared\_Donate.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
@@ -286,15 +278,15 @@
     <Content Include="Views\Home\Donate.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\PageNotFound.cshtml" />
-    <Content Include="Web.prod.config">
+    <None Include="Web.prod.config">
       <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.prod.Debug.config">
+    </None>
+    <None Include="Web.prod.Debug.config">
       <DependentUpon>Web.prod.config</DependentUpon>
-    </Content>
-    <Content Include="Web.prod.Release.config">
+    </None>
+    <None Include="Web.prod.Release.config">
       <DependentUpon>Web.prod.config</DependentUpon>
-    </Content>
+    </None>
     <Content Include="Views\Members\Index.cshtml" />
     <Content Include="Views\Members\Payments.cshtml" />
     <Content Include="Views\Members\Info.cshtml" />

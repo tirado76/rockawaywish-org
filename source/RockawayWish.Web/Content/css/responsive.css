@@ -3,13 +3,17 @@
 
 /* Large Devices, Wide Screens */
 @media (min-width : 1200px) {
+    #navigation {
 
+    }
 }
 
 
 /* Medium Devices, Desktops */
-@media (min-width : 992px) {
-
+@media (min-width : 992px)  and (max-width: 1199px){
+    #navigation .navbar-nav.navbar-right li a {
+        font-size: 14px;
+    }
 	/*ul.navbar-nav a {
     	padding: 15px 0px 10px 19px;
 	}*/
@@ -24,15 +28,19 @@
 
 /* Small Devices, Tablets */
 @media (min-width : 768px) and (max-width: 991px) {
-	
+	    #navigation .navbar-nav.navbar-right li a {
+        font-size: 10px;
+	    padding: 6px 17px;
+    }
+
 	.navbar-header{
-		width: 20%;
+		width: 0;
 	}
 	.navbar-brand {
     	height: 48px;
 	}
 	ul.navbar-nav a {
-	    padding: 15px 0px 10px 10px;
+	    padding: 0px;
 	}
 	
 	/*main Slider*/
@@ -133,6 +141,8 @@
 	}
 
 
+
+
 }
 
 /* Small Devices Potrait */
@@ -147,7 +157,6 @@
 	.carousel-caption h2{
     	font-size: 16px;
 		/*line-height: 34px;*/
-		width: 50%;
 	}
 	.carousel-caption h2:after{
 	    content: "";
@@ -178,7 +187,6 @@
 	}
 	.carousel-caption p {
 	    font-size: 12px;
-	    line-height: 14px;
 	    margin-top: 20px;
 	}
 	.carousel-indicators li {
@@ -314,5 +322,9 @@
     	right: 12px;
 	}
 
+    #footer p {
+	font-size:12px;
+
+    }
 }
 	
