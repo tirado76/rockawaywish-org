@@ -53,7 +53,7 @@ namespace RockawayWish.Web.Controllers
                 var validateToken = await _userProvider.ValidateToken(new Guid(Config.ApplicationId), requestToken.UserId, requestToken.AccessToken);
                 if (validateToken.Status == 0)
                 {
-                    if (!validateToken.IsUser && !validateToken.IsAdmin && !validateToken.IsSuperAdmin)
+                    if ((!validateToken.IsUser || !validateToken.IsActive) && !validateToken.IsAdmin && !validateToken.IsSuperAdmin)
                     {
                         ModelState.AddModelError("", "Access Denied");
                         return View(model);

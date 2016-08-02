@@ -40,11 +40,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="InteractiveMembership.Core">
-      <HintPath>..\..\..\tiradointeractive-membership\source\InteractiveMembership.Data\bin\Release\InteractiveMembership.Core.dll</HintPath>
+    <Reference Include="InteractiveMembership.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\InteractiveMembership.Core.dll</HintPath>
     </Reference>
-    <Reference Include="InteractiveMembership.Data">
-      <HintPath>..\..\..\tiradointeractive-membership\source\InteractiveMembership.Data\bin\Release\InteractiveMembership.Data.dll</HintPath>
+    <Reference Include="InteractiveMembership.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\InteractiveMembership.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -212,6 +214,10 @@
     <Content Include="js\jquery.isotope.min.js" />
     <Content Include="js\jquery.js" />
     <Content Include="js\jquery.singlePageNav.js" />
+    <Content Include="js\jquery.validate.js" />
+    <Content Include="js\jquery.validate.min.js" />
+    <Content Include="js\jquery.validate.unobtrusive.js" />
+    <Content Include="js\jquery.validate.unobtrusive.min.js" />
     <Content Include="js\main.js" />
     <Content Include="js\respond.min.js" />
     <Content Include="Content\fonts\fontawesome-webfont.woff" />
@@ -231,6 +237,7 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="js\vendor\jquery-1.10.2.min.map" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
