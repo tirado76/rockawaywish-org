@@ -14,6 +14,9 @@ namespace RockawayWish.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.IgnoreRoute("favicon.ico");
+            routes.IgnoreRoute("members/favicon.ico");
+            routes.IgnoreRoute("account/favicon.ico");
+            routes.IgnoreRoute("error/favicon.ico");
 
             routes.MapMvcAttributeRoutes();
 
