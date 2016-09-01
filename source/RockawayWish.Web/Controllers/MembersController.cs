@@ -105,7 +105,7 @@ namespace RockawayWish.Web.Controllers
                 {
                     userPayment.PaymentDate = userPayment.PaymentDate.Date;
                 }
-                vm.DuesPaymentList.Add(string.Format("{0}|{1}", userDues.DuesModel.Title, userDues.DuesModel.DuesId), lsUserPaymentList);
+                vm.DuesPaymentList.Add(string.Format("{0}|{1}|{2}", userDues.DuesModel.Title, userDues.DuesModel.DuesId, userDues.DuesModel.PaypalButtonId), lsUserPaymentList);
 
             }
 
