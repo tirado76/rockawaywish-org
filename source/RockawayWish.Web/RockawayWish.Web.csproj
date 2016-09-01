@@ -237,7 +237,8 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="js\vendor\jquery-1.10.2.min.map" />
+    <Content Include="js\jquery-1.10.2.min.map" />
+    <Content Include="Views\Account\RegisterConfirmation.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
@@ -279,7 +280,6 @@
     <None Include="Properties\PublishProfiles\TITAN.pubxml" />
     <Content Include="Views\Shared\_Donate.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <None Include="Views\Account\RegisterConfirmation.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Donate.cshtml" />
@@ -320,7 +320,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>39385</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://local.rockawaywish.org</IISUrl>
+          <IISUrl>https://local.rockawaywish.org</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

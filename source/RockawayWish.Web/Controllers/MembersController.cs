@@ -43,7 +43,7 @@ namespace RockawayWish.Web.Controllers
             vm.ApplicationId = new Guid(Config.ApplicationId);
 
             // get user dues list
-            List<UserDuesModel> userDuesList = (List<UserDuesModel>)new UserDuesProvider().Get(vm.ApplicationId).Result.Where(x => x.UserId.Equals(vm.UserId)).ToList();
+            List<UserDuesModel> userDuesList = (List<UserDuesModel>)new UserDuesProvider().Get(vm.ApplicationId).Result.Where(x => x.UserId.Equals(vm.UserId)).OrderByDescending(x => x.DuesModel.Title).ToList();
 
             // get user payments list
             List<UserPaymentsModel> lsUserPayments = (List<UserPaymentsModel>)_provider.Get(vm.ApplicationId).Result.Where(x => x.UserId == vm.UserId).ToList();
@@ -62,7 +62,6 @@ namespace RockawayWish.Web.Controllers
                     userPayment.PaymentDate = userPayment.PaymentDate.Date;
                 }
                 vm.DuesPaymentList.Add(string.Format("{0}|{1}", userDues.DuesModel.Title, userDues.DuesModel.DuesId), lsUserPaymentList);
-
             }
 
             if (userDuesList != null && userDuesList.Count > 0)

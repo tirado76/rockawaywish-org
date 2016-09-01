@@ -101,7 +101,7 @@ namespace RockawayWish.Web.Controllers
                 if (result.Status == 0)
                 {
                     // redirect user to home page
-                    return Redirect("~/account/RegisterConfirmation");
+                    return RedirectPermanent("~/RegisterConfirmation");
 
                 }
                 else
@@ -178,13 +178,19 @@ namespace RockawayWish.Web.Controllers
             {
                 // send email
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine("<p>It seems that you have forgotten your Password.</p>");
-                sb.AppendLine("<p><a href=\"" + string.Format("{0}?tu={1}&ta={2}", this.ResetPasswordEndpoint, user.UserId, user.ApplicationId) + "\">Click here to reset it</a></p>");
+                sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.tiradointeractive.com");
+                sb.AppendLine("<p>It seems that you have forgotten your password. No problem!</p>");
+                sb.AppendLine("<p>To reset your password, click the following link or copy and paste the link into your browser:</p>");
+                sb.AppendLine("<p><a href=\"" + string.Format("{0}?tu={1}&ta={2}", this.ResetPasswordEndpoint, user.UserId, user.ApplicationId) + "\">" + string.Format("{0}?tu={1}&ta={2}", this.ResetPasswordEndpoint, user.UserId, user.ApplicationId) + "</a></p>");
+                sb.AppendLine("<p>If you did not request to have your password reset you can safely ignore this email. Rest assured your customer account is safe.</p>");
+                sb.AppendLine("<p>If you need further assistance, please contact us at <a href=\"mailto:" + this.SmtpFromAddress + "\">" + this.SmtpFromAddress + "</a> or by dropping a comment <a href=\"" + this.ResetPasswordContactLink + "\">here</a>.</p>");
+                sb.AppendLine("<p>&nbsp;</p>");
+                sb.AppendLine("<p>Wish of Rockaway</p>");
                 var result = this.SendEmail(model.Email, this.ResetPasswordSubject, sb.ToString());
 
                 if (result.Status == 0)
                 {
-                    return Redirect("~/account/ForgotPasswordConfirmation");
+                    return RedirectPermanent("~/account/ForgotPasswordConfirmation");
                 }
                 else
                 {
@@ -241,7 +247,7 @@ namespace RockawayWish.Web.Controllers
                 var result = new UsersProvider().Update(model.ApplicationId, model.UserId, user.IsActive, user.IsUser, user.IsDonator, user.IsAdmin, user.IsSuperAdmin, null, model.Password, null, null).Result;
                 if (result.Status == 0)
                 {
-                    return Redirect("~/account/ResetPasswordConfirmation");
+                    return RedirectPermanent("~/account/ResetPasswordConfirmation");
                 }
 
                 ModelState.AddModelError("", result.Message);
