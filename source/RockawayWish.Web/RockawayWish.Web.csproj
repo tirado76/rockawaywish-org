@@ -42,11 +42,11 @@
   <ItemGroup>
     <Reference Include="InteractiveMembership.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\InteractiveMembership.Core.dll</HintPath>
+      <HintPath>..\..\..\tiradointeractive-membership\source\InteractiveMembership.Data\bin\Release\InteractiveMembership.Core.dll</HintPath>
     </Reference>
     <Reference Include="InteractiveMembership.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\InteractiveMembership.Data.dll</HintPath>
+      <HintPath>..\..\..\tiradointeractive-membership\source\InteractiveMembership.Data\bin\Release\InteractiveMembership.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />

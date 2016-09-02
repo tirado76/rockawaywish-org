@@ -10,6 +10,7 @@ using System.Web.Security;
 using RockawayWish.Web.Models;
 
 using InteractiveMembership.Core.Constants;
+using InteractiveMembership.Core.Enums;
 using InteractiveMembership.Core.Models;
 using InteractiveMembership.Data.Providers;
 
@@ -50,7 +51,7 @@ namespace RockawayWish.Web.Controllers
             if (requestToken.Status == 0)
             {
                 // validate access token and retrieve user object
-                var validateToken = await _userProvider.ValidateToken(new Guid(Config.ApplicationId), requestToken.UserId, requestToken.AccessToken);
+                var validateToken = await _userProvider.ValidateToken(new Guid(Config.ApplicationId), requestToken.UserId, requestToken.AccessToken, (int)TokenType.SiteAccess);
                 if (validateToken.Status == 0)
                 {
                     if ((!validateToken.IsUser || !validateToken.IsActive) && !validateToken.IsAdmin && !validateToken.IsSuperAdmin)
@@ -61,8 +62,7 @@ namespace RockawayWish.Web.Controllers
 
                     string ticketName = string.Format("{0}|{1}|{2}", string.Format("{0} {1}", validateToken.FirstName, validateToken.LastName), validateToken.UserId.ToString(), requestToken.AccessToken);
                     //string ticketName = string.Format("{0}|{1}|{2}|{3}", model.FirstName, model.LastName, result.UserId.ToString(), model.Email);
-                    SetAuthenticatation(ticketName, true);
-
+                    SetAuthenticatation(ticketName, false);
                     return Redirect("~/members");
                 }
                 else
@@ -127,7 +127,7 @@ namespace RockawayWish.Web.Controllers
             if (Request.IsAuthenticated)
             {
                     // request access token
-                var requestToken = await _userProvider.DeleteToken(new Guid(Config.ApplicationId), this.UserId);
+                var requestToken = await _userProvider.DeleteToken(new Guid(Config.ApplicationId), this.UserId, (int)TokenType.SiteAccess);
                 if (requestToken.Status == 0)
                 {
                 }
@@ -176,20 +176,24 @@ namespace RockawayWish.Web.Controllers
 
             if (user != null)
             {
+                Guid token = Guid.NewGuid();
                 // send email
                 StringBuilder sb = new StringBuilder();
-                sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.tiradointeractive.com");
                 sb.AppendLine("<p>It seems that you have forgotten your password. No problem!</p>");
                 sb.AppendLine("<p>To reset your password, click the following link or copy and paste the link into your browser:</p>");
-                sb.AppendLine("<p><a href=\"" + string.Format("{0}?tu={1}&ta={2}", this.ResetPasswordEndpoint, user.UserId, user.ApplicationId) + "\">" + string.Format("{0}?tu={1}&ta={2}", this.ResetPasswordEndpoint, user.UserId, user.ApplicationId) + "</a></p>");
+                sb.AppendLine("<p><a href=\"" + string.Format("{0}?tu={1}&ta={2}&tk={3}", this.ResetPasswordEndpoint, user.UserId, user.ApplicationId, token) + "\">" + string.Format("{0}?tu={1}&ta={2}", this.ResetPasswordEndpoint, user.UserId, user.ApplicationId) + "</a></p>");
                 sb.AppendLine("<p>If you did not request to have your password reset you can safely ignore this email. Rest assured your customer account is safe.</p>");
                 sb.AppendLine("<p>If you need further assistance, please contact us at <a href=\"mailto:" + this.SmtpFromAddress + "\">" + this.SmtpFromAddress + "</a> or by dropping a comment <a href=\"" + this.ResetPasswordContactLink + "\">here</a>.</p>");
                 sb.AppendLine("<p>&nbsp;</p>");
                 sb.AppendLine("<p>Wish of Rockaway</p>");
+                sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.tiradointeractive.com");
                 var result = this.SendEmail(model.Email, this.ResetPasswordSubject, sb.ToString());
 
                 if (result.Status == 0)
                 {
+                    // create user token
+                    var userToken = new UsersProvider().CreateToken(this.ApplicationId, user.UserId, token, (int)TokenType.ResetPasswordAccess);
+
                     return RedirectPermanent("~/account/ForgotPasswordConfirmation");
                 }
                 else
@@ -213,11 +217,15 @@ namespace RockawayWish.Web.Controllers
         }
 
         [Route("resetpassword")]
-        public ActionResult ResetPassword(string tu, string ta)
+        public ActionResult ResetPassword(string tu, string ta, string tk)
         {
+            // tu = userId
+            // ta = applicationId
+            // tk = tokenId
             ResetPasswordViewModel vm = new ResetPasswordViewModel();
-            // make sure is user is valid
-            UserModel userModel = new UsersProvider().GetById(new Guid(ta), new Guid(tu)).Result;
+
+            // validate the token
+            UserModel userModel = new UsersProvider().ValidateToken(new Guid(ta), new Guid(tu), new Guid(tk), (int)TokenType.ResetPasswordAccess).Result;
 
             vm.Status = userModel.Status;
             vm.Message = userModel.Message;
@@ -247,7 +255,13 @@ namespace RockawayWish.Web.Controllers
                 var result = new UsersProvider().Update(model.ApplicationId, model.UserId, user.IsActive, user.IsUser, user.IsDonator, user.IsAdmin, user.IsSuperAdmin, null, model.Password, null, null).Result;
                 if (result.Status == 0)
                 {
-                    return RedirectPermanent("~/account/ResetPasswordConfirmation");
+                    // delete token
+                    var deleteToken = new UsersProvider().DeleteToken(this.ApplicationId, model.UserId, (int)TokenType.ResetPasswordAccess).Result;
+
+                    if (deleteToken.Status == 0)
+                        return RedirectPermanent("~/account/ResetPasswordConfirmation");
+                    else
+                        ModelState.AddModelError("", deleteToken.Message);
                 }
 
                 ModelState.AddModelError("", result.Message);

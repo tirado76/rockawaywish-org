@@ -6,8 +6,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Security;
 
+using InteractiveMembership.Core.Enums;
 using InteractiveMembership.Data.Providers;
+
 using RockawayWish.Web.Controllers;
 
 namespace RockawayWish.Web
@@ -20,6 +23,32 @@ namespace RockawayWish.Web
             //FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             //BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+        protected void Session_End(object sender, EventArgs e)
+        {
+            // sign user out and destroy access token
+            try{
+
+                if (Request.IsAuthenticated)
+                {
+                    Guid appId = new BaseController().ApplicationId;
+                    Guid userId = new BaseController().UserId;
+
+                    // sign user out
+                    FormsAuthentication.SignOut();
+
+                    // delete token
+                    var requestToken = new UsersProvider().DeleteToken(appId, userId, (int)TokenType.SiteAccess);
+                    if (requestToken.Status == 0)
+                    {
+                    }
+
+                }
+
+
+                // sign user out
+            }
+            catch {};
         }
         protected void Application_Error(object sender, EventArgs e)
         {
