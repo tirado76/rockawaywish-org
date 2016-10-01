@@ -14,7 +14,12 @@ namespace RockawayWish.Web.Controllers
 {
     public class BaseController : Controller
     {
-        // GET: Base
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            base.OnException(filterContext);
+
+            RedirectToAction("Index", "Error", new { err = filterContext.Exception.Message });
+        }        // GET: Base
         internal Guid UserId
         {
             get
