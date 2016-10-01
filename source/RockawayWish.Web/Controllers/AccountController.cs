@@ -96,7 +96,7 @@ namespace RockawayWish.Web.Controllers
             if (ModelState.IsValid)
             {
                 // register user
-                var result = await _userProvider.Create(new Guid(Config.ApplicationId), model.Email, model.Password, model.FirstName, model.LastName, false, false, false, false, false);
+                var result = await _userProvider.Create(new Guid(Config.ApplicationId), model.Email, Guid.NewGuid().ToString(), model.FirstName, model.LastName, false, false, false, false, false, model.YearJoined, model.Address, model.City, model.State, model.Country, model.Zip, model.Phone, model.CellPhone);
 
                 if (result.Status == 0)
                 {
@@ -232,6 +232,8 @@ namespace RockawayWish.Web.Controllers
             vm.UserId = new Guid(tu);
             vm.ApplicationId = new Guid(ta);
 
+            // delete token if token if validated
+            var deleteToken = new UsersProvider().DeleteToken(new Guid(ta), new Guid(tu), (int)TokenType.ResetPasswordAccess).Result;
 
             return View(vm);
         }
@@ -252,16 +254,16 @@ namespace RockawayWish.Web.Controllers
             // update user
             if (user.Status == 0)
             {
-                var result = new UsersProvider().Update(model.ApplicationId, model.UserId, user.IsActive, user.IsUser, user.IsDonator, user.IsAdmin, user.IsSuperAdmin, null, model.Password, null, null).Result;
+                var result = new UsersProvider().Update(model.ApplicationId, model.UserId, user.IsActive, user.IsUser, user.IsDonator, user.IsAdmin, user.IsSuperAdmin, user.YearJoined, user.Email, null, null, null, null, null, null, null, null, null, null).Result;
                 if (result.Status == 0)
                 {
                     // delete token
-                    var deleteToken = new UsersProvider().DeleteToken(this.ApplicationId, model.UserId, (int)TokenType.ResetPasswordAccess).Result;
+                    //var deleteToken = new UsersProvider().DeleteToken(this.ApplicationId, model.UserId, (int)TokenType.ResetPasswordAccess).Result;
 
-                    if (deleteToken.Status == 0)
-                        return RedirectPermanent("~/account/ResetPasswordConfirmation");
-                    else
-                        ModelState.AddModelError("", deleteToken.Message);
+                    //if (deleteToken.Status == 0)
+                    return RedirectPermanent("~/account/ResetPasswordConfirmation");
+                    //else
+                    //    ModelState.AddModelError("", deleteToken.Message);
                 }
 
                 ModelState.AddModelError("", result.Message);
