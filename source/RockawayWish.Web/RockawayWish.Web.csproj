@@ -189,6 +189,7 @@
     <Content Include="Content\images\home-pattern.png" />
     <Content Include="Content\images\pattern.png" />
     <Content Include="Content\images\pink-star.png" />
+    <Content Include="Content\images\slider\slide4.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -203,9 +204,9 @@
     <Content Include="Content\images\logo2.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\slider\slide1.jpg" />
-    <Content Include="Content\images\slider\slide2.jpg" />
+    <Content Include="Content\images\slider\slide2_old.jpg" />
     <Content Include="Content\images\slider\slide3.jpg" />
-    <Content Include="Content\images\slider\slide4.jpg" />
+    <Content Include="Content\images\slider\slide2.jpg" />
     <Content Include="Content\images\slider\slide5.jpg" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
