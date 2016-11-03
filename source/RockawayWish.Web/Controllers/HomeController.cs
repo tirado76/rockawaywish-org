@@ -16,7 +16,6 @@ namespace RockawayWish.Web.Controllers
         [Route("about-wish")]
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
 
             return View();
         }
@@ -24,14 +23,6 @@ namespace RockawayWish.Web.Controllers
         [Route("donate")]
         public ActionResult Donate()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-        [Route("contact-wish")]
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
             return View();
         }

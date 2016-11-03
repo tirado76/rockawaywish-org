@@ -168,11 +168,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\UserPaymentsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -241,6 +243,7 @@
     <Content Include="Views\Account\RegisterConfirmation.cshtml" />
     <Content Include="Content\pdf\wish-raffles-2016.pdf" />
     <Content Include="Views\Members\Donate.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
@@ -257,7 +260,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_BoardMembers.cshtml" />
     <Content Include="Views\Shared\_HomeCarousel.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>

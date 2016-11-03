@@ -581,10 +581,12 @@ p { font-size: 16px; }
 	opacity:0.2;
 }*/
 
-
+.contact {
+    padding: 20px;
+}
 .contact-address {
 	background-color: #fff;
-	height:390px;
+	margin-bottom: 50px;
 	
 }
 
@@ -935,4 +937,18 @@ p { font-size: 16px; }
    -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
    filter: alpha(opacity=100);
    opacity: 1;
+}
+.field-validation-error span {
+    font-weight: bold;
+}
+.text-danger li {
+    color : #ff0000;
+    font-size: 16px;
+    list-style-type: none;
+    border: solid 1px #ff0000;
+    background-color: #FFFF7F;
+    font-weight: bold;
+    padding: 5px;
+    font-family: Arial, Georgia, 'Times New Roman', Times, serif;
+
 }
