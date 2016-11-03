@@ -138,7 +138,7 @@ namespace RockawayWish.Web.Controllers
                 sb.AppendLine("<p>&nbsp;</p>");
                 sb.AppendFormat("<p>Payment: {0}</p>", dues.Title);
                 sb.AppendFormat("<p>Date: {0}</p>", DateTime.Now.ToShortDateString());
-                sb.AppendFormat("<p>Payment Method: {0}</p>", Session["UserPaymentType"].ToString());
+                sb.AppendFormat("<p>Payment Method: {0}</p>", Session["UserPaymentMethod"].ToString());
                 sb.AppendFormat("<p>Amount: {0}</p>", dues.Amount.ToString());
                 sb.AppendLine("<p>If you need further assistance, please contact us at <a href=\"mailto:" + this.SmtpFromAddress + "\">" + this.SmtpFromAddress + "</a> or by dropping a comment <a href=\"" + this.ContactUsLink + "\">here</a>.</p>");
                 sb.AppendLine("<p>&nbsp;</p>");
@@ -153,7 +153,7 @@ namespace RockawayWish.Web.Controllers
                 sb.AppendFormat("<p>Payment: {0}</p>", dues.Title);
                 sb.AppendFormat("<p>Date: {0}</p>", DateTime.Now.ToShortDateString());
                 sb.AppendFormat("<p>Name: {0}</p>", user.FullName);
-                sb.AppendFormat("<p>Payment Method: {0}</p>", Session["UserPaymentType"].ToString());
+                sb.AppendFormat("<p>Payment Method: {0}</p>", Session["UserPaymentMethod"].ToString());
                 sb.AppendFormat("<p>Amount: {0}</p>", dues.Amount.ToString());
                 sb.AppendLine("<p>&nbsp;</p>");
                 sb.AppendLine("<p><a href=\"" + this.MembershipAdminUrl + "\">Click here</a> to go to the admin panel.</p>");
@@ -190,7 +190,7 @@ namespace RockawayWish.Web.Controllers
                 sb.AppendLine("<p>&nbsp;</p>");
                 sb.AppendFormat("<p>Payment: {0}</p>", dues.Title);
                 sb.AppendFormat("<p>Date: {0}</p>", DateTime.Now.ToShortDateString());
-                sb.AppendFormat("<p>Payment Method: {0}</p>", Session["UserPaymentType"].ToString());
+                sb.AppendFormat("<p>Payment Method: {0}</p>", Session["UserPaymentMethod"].ToString());
                 sb.AppendFormat("<p>Amount: {0}</p>", dues.Amount.ToString());
                 sb.AppendLine("<p>If you need further assistance, please contact us at <a href=\"mailto:" + this.SmtpFromAddress + "\">" + this.SmtpFromAddress + "</a> or by dropping a comment <a href=\"" + this.ContactUsLink + "\">here</a>.</p>");
                 sb.AppendLine("<p>&nbsp;</p>");
@@ -205,7 +205,7 @@ namespace RockawayWish.Web.Controllers
                 sb.AppendFormat("<p>Payment: {0}</p>", dues.Title);
                 sb.AppendFormat("<p>Date: {0}</p>", DateTime.Now.ToShortDateString());
                 sb.AppendFormat("<p>Name: {0}</p>", user.FullName);
-                sb.AppendFormat("<p>Payment Method: {0}</p>", Session["UserPaymentType"].ToString());
+                sb.AppendFormat("<p>Payment Method: {0}</p>", Session["UserPaymentMethod"].ToString());
                 sb.AppendFormat("<p>Amount: {0}</p>", dues.Amount.ToString());
                 sb.AppendLine("<p>&nbsp;</p>");
                 sb.AppendLine("<p><a href=\"" + this.MembershipAdminUrl + "\">Click here</a> to go to the admin panel.</p>");
