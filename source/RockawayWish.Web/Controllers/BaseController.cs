@@ -84,7 +84,8 @@ namespace RockawayWish.Web.Controllers
         internal bool SmtpUseDefaultCredentials { get {  return Convert.ToBoolean(ConfigurationManager.AppSettings["SMTP-UseDefaultCredentials"]); } }
         internal string ResetPasswordEndpoint { get { return ConfigurationManager.AppSettings["ResetPassword-Endpoint"]; } }
         internal string ResetPasswordSubject { get { return ConfigurationManager.AppSettings["ResetPassword-Subject"]; } }
-        internal string ContactUsLink { get { return ConfigurationManager.AppSettings["ContactUsLink"]; } }
+        internal string ContactUsUrl{ get { return ConfigurationManager.AppSettings["ContactUs-Url"]; } }
+        internal string ContactUsEmail { get { return ConfigurationManager.AppSettings["ContactUs-Email"]; } }
         internal string PayPalDonateButtonId { get { return ConfigurationManager.AppSettings["PayPal-Donate-Button-Id"]; } }
 
     }

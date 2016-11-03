@@ -208,7 +208,7 @@ namespace RockawayWish.Web.Controllers
                 sb.AppendLine("<p>To reset your password, click the following link or copy and paste the link into your browser:</p>");
                 sb.AppendLine("<p><a href=\"" + string.Format("{0}?tu={1}&ta={2}&tk={3}", this.ResetPasswordEndpoint, user.UserId, user.ApplicationId, token) + "\">" + string.Format("{0}?tu={1}&ta={2}", this.ResetPasswordEndpoint, user.UserId, user.ApplicationId) + "</a></p>");
                 sb.AppendLine("<p>If you did not request to have your password reset you can safely ignore this email. Rest assured your customer account is safe.</p>");
-                sb.AppendLine("<p>If you need further assistance, please contact us at <a href=\"mailto:" + this.SmtpFromAddress + "\">" + this.SmtpFromAddress + "</a> or by dropping a comment <a href=\"" + this.ContactUsLink + "\">here</a>.</p>");
+                sb.AppendLine("<p>If you need further assistance, please contact us at <a href=\"mailto:" + this.SmtpFromAddress + "\">" + this.SmtpFromAddress + "</a> or by dropping a comment <a href=\"" + this.ContactUsUrl + "\">here</a>.</p>");
                 sb.AppendLine("<p>&nbsp;</p>");
                 sb.AppendLine("<p>Regards,</p>");
                 sb.AppendLine("<p>Wish of Rockaway</p>");

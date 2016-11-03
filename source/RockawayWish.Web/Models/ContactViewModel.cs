@@ -12,6 +12,7 @@ namespace RockawayWish.Web.Models
         public string Name { get; set; }
 
         [Required]
+        [EmailAddress]
         [Display(Name = "Your Email")]
         public string Email { get; set; }
 

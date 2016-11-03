@@ -244,6 +244,9 @@
     <Content Include="Content\pdf\wish-raffles-2016.pdf" />
     <Content Include="Views\Members\Donate.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="rewriteRules.prod.config" />
+    <Content Include="rewriteRules.config" />
+    <Content Include="Views\Contact\Confirmation.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

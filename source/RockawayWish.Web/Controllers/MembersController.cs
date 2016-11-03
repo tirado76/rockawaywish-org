@@ -140,7 +140,7 @@ namespace RockawayWish.Web.Controllers
                 sb.AppendFormat("<p>Date: {0}</p>", DateTime.Now.ToShortDateString());
                 sb.AppendFormat("<p>Payment Method: {0}</p>", Session["UserPaymentMethod"].ToString());
                 sb.AppendFormat("<p>Amount: {0}</p>", dues.Amount.ToString());
-                sb.AppendLine("<p>If you need further assistance, please contact us at <a href=\"mailto:" + this.SmtpFromAddress + "\">" + this.SmtpFromAddress + "</a> or by dropping a comment <a href=\"" + this.ContactUsLink + "\">here</a>.</p>");
+                sb.AppendLine("<p>If you need further assistance, please contact us at <a href=\"mailto:" + this.SmtpFromAddress + "\">" + this.SmtpFromAddress + "</a> or by dropping a comment <a href=\"" + this.ContactUsUrl + "\">here</a>.</p>");
                 sb.AppendLine("<p>&nbsp;</p>");
                 sb.AppendLine("<p>Regards</p>");
                 sb.AppendLine("<p>Wish of Rockaway Membership</p>");
@@ -192,7 +192,7 @@ namespace RockawayWish.Web.Controllers
                 sb.AppendFormat("<p>Date: {0}</p>", DateTime.Now.ToShortDateString());
                 sb.AppendFormat("<p>Payment Method: {0}</p>", Session["UserPaymentMethod"].ToString());
                 sb.AppendFormat("<p>Amount: {0}</p>", dues.Amount.ToString());
-                sb.AppendLine("<p>If you need further assistance, please contact us at <a href=\"mailto:" + this.SmtpFromAddress + "\">" + this.SmtpFromAddress + "</a> or by dropping a comment <a href=\"" + this.ContactUsLink + "\">here</a>.</p>");
+                sb.AppendLine("<p>If you need further assistance, please contact us at <a href=\"mailto:" + this.SmtpFromAddress + "\">" + this.SmtpFromAddress + "</a> or by dropping a comment <a href=\"" + this.ContactUsUrl + "\">here</a>.</p>");
                 sb.AppendLine("<p>&nbsp;</p>");
                 sb.AppendLine("<p>Regards</p>");
                 sb.AppendLine("<p>Wish of Rockaway Membership</p>");
