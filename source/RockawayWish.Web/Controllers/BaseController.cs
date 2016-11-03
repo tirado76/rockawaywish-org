@@ -45,31 +45,25 @@ namespace RockawayWish.Web.Controllers
                 return new Guid(Config.ApplicationId);
             }
         }
-        internal EmailModel SendEmail(string toAddress, string subject, string message)
+        internal EmailModel SendEmail(string toAddress, string toName, string subject, string message)
         {
             EmailModel model = new EmailModel();
             try
             {
 
-                SmtpClient smtpClient = new SmtpClient(this.SmtpHost, this.SmtpPort);
-
-                smtpClient.UseDefaultCredentials = this.SmtpUseDefaultCredentials;
-                smtpClient.Credentials = new System.Net.NetworkCredential(this.SmtpUserName, this.SmtpPassword);
-                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
-                smtpClient.EnableSsl = this.SmtpEnableSSL;
-                smtpClient.Port = this.SmtpPort;
-                smtpClient.Timeout = 30000;
-
-                MailMessage mailMessage = new MailMessage();
-
-                //Setting From , To and CC
-                mailMessage.From = new MailAddress(this.SmtpFromAddress, this.SmtpFromName);
-                mailMessage.To.Add(new MailAddress(toAddress));
-                mailMessage.Subject = subject;
-                mailMessage.Body = message;
-                mailMessage.IsBodyHtml = true;
-
-                model = new EmailProvider().Send(mailMessage, smtpClient).Result;
+                model = new EmailProvider().Send(new Guid(Config.ApplicationId),
+                    this.SmtpHost,
+                    this.SmtpFromAddress,
+                    toAddress,
+                    subject,
+                    Server.HtmlEncode(message),
+                    this.SmtpPort,
+                    this.SmtpUseDefaultCredentials,
+                    this.SmtpEnableSSL,
+                    this.SmtpUserName,
+                    this.SmtpPassword,
+                    this.SmtpFromName,
+                    string.Empty).Result;
             }
             catch (Exception ex)
             {
@@ -77,6 +71,9 @@ namespace RockawayWish.Web.Controllers
             }
             return model;
         }
+        internal string MembershipAdminUrl { get { return ConfigurationManager.AppSettings["Membership-Admin-Url"]; } }
+        internal string MembershipAdminEmail { get { return ConfigurationManager.AppSettings["Membership-Admin-Email"]; } }
+        internal string MembershipAdminName { get { return ConfigurationManager.AppSettings["Membership-Admin-Name"]; } }
         internal string SmtpHost { get { return ConfigurationManager.AppSettings["SMTP-Host"]; } }
         internal string SmtpUserName { get { return ConfigurationManager.AppSettings["SMTP-UserName"]; } }
         internal string SmtpPassword { get { return ConfigurationManager.AppSettings["SMTP-Password"]; } }

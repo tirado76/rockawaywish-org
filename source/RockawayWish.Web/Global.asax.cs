@@ -64,7 +64,7 @@ namespace RockawayWish.Web
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine("<p>An error occurred</p>");
                 sb.AppendFormat("<p>{0}</p>", ex.Message);
-                var result = new BaseController().SendEmail("richie@tiradointeractive.com", "An error occurred", sb.ToString());
+                var result = new BaseController().SendEmail("richie@tiradointeractive.com", "Richard Tirado", "An error occurred", sb.ToString());
 
                 HttpException httpError = ex as HttpException;
 

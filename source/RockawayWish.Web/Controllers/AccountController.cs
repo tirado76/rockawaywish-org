@@ -82,7 +82,9 @@ namespace RockawayWish.Web.Controllers
         [Route("register")]
         public ActionResult Register()
         {
-            return View();
+            return View(new RegisterViewModel{
+                YearJoined = DateTime.Now.Year
+            });
         }
 
         //
@@ -95,11 +97,34 @@ namespace RockawayWish.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                model.YearJoined = DateTime.Now.Year;
                 // register user
                 var result = await _userProvider.Create(new Guid(Config.ApplicationId), model.Email, Guid.NewGuid().ToString(), model.FirstName, model.LastName, false, false, false, false, false, model.YearJoined, model.Address, model.City, model.State, model.Country, model.Zip, model.Phone, model.CellPhone);
 
                 if (result.Status == 0)
                 {
+
+                    // send email to membership administrator with registration information
+                    StringBuilder sb = new StringBuilder();
+                    sb.AppendLine("<p>The following user has registered on the WISH of Rockaway website and needs to be approved.</p>");
+                    sb.AppendFormat("<p>First Name: {0}</p>", model.FirstName);
+                    sb.AppendFormat("<p>Last Name: {0}</p>", model.LastName);
+                    sb.AppendFormat("<p>Email: {0}</p>", model.Email);
+                    sb.AppendFormat("<p>Address: {0}</p>", model.Address);
+                    sb.AppendFormat("<p>City: {0}</p>", model.City);
+                    sb.AppendFormat("<p>State: {0}</p>", model.State);
+                    sb.AppendFormat("<p>Zip: {0}</p>", model.Zip);
+                    sb.AppendFormat("<p>Country: {0}</p>", model.Country);
+                    sb.AppendFormat("<p>Phone: {0}</p>", model.Phone);
+                    sb.AppendFormat("<p>Cell Phone: {0}</p>", model.CellPhone);
+                    sb.AppendLine("<p>&nbsp;</p>");
+                    sb.AppendLine("<p><a href=\"" + this.MembershipAdminUrl  + "\">Click here</a> to go to the admin panel to approve the user.</p>");
+                    sb.AppendLine("<p>&nbsp;</p>");
+                    sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
+                    sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
+                    var emailResult = this.SendEmail(this.MembershipAdminEmail, this.MembershipAdminName, "A user has registered on the WISH of Rockaway website", sb.ToString());
+
+
                     // redirect user to home page
                     return RedirectPermanent("~/RegisterConfirmation");
 
@@ -185,9 +210,10 @@ namespace RockawayWish.Web.Controllers
                 sb.AppendLine("<p>If you did not request to have your password reset you can safely ignore this email. Rest assured your customer account is safe.</p>");
                 sb.AppendLine("<p>If you need further assistance, please contact us at <a href=\"mailto:" + this.SmtpFromAddress + "\">" + this.SmtpFromAddress + "</a> or by dropping a comment <a href=\"" + this.ResetPasswordContactLink + "\">here</a>.</p>");
                 sb.AppendLine("<p>&nbsp;</p>");
+                sb.AppendLine("<p>Regards,</p>");
                 sb.AppendLine("<p>Wish of Rockaway</p>");
-                sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.tiradointeractive.com");
-                var result = this.SendEmail(model.Email, this.ResetPasswordSubject, sb.ToString());
+                sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
+                var result = this.SendEmail(model.Email, user.FullName, this.ResetPasswordSubject, sb.ToString());
 
                 if (result.Status == 0)
                 {
@@ -254,7 +280,7 @@ namespace RockawayWish.Web.Controllers
             // update user
             if (user.Status == 0)
             {
-                var result = new UsersProvider().Update(model.ApplicationId, model.UserId, user.IsActive, user.IsUser, user.IsDonator, user.IsAdmin, user.IsSuperAdmin, user.YearJoined, user.Email, null, null, null, null, null, null, null, null, null, null).Result;
+                var result = new UsersProvider().Update(model.ApplicationId, model.UserId, user.IsActive, user.IsUser, user.IsDonator, user.IsAdmin, user.IsSuperAdmin, user.YearJoined, user.Email, model.Password, null, null, null, null, null, null, null, null, null).Result;
                 if (result.Status == 0)
                 {
                     // delete token

@@ -204,7 +204,6 @@
     <Content Include="Content\images\logo2.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\slider\slide1.jpg" />
-    <Content Include="Content\images\slider\slide2_old.jpg" />
     <Content Include="Content\images\slider\slide3.jpg" />
     <Content Include="Content\images\slider\slide2.jpg" />
     <Content Include="Content\images\slider\slide5.jpg" />
@@ -240,6 +239,7 @@
     </Content>
     <Content Include="js\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\RegisterConfirmation.cshtml" />
+    <Content Include="Content\pdf\wish-raffles-2016.pdf" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
@@ -272,12 +272,8 @@
   <ItemGroup>
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\fonts\fontawesome-webfont.ttf" />
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="app.prod.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="app.config" />
+    <Content Include="app.prod.config" />
     <None Include="Properties\PublishProfiles\TITAN.pubxml" />
     <Content Include="Views\Shared\_Donate.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
@@ -286,9 +282,7 @@
     <Content Include="Views\Home\Donate.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\PageNotFound.cshtml" />
-    <None Include="Web.prod.config">
-      <SubType>Designer</SubType>
-    </None>
+    <Content Include="Web.prod.config" />
     <None Include="Web.prod.Debug.config">
       <DependentUpon>Web.prod.config</DependentUpon>
     </None>
