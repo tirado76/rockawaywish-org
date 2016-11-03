@@ -240,6 +240,7 @@
     <Content Include="js\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\RegisterConfirmation.cshtml" />
     <Content Include="Content\pdf\wish-raffles-2016.pdf" />
+    <Content Include="Views\Members\Donate.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

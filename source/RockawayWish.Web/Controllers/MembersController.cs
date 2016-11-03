@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 using InteractiveMembership.Core.Models;
+using InteractiveMembership.Core.Enums;
 using InteractiveMembership.Core.Constants;
 using InteractiveMembership.Data.Providers;
 
@@ -77,6 +79,8 @@ namespace RockawayWish.Web.Controllers
         public ActionResult Payment(Guid paymentId)
         {
             Session["UserPaymentId"] = paymentId;
+            Session["UserPaymentMethod"] = "PayPal";
+            Session["UserPaymentType"] = 1;
 
             UserPaymentsViewModel vm = new UserPaymentsViewModel();
             vm.UserId = this.UserId;
@@ -120,13 +124,102 @@ namespace RockawayWish.Web.Controllers
         }
         public ActionResult CancelPayment()
         {
-            _model = _provider.Create(this.ApplicationId, this.UserId, new Guid(Session["UserPaymentId"].ToString()), 1, "PayPal", DateTime.Now, 50.00m).Result;
+            var dues = new DuesProvider().GetById(this.ApplicationId, new Guid(Session["UserPaymentId"].ToString())).Result;
+            // get user info
+            var user = new UsersProvider().GetById(this.ApplicationId, this.UserId).Result;
+
+            if (user.Status == 0 && dues.Status == 0)
+            {
+                // send user confirmation email
+                StringBuilder sb = new StringBuilder();
+                sb.AppendFormat("<p>Dear {0},</p>", user.FirstName);
+                sb.AppendLine("<p>&nbsp;</p>");
+                sb.AppendLine("<p>We apologize your the cancellation of your payment.</p>");
+                sb.AppendLine("<p>&nbsp;</p>");
+                sb.AppendFormat("<p>Payment: {0}</p>", dues.Title);
+                sb.AppendFormat("<p>Date: {0}</p>", DateTime.Now.ToShortDateString());
+                sb.AppendFormat("<p>Payment Method: {0}</p>", Session["UserPaymentType"].ToString());
+                sb.AppendFormat("<p>Amount: {0}</p>", dues.Amount.ToString());
+                sb.AppendLine("<p>If you need further assistance, please contact us at <a href=\"mailto:" + this.SmtpFromAddress + "\">" + this.SmtpFromAddress + "</a> or by dropping a comment <a href=\"" + this.ContactUsLink + "\">here</a>.</p>");
+                sb.AppendLine("<p>&nbsp;</p>");
+                sb.AppendLine("<p>Regards</p>");
+                sb.AppendLine("<p>Wish of Rockaway Membership</p>");
+                sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
+                var emailUserResult = this.SendEmail(user.Email, user.FullName, "Your payment has been canceled", sb.ToString());
+
+                // send membership admin email with user payment
+                sb = new StringBuilder();
+                sb.AppendLine("<p>The following user has canceled the following payment.</p>");
+                sb.AppendFormat("<p>Payment: {0}</p>", dues.Title);
+                sb.AppendFormat("<p>Date: {0}</p>", DateTime.Now.ToShortDateString());
+                sb.AppendFormat("<p>Name: {0}</p>", user.FullName);
+                sb.AppendFormat("<p>Payment Method: {0}</p>", Session["UserPaymentType"].ToString());
+                sb.AppendFormat("<p>Amount: {0}</p>", dues.Amount.ToString());
+                sb.AppendLine("<p>&nbsp;</p>");
+                sb.AppendLine("<p><a href=\"" + this.MembershipAdminUrl + "\">Click here</a> to go to the admin panel.</p>");
+                sb.AppendLine("<p>&nbsp;</p>");
+                sb.AppendLine("<p>Regards</p>");
+                sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
+                sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
+                var emailAdminResult = this.SendEmail(this.MembershipAdminEmail, this.MembershipAdminName, "A payment has been canceled on the WISH of Rockaway website", sb.ToString());
+
+            }
+            else
+            {
+
+            }
+
             KillOrderSession();
             return View();
         }
         public ActionResult CompletePayment()
         {
-            _model = _provider.Create(this.ApplicationId, this.UserId, new Guid(Session["UserPaymentId"].ToString()), 1, "PayPal", DateTime.Now, 50.00m).Result;
+            var dues = new DuesProvider().GetById(this.ApplicationId, new Guid(Session["UserPaymentId"].ToString())).Result;
+            // get user info
+            var user = new UsersProvider().GetById(this.ApplicationId, this.UserId).Result;
+
+            _model = _provider.Create(this.ApplicationId, this.UserId, new Guid(Session["UserPaymentId"].ToString()), (int)Session["UserPaymentType"], Session["UserPaymentMethod"].ToString(), DateTime.Now, dues.Amount).Result;
+
+            if (_model.Status == 0)
+            {
+                // send user confirmation email
+                StringBuilder sb = new StringBuilder();
+                sb.AppendFormat("<p>Dear {0},</p>", user.FirstName);
+                sb.AppendLine("<p>&nbsp;</p>");
+                sb.AppendLine("<p>Thank you for your payment.</p>");
+                sb.AppendLine("<p>&nbsp;</p>");
+                sb.AppendFormat("<p>Payment: {0}</p>", dues.Title);
+                sb.AppendFormat("<p>Date: {0}</p>", DateTime.Now.ToShortDateString());
+                sb.AppendFormat("<p>Payment Method: {0}</p>", Session["UserPaymentType"].ToString());
+                sb.AppendFormat("<p>Amount: {0}</p>", dues.Amount.ToString());
+                sb.AppendLine("<p>If you need further assistance, please contact us at <a href=\"mailto:" + this.SmtpFromAddress + "\">" + this.SmtpFromAddress + "</a> or by dropping a comment <a href=\"" + this.ContactUsLink + "\">here</a>.</p>");
+                sb.AppendLine("<p>&nbsp;</p>");
+                sb.AppendLine("<p>Regards</p>");
+                sb.AppendLine("<p>Wish of Rockaway Membership</p>");
+                sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
+                var emailUserResult = this.SendEmail(user.Email, user.FullName, "Thank you for your payment", sb.ToString());
+
+                // send membership admin email with user payment
+                sb = new StringBuilder();
+                sb.AppendLine("<p>The following user has made the following payment.</p>");
+                sb.AppendFormat("<p>Payment: {0}</p>", dues.Title);
+                sb.AppendFormat("<p>Date: {0}</p>", DateTime.Now.ToShortDateString());
+                sb.AppendFormat("<p>Name: {0}</p>", user.FullName);
+                sb.AppendFormat("<p>Payment Method: {0}</p>", Session["UserPaymentType"].ToString());
+                sb.AppendFormat("<p>Amount: {0}</p>", dues.Amount.ToString());
+                sb.AppendLine("<p>&nbsp;</p>");
+                sb.AppendLine("<p><a href=\"" + this.MembershipAdminUrl + "\">Click here</a> to go to the admin panel.</p>");
+                sb.AppendLine("<p>&nbsp;</p>");
+                sb.AppendLine("<p>Regards</p>");
+                sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
+                sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
+                var emailAdminResult = this.SendEmail(this.MembershipAdminEmail, this.MembershipAdminName, "A payment has been made on the WISH of Rockaway website", sb.ToString());
+
+            }
+            else
+            {
+
+            }
 
             KillOrderSession();
             return View();
@@ -134,7 +227,22 @@ namespace RockawayWish.Web.Controllers
         private void KillOrderSession()
         {
             Session["UserPaymentId"] = null;
-        }
+            Session["UserPaymentMethod"] = null;
+            Session["UserPaymentType"] = null;
 
+        }
+        public ActionResult Donate()
+        {
+            ViewBag.PayPalDonateButtonId = this.PayPalDonateButtonId;
+            return View();
+        }
+        public ActionResult DonateCancelPayment()
+        {
+            return View();
+        }
+        public ActionResult DonateCompletePayment()
+        {
+            return View();
+        }
     }
 }

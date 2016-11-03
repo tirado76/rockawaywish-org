@@ -7,7 +7,6 @@
             <div class="col-sm-8 col-sm-offset-2">
                 <h2 class="title-one">Member Center</h2>
                 <h3 style="background-color: #FFA1D5; padding: 10px; font-weight: bold">Dues &amp; Payments</h3>
-                <h5><a href="@Url.Content("~/members/payments")">Dues and payments</a> | <a href="@Url.Content("~/members/info")">Profile Information</a></h5>
 
                 @if (Model.DuesPaymentList != null && Model.DuesPaymentList.Count > 0)
                 {
@@ -48,7 +47,9 @@
                                 }
                                 else
                                 {
-                                    <div style="margin-top: 50px;"><h2>@duesTitle</h2></div>
+                                    <div style=""><h2>@duesTitle</h2></div>
+                                <p>Click on the subscribe button below to make a payment.</p>
+                                <p>A PayPal account is required.</p>
                                     <div style="margin-top: 50px;">
                                         @*@Html.Partial("_PayPalSubsribeButton")*@
                                         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
@@ -67,6 +68,7 @@
                     <p style="padding: 10px; color: #ff0000; font-weight: bold;">No dues have been applied.</p>
                 }
 
+                <h5><a href="@Url.Content("~/members/payments")">Dues and payments</a> | <a href="@Url.Content("~/members/info")">Profile Information</a></h5>
 
 
             </div>
