@@ -169,6 +169,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\DonateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -242,11 +243,14 @@
     <Content Include="js\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\RegisterConfirmation.cshtml" />
     <Content Include="Content\pdf\wish-raffles-2016.pdf" />
-    <Content Include="Views\Members\Donate.cshtml" />
+    <Content Include="Views\Donate\Payment.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="rewriteRules.prod.config" />
     <Content Include="rewriteRules.config" />
     <Content Include="Views\Contact\Confirmation.cshtml" />
+    <Content Include="Views\Donate\CompletePayment.cshtml" />
+    <Content Include="Views\Donate\CancelPayment.cshtml" />
+    <Content Include="Views\Donate\Index.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
@@ -285,7 +289,6 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Donate.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\PageNotFound.cshtml" />
     <Content Include="Web.prod.config" />

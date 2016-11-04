@@ -63,7 +63,11 @@ namespace RockawayWish.Web.Controllers
                     string ticketName = string.Format("{0}|{1}|{2}", string.Format("{0} {1}", validateToken.FirstName, validateToken.LastName), validateToken.UserId.ToString(), requestToken.AccessToken);
                     //string ticketName = string.Format("{0}|{1}|{2}|{3}", model.FirstName, model.LastName, result.UserId.ToString(), model.Email);
                     SetAuthenticatation(ticketName, false);
-                    return Redirect("~/members");
+
+                    if (!string.IsNullOrEmpty(returnUrl))
+                        return RedirectPermanent(returnUrl);
+                    else
+                        return Redirect("~/members");
                 }
                 else
                 {
@@ -199,12 +203,13 @@ namespace RockawayWish.Web.Controllers
             // get user 
             var user = new UsersProvider().Get(this.ApplicationId).Result.Where(x => x.Email.ToLower().Equals(model.Email.ToLower())).FirstOrDefault();
 
-            if (user != null)
+            if (user != null && user.Status == 0)
             {
                 Guid token = Guid.NewGuid();
                 // send email
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine("<p>It seems that you have forgotten your password. No problem!</p>");
+                sb.AppendFormat("<p>Dear {0},</p>");
+                sb.AppendLine("<p>This email was sent automatically by rockawaywish.org in response to your request to recover your password.  This is done for your protection; only you, the recipient of this email can take the next step in the password recover process.</p>");
                 sb.AppendLine("<p>To reset your password, click the following link or copy and paste the link into your browser:</p>");
                 sb.AppendLine("<p><a href=\"" + string.Format("{0}?tu={1}&ta={2}&tk={3}", this.ResetPasswordEndpoint, user.UserId, user.ApplicationId, token) + "\">" + string.Format("{0}?tu={1}&ta={2}", this.ResetPasswordEndpoint, user.UserId, user.ApplicationId) + "</a></p>");
                 sb.AppendLine("<p>If you did not request to have your password reset you can safely ignore this email. Rest assured your customer account is safe.</p>");

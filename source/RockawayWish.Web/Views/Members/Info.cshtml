@@ -6,7 +6,7 @@
         <div class="row text-center">
             <div class="col-sm-8 col-sm-offset-2">
                 <h2 class="title-one">Member Center</h2>
-                <h3 style="padding: 10px; font-weight: bold">Profile Information</h3>
+                <h3 style="background-color: #FFA1D5; padding: 10px; font-weight: bold">Profile Information</h3>
                 <table class="table" style="text-align: center">
                     <tr>
                         <td>@Html.DisplayNameFor(model => model.FirstName)</td>
@@ -21,15 +21,43 @@
                         <td>@Html.DisplayFor(model => model.Email)</td>
                     </tr>
                     <tr>
-                        <td>@Html.DisplayNameFor(model => model.Password)</td>
-                        <td><a href="@Url.Content("~/members/resetpassword")">Click here to reset password</a></td>
+                        <td>@Html.DisplayNameFor(model => model.Address)</td>
+                        <td>@Html.DisplayFor(model => model.Address)</td>
                     </tr>
                     <tr>
+                        <td>@Html.DisplayNameFor(model => model.City)</td>
+                        <td>@Html.DisplayFor(model => model.City)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.State)</td>
+                        <td>@Html.DisplayFor(model => model.State)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.Zip)</td>
+                        <td>@Html.DisplayFor(model => model.Zip)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.Phone)</td>
+                        <td>@Html.DisplayFor(model => model.Phone)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.CellPhone)</td>
+                        <td>@Html.DisplayFor(model => model.CellPhone)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.YearJoined)</td>
+                        <td>@Html.DisplayFor(model => model.YearJoined)</td>
+                    </tr>
+                    @*<tr>
+                        <td>@Html.DisplayNameFor(model => model.Password)</td>
+                        <td><a href="@Url.Content("~/members/resetpassword")">Click here to reset password</a></td>
+                    </tr>*@
+                    @*<tr>
                         <td>@Html.DisplayNameFor(model => model.IsActive)</td>
                         <td>@Html.DisplayFor(model => model.IsActive)</td>
-                    </tr>
+                    </tr>*@
                 </table>
-                <h5><a href="@Url.Content("~/members/payments")">Dues and payments</a> @*| <a href="@Url.Content("~/members/info")">Profile Information</a>*@</h5>
+                <h5><a href="@Url.Content("~/members/payments")" class="btn btn-default">Go to Dues and Payments</a> @*| <a href="@Url.Content("~/members/info")">Profile Information</a>*@</h5>
             </div>
         </div>
     </div>

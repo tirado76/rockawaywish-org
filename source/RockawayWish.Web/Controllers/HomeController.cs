@@ -20,11 +20,5 @@ namespace RockawayWish.Web.Controllers
             return View();
         }
 
-        [Route("donate")]
-        public ActionResult Donate()
-        {
-
-            return View();
-        }
     }
 }

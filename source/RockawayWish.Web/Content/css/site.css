@@ -67,7 +67,7 @@ a {
 	-moz-transition: 300ms;
 	-o-transition: 300ms;
 	transition: 300ms;
-	color:#fc7700;
+	color:#FF2A7F;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -942,13 +942,19 @@ p { font-size: 16px; }
     font-weight: bold;
 }
 .text-danger li {
-    color : #ff0000;
-    font-size: 16px;
+    color : #fff;
+    font-size: 12px;
     list-style-type: none;
-    border: solid 1px #ff0000;
-    background-color: #FFFF7F;
+    border: solid 1px #FF2A7F;
+    background-color: #FF2A7F;
     font-weight: bold;
     padding: 5px;
     font-family: Arial, Georgia, 'Times New Roman', Times, serif;
 
+}
+.btn-primary {
+    background-color: #FFA1D5;
+    border: solid 1px #FF2A7F;
+    color: #000;
+    font-weight: bold;
 }

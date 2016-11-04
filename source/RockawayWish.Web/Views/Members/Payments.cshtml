@@ -8,7 +8,7 @@
                 <h2 class="title-one">Member Center</h2>
                 @*<h5><a href="@Url.Content("~/members/payments")">Dues and payments</a> | <a href="@Url.Content("~/members/info")">Profile Information</a></h5>
                 <hr />*@
-                <h3 style="padding: 10px; font-weight: bold">Dues &amp; Payments</h3>
+                <h3 style="background-color: #FFA1D5; padding: 10px; font-weight: bold">Dues &amp; Payments</h3>
 
                 @if (Model.DuesPaymentList != null && Model.DuesPaymentList.Count > 0)
                 {
@@ -69,7 +69,7 @@
                                         <td style="padding: 10px; color: #ff0000; font-weight: bold;">
                                             No payments.
                                         </td>
-                                        <td colspan="2">
+                                        <td colspan="2" style="text-align: right;">
                                             <a class="btn btn-primary" href="@Url.Content(string.Format("~/members/payment/?appId={0}&userId={1}&paymentId={2}", Model.ApplicationId, Model.UserId, duesId.ToString()))">Make Payment</a>
                                         @*@Html.ActionLink("Make Payment", "Payment", new { appId = Model.ApplicationId, userId = Model.UserId, paymentId = new Guid(duesId), paymentTypeId = 1 }, new { @class = "btn btn-primary" })*@
                                         </td>
@@ -84,7 +84,7 @@
                     <p style="padding: 10px; color: #ff0000; font-weight: bold;">No dues have been applied.</p>
                 }
 
-                <h5>@*<a href="@Url.Content("~/members/payments")">Dues and payments</a> |*@ <a href="@Url.Content("~/members/info")">Profile Information</a></h5>
+                <h5>@*<a href="@Url.Content("~/members/payments")">Dues and payments</a> |*@ <a href="@Url.Content("~/members/info")" class="btn btn-default">View Profile Information</a></h5>
 
 
             </div>

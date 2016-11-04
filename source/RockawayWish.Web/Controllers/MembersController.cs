@@ -232,11 +232,6 @@ namespace RockawayWish.Web.Controllers
             Session["UserPaymentType"] = null;
 
         }
-        public ActionResult Donate()
-        {
-            ViewBag.PayPalDonateButtonId = this.PayPalDonateButtonId;
-            return View();
-        }
         public ActionResult DonateCancelPayment()
         {
             return View();
