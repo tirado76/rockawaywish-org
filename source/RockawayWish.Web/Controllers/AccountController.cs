@@ -82,6 +82,7 @@ namespace RockawayWish.Web.Controllers
                     // 4. User Is Active
                     // 5. User Is User
                     // 6. User Is Admin
+                    string ticketName = string.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}", string.Format("{0} {1}", validateToken.FirstName, validateToken.LastName), validateToken.UserId.ToString(), requestToken.AccessToken, validateToken.Email, validateToken.IsActive.ToString(), validateToken.IsUser.ToString(), validateToken.IsAdmin.ToString());
                     SetAuthenticatation(ticketName, true);
 
                     if (!string.IsNullOrEmpty(returnUrl))
