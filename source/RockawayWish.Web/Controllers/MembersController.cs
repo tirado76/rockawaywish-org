@@ -186,16 +186,17 @@ namespace RockawayWish.Web.Controllers
                 StringBuilder sb = new StringBuilder();
                 sb.AppendFormat("<p>Dear {0},</p>", user.FirstName);
                 sb.AppendLine("<p>&nbsp;</p>");
-                sb.AppendLine("<p>Thank you for your payment.</p>");
+                sb.AppendLine("<p>Thank you for your payment. Your annual membership dues are used to help people in need in the Rockaway community.</p>");
                 sb.AppendLine("<p>&nbsp;</p>");
                 sb.AppendFormat("<p>Payment: {0}</p>", dues.Title);
                 sb.AppendFormat("<p>Date: {0}</p>", DateTime.Now.ToShortDateString());
                 sb.AppendFormat("<p>Payment Method: {0}</p>", Session["UserPaymentMethod"].ToString());
                 sb.AppendFormat("<p>Amount: {0}</p>", dues.Amount.ToString());
-                sb.AppendLine("<p>If you need further assistance, please contact us at <a href=\"mailto:" + this.SmtpFromAddress + "\">" + this.SmtpFromAddress + "</a> or by dropping a comment <a href=\"" + this.ContactUsUrl + "\">here</a>.</p>");
+                sb.AppendLine("<p>&nbsp;</p>");
+                sb.AppendLine("<p>If you need further assistance, please contact us at <a href=\"mailto:" + this.SmtpFromAddress + "\">" + this.SmtpFromAddress + "</a> or by writing a message <a href=\"" + this.ContactUsUrl + "\">here</a>.</p>");
                 sb.AppendLine("<p>&nbsp;</p>");
                 sb.AppendLine("<p>Regards</p>");
-                sb.AppendLine("<p>Wish of Rockaway Membership</p>");
+                sb.AppendLine("<p>The Wish of Rockaway Membership Team</p>");
                 sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
                 var emailUserResult = this.SendEmail(user.Email, user.FullName, "Thank you for your payment", sb.ToString());
 

@@ -16,8 +16,7 @@
                     using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                     {
                         @Html.AntiForgeryToken()
-                        <h4>We are always looking for motivated women looking to support and help in the Rockaway community.</h4>
-                        <p> If you would like to join WISH of Rockaway, please fill out the form below, we would love to have you!</p>
+                        <h4>We are always looking for motivated women who would like to do what they can to support and help the Rockaway community. If you would like to join WISH of Rockaway, please fill out the form below, we would love to have you!</h4>
                         <hr />
                     
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
