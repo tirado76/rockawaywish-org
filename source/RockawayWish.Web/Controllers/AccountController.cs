@@ -62,7 +62,7 @@ namespace RockawayWish.Web.Controllers
 
                     string ticketName = string.Format("{0}|{1}|{2}", string.Format("{0} {1}", validateToken.FirstName, validateToken.LastName), validateToken.UserId.ToString(), requestToken.AccessToken);
                     //string ticketName = string.Format("{0}|{1}|{2}|{3}", model.FirstName, model.LastName, result.UserId.ToString(), model.Email);
-                    SetAuthenticatation(ticketName, false);
+                    SetAuthenticatation(ticketName, true);
 
                     if (!string.IsNullOrEmpty(returnUrl))
                         return RedirectPermanent(returnUrl);

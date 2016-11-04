@@ -8,11 +8,8 @@ namespace RockawayWish.Web.Controllers
 {
     public class DonateController : BaseController
     {
-        public ActionResult Index()
-        {
-            return View();
-        }
         [Authorize]
+        [Route("donate")]
         public ActionResult Payment()
         {
             ViewBag.PayPalDonateButtonId = this.PayPalDonateButtonId;

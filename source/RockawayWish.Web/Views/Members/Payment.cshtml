@@ -48,8 +48,9 @@
                                 else
                                 {
                                     <div style=""><h2>@duesTitle</h2></div>
-                                <p>Click on the subscribe button below to make a payment.</p>
-                                <p>A PayPal account is required.</p>
+                                <p>Click on the subscribe button below to pay dues.</p>
+                                <p>You will be redirected to our Paypal site. If you do not have a Paypal account, you can pay using a credit or debit card, however, Paypal will then ask you to set up an account. </p>
+                                <p>In order to ensure proper payment processing, after you make your payment please click the "Return to WISH of Rockaway" button at the bottom of the screen.</p>
                                     <div style="margin-top: 50px;">
                                         @*@Html.Partial("_PayPalSubsribeButton")*@
                                         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
@@ -68,7 +69,11 @@
                     <p style="padding: 10px; color: #ff0000; font-weight: bold;">No dues have been applied.</p>
                 }
 
-                <h5><a href="@Url.Content("~/members/payments")">Dues and payments</a> | <a href="@Url.Content("~/members/info")">Profile Information</a></h5>
+                <p >
+                    <a href="@Url.Content("~/members/info")" class="btn btn-default" style="margin-right: 20px; margin-top: 40px;">View Profile Information</a>
+
+                    <a href="@Url.Content("~/members/payments")" class="btn btn-default" style="margin-top: 40px;">Dues and payments</a>
+                </p>
 
 
             </div>
