@@ -38,9 +38,6 @@ namespace RockawayWish.Web.Controllers
         [Authorize]
         public ActionResult CancelPayment()
         {
-            decimal amount = 50m;
-            _model = _provider.Create(this.ApplicationId, this.UserId, new Guid(Session["UserDonationPaymentId"].ToString()), (int)Session["UserPaymentType"], Session["UserPaymentMethod"].ToString(), DateTime.Now, amount).Result;
-
             var user = new UsersProvider().GetById(this.ApplicationId, this.UserId).Result;
 
             if (user.Status == 0)
