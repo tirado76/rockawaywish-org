@@ -59,6 +59,7 @@ namespace RockawayWish.Web.Controllers
                     StringBuilder sb = new StringBuilder();
                     sb.AppendLine("<p>The following user has logged on to the WISH of Rockaway website.</p>");
                     sb.AppendFormat("<p>Name: {0}</p>", validateToken.FullName);
+                    sb.AppendFormat("<p>Email: {0}</p>", validateToken.Email);
                     sb.AppendFormat("<p>Date: {0}</p>", DateTime.Now.ToShortTimeString());
                     sb.AppendLine("<p>&nbsp;</p>");
                     sb.AppendLine("<p><a href=\"" + this.MembershipAdminUrl + "\">Click here</a> to go to the admin panel.</p>");
