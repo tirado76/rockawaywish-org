@@ -208,7 +208,7 @@ namespace RockawayWish.Web.Controllers
                 Guid token = Guid.NewGuid();
                 // send email
                 StringBuilder sb = new StringBuilder();
-                sb.AppendFormat("<p>Dear {0},</p>");
+                sb.AppendFormat("<p>Dear {0},</p>", user.FullName);
                 sb.AppendLine("<p>This email was sent automatically by rockawaywish.org in response to your request to recover your password.  This is done for your protection; only you, the recipient of this email can take the next step in the password recover process.</p>");
                 sb.AppendLine("<p>To reset your password, click the following link or copy and paste the link into your browser:</p>");
                 sb.AppendLine("<p><a href=\"" + string.Format("{0}?tu={1}&ta={2}&tk={3}", this.ResetPasswordEndpoint, user.UserId, user.ApplicationId, token) + "\">" + string.Format("{0}?tu={1}&ta={2}", this.ResetPasswordEndpoint, user.UserId, user.ApplicationId) + "</a></p>");

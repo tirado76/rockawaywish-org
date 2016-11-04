@@ -232,13 +232,6 @@ namespace RockawayWish.Web.Controllers
             Session["UserPaymentType"] = null;
 
         }
-        public ActionResult DonateCancelPayment()
-        {
-            return View();
-        }
-        public ActionResult DonateCompletePayment()
-        {
-            return View();
-        }
+
     }
 }
