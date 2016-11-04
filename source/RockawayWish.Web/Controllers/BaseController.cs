@@ -27,15 +27,81 @@ namespace RockawayWish.Web.Controllers
                 if (Request.IsAuthenticated)
                 {
                     char[] delimitter = { '|' };
-
                     string[] authTicket = HttpContext.User.Identity.Name.Split(delimitter);
-
                     if (authTicket.Length > 0)
-                    {
                         return new Guid(authTicket[1].ToString());
-                    }
                 }
                 return new Guid();
+            }
+        }
+        internal string UserFullName
+        {
+            get
+            {
+                if (Request.IsAuthenticated)
+                {
+                    char[] delimitter = { '|' };
+                    string[] authTicket = HttpContext.User.Identity.Name.Split(delimitter);
+                    if (authTicket.Length > 0)
+                        return authTicket[0].ToString();
+                }
+                return string.Empty;
+            }
+        }
+        internal string UserEmail
+        {
+            get
+            {
+                if (Request.IsAuthenticated)
+                {
+                    char[] delimitter = { '|' };
+                    string[] authTicket = HttpContext.User.Identity.Name.Split(delimitter);
+                    if (authTicket.Length > 0)
+                        return authTicket[3].ToString();
+                }
+                return string.Empty;
+            }
+        }
+        internal bool UserIsActive
+        {
+            get
+            {
+                if (Request.IsAuthenticated)
+                {
+                    char[] delimitter = { '|' };
+                    string[] authTicket = HttpContext.User.Identity.Name.Split(delimitter);
+                    if (authTicket.Length > 0)
+                        return Convert.ToBoolean(authTicket[4].ToString());
+                }
+                return false;
+            }
+        }
+        internal bool UserIsUser
+        {
+            get
+            {
+                if (Request.IsAuthenticated)
+                {
+                    char[] delimitter = { '|' };
+                    string[] authTicket = HttpContext.User.Identity.Name.Split(delimitter);
+                    if (authTicket.Length > 0)
+                        return Convert.ToBoolean(authTicket[5].ToString());
+                }
+                return false;
+            }
+        }
+        internal bool UserIsAdmin
+        {
+            get
+            {
+                if (Request.IsAuthenticated)
+                {
+                    char[] delimitter = { '|' };
+                    string[] authTicket = HttpContext.User.Identity.Name.Split(delimitter);
+                    if (authTicket.Length > 0)
+                        return Convert.ToBoolean(authTicket[6].ToString());
+                }
+                return false;
             }
         }
         internal Guid ApplicationId
@@ -71,6 +137,8 @@ namespace RockawayWish.Web.Controllers
             }
             return model;
         }
+        internal string MembershipAuditEmail { get { return ConfigurationManager.AppSettings["Membership-Audit-Email"]; } }
+        internal string MembershipAuditName { get { return ConfigurationManager.AppSettings["Membership-Audit-Name"]; } }
         internal string MembershipAdminUrl { get { return ConfigurationManager.AppSettings["Membership-Admin-Url"]; } }
         internal string MembershipAdminEmail { get { return ConfigurationManager.AppSettings["Membership-Admin-Email"]; } }
         internal string MembershipAdminName { get { return ConfigurationManager.AppSettings["Membership-Admin-Name"]; } }
@@ -87,6 +155,7 @@ namespace RockawayWish.Web.Controllers
         internal string ContactUsUrl{ get { return ConfigurationManager.AppSettings["ContactUs-Url"]; } }
         internal string ContactUsEmail { get { return ConfigurationManager.AppSettings["ContactUs-Email"]; } }
         internal string PayPalDonateButtonId { get { return ConfigurationManager.AppSettings["PayPal-Donate-Button-Id"]; } }
+        internal Guid DonationPaymentId { get { return new Guid(ConfigurationManager.AppSettings["Donation-PaymentId"]); } }
 
     }
 }

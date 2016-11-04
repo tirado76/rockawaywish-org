@@ -161,7 +161,7 @@ namespace RockawayWish.Web.Controllers
                 sb.AppendLine("<p>Regards</p>");
                 sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
                 sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
-                var emailAdminResult = this.SendEmail(this.MembershipAdminEmail, this.MembershipAdminName, "A payment has been canceled on the WISH of Rockaway website", sb.ToString());
+                var emailAdminResult = this.SendEmail(this.MembershipAuditEmail, this.MembershipAuditName, "A payment has been canceled on the WISH of Rockaway website", sb.ToString());
 
             }
             else
@@ -214,7 +214,7 @@ namespace RockawayWish.Web.Controllers
                 sb.AppendLine("<p>Regards</p>");
                 sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
                 sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
-                var emailAdminResult = this.SendEmail(this.MembershipAdminEmail, this.MembershipAdminName, "A payment has been made on the WISH of Rockaway website", sb.ToString());
+                var emailAdminResult = this.SendEmail(this.MembershipAuditEmail, this.MembershipAuditName, "A payment has been made on the WISH of Rockaway website", sb.ToString());
 
             }
             else
