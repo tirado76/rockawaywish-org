@@ -958,3 +958,9 @@ p { font-size: 16px; }
     color: #000;
     font-weight: bold;
 }
+.form-control {
+    width: 100%;
+}
+.form-group a {
+    font-size: 24px;
+}

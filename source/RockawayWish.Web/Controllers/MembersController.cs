@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 using InteractiveMembership.Core.Models;
 using InteractiveMembership.Core.Enums;
@@ -17,6 +18,18 @@ namespace RockawayWish.Web.Controllers
     [Authorize]
     public class MembersController : BaseController
     {
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            base.OnActionExecuting(filterContext);
+
+            // validate user is acitve and is user
+            if (!this.UserIsActive || !this.UserIsUser)
+            {
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary {
+                });
+            }
+        }
+        
         public MembersController()
         {
             _provider = new UserPaymentsProvider();
@@ -230,6 +243,12 @@ namespace RockawayWish.Web.Controllers
             Session["UserPaymentId"] = null;
             Session["UserPaymentMethod"] = null;
             Session["UserPaymentType"] = null;
+
+        }
+        public ActionResult NoAccess()
+        {
+            Response.StatusCode = 301;
+            return View();
 
         }
 

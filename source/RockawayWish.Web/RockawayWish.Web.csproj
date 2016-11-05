@@ -250,6 +250,7 @@
     <Content Include="Views\Contact\Confirmation.cshtml" />
     <Content Include="Views\Donate\CompletePayment.cshtml" />
     <Content Include="Views\Donate\CancelPayment.cshtml" />
+    <Content Include="Views\Error\NoAccess.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

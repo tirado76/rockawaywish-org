@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-sm-8 col-sm-offset-2">
-                <h2 class="title-one">Member Sign in</h2>
+                <h2 class="title-one">Sign in</h2>
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
@@ -17,7 +17,7 @@
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
                         @*@Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })*@
-                        <div class="col-md-10">
+                        <div class="col-md-10" style="text-align: center;">
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control email-field", @required = "required", @placeholder = "Enter Email" })
                             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                         </div>

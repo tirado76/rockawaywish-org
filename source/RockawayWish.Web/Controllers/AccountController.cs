@@ -69,7 +69,7 @@ namespace RockawayWish.Web.Controllers
                     sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
                     var emailAdminResult = this.SendEmail(this.MembershipAuditEmail, this.MembershipAuditName, string.Format("{0} has logged on to the WISH of Rockaway website.", validateToken.FullName), sb.ToString());
                     
-                    if ((!validateToken.IsUser || !validateToken.IsActive) && !validateToken.IsAdmin && !validateToken.IsSuperAdmin)
+                    if ((!validateToken.IsActive) && !validateToken.IsAdmin && !validateToken.IsSuperAdmin)
                     {
                         ModelState.AddModelError("", "Access Denied");
                         return View(model);
@@ -125,7 +125,7 @@ namespace RockawayWish.Web.Controllers
             {
                 model.YearJoined = DateTime.Now.Year;
                 // register user
-                var result = await _userProvider.Create(new Guid(Config.ApplicationId), model.Email, Guid.NewGuid().ToString(), model.FirstName, model.LastName, false, false, false, false, false, model.YearJoined, model.Address, model.City, model.State, model.Country, model.Zip, model.Phone, model.CellPhone);
+                var result = await _userProvider.Create(new Guid(Config.ApplicationId), model.Email, Guid.NewGuid().ToString(), model.FirstName, model.LastName, true, false, false, false, false, model.YearJoined, model.Address, model.City, model.State, model.Country, model.Zip, model.Phone, model.CellPhone);
 
                 if (result.Status == 0)
                 {
