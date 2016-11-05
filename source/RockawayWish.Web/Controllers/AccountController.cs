@@ -273,7 +273,7 @@ namespace RockawayWish.Web.Controllers
                     sb.AppendLine("<p>Regards</p>");
                     sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
                     sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
-                    var emailAdminResult = this.SendEmail(this.MembershipAuditEmail, this.MembershipAuditName, string.Format("{0} has forgotten their password on to the WISH of Rockaway website.", user), sb.ToString());
+                    var emailAdminResult = this.SendEmail(this.MembershipAuditEmail, this.MembershipAuditName, string.Format("{0} has forgotten their password on to the WISH of Rockaway website.", user.FullName), sb.ToString());
 
                     return RedirectPermanent("~/account/ForgotPasswordConfirmation");
                 }
