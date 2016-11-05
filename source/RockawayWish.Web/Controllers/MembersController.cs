@@ -26,6 +26,8 @@ namespace RockawayWish.Web.Controllers
             if (!this.UserIsActive || !this.UserIsUser)
             {
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary {
+                    { "action", "NoAccess" },
+                    { "controller", "Error" }
                 });
             }
         }

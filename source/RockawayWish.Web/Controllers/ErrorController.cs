@@ -20,6 +20,7 @@ namespace RockawayWish.Web.Controllers
         }
         public ActionResult NoAccess()
         {
+            Response.StatusCode = 301;
             return View();
         }
     }
