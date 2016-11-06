@@ -48,15 +48,15 @@
                                 else
                                 {
                                     <div style=""><h2>@duesTitle</h2></div>
-                                <p>Click on the subscribe button below to pay dues.</p>
-                                <p>You will be redirected to our Paypal site. If you do not have a Paypal account, you can pay using a credit or debit card, however, Paypal will then ask you to set up an account. </p>
-                                <p>In order to ensure proper payment processing, after you make your payment please click the "Return to WISH of Rockaway" button at the bottom of the screen.</p>
+                                <p>Click on the Buy Now button below to pay your membership dues</p>
+                                <p>You will be redirected to our Paypal site. If you do not have a Paypal account, you can pay using a credit or debit card.</p>
+                                <p>In order to ensure proper payment processing, after you make your payment please click the "Return to Merchant" button at the bottom of the screen.</p>
                                     <div style="margin-top: 50px;">
                                         @*@Html.Partial("_PayPalSubsribeButton")*@
                                         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                                             <input type="hidden" name="cmd" value="_s-xclick">
                                             <input type="hidden" name="hosted_button_id" value="@duesPayPalButtonId">
-                                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
                                             <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
                                         </form>
                                     </div>

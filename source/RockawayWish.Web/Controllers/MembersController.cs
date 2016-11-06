@@ -148,15 +148,13 @@ namespace RockawayWish.Web.Controllers
                 // send user confirmation email
                 StringBuilder sb = new StringBuilder();
                 sb.AppendFormat("<p>Dear {0},</p>", user.FirstName);
-                sb.AppendLine("<p>&nbsp;</p>");
-                sb.AppendLine("<p>We apologize your the cancellation of your payment.</p>");
-                sb.AppendLine("<p>&nbsp;</p>");
+                sb.AppendLine("<p>We apologize for the cancellation of your payment.</p>");
                 sb.AppendFormat("<p>Payment: {0}</p>", dues.Title);
                 sb.AppendFormat("<p>Date: {0}</p>", DateTime.Now.ToShortDateString());
                 sb.AppendFormat("<p>Payment Method: {0}</p>", Session["UserPaymentMethod"].ToString());
                 sb.AppendFormat("<p>Amount: {0}</p>", dues.Amount.ToString());
-                sb.AppendLine("<p>If you need further assistance, please contact us at <a href=\"mailto:" + this.ContactUsEmail + "\">" + this.ContactUsEmail + "</a> or by dropping a comment <a href=\"" + this.ContactUsUrl + "\">here</a>.</p>");
                 sb.AppendLine("<p>&nbsp;</p>");
+                sb.AppendLine("<p>If you need further assistance, please contact us at <a href=\"mailto:" + this.ContactUsEmail + "\">" + this.ContactUsEmail + "</a> or by dropping a comment <a href=\"" + this.ContactUsUrl + "\">here</a>.</p>");
                 sb.AppendLine("<p>Regards</p>");
                 sb.AppendLine("<p>Wish of Rockaway Membership</p>");
                 sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
@@ -172,8 +170,6 @@ namespace RockawayWish.Web.Controllers
                 sb.AppendFormat("<p>Amount: {0}</p>", dues.Amount.ToString());
                 sb.AppendLine("<p>&nbsp;</p>");
                 sb.AppendLine("<p><a href=\"" + this.MembershipAdminUrl + "\">Click here</a> to go to the admin panel.</p>");
-                sb.AppendLine("<p>&nbsp;</p>");
-                sb.AppendLine("<p>Regards</p>");
                 sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
                 sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
                 var emailAdminResult = this.SendEmail(this.MembershipAuditEmail, this.MembershipAuditName, "A payment has been canceled on the WISH of Rockaway website", sb.ToString());
