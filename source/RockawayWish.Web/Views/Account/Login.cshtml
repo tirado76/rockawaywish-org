@@ -43,7 +43,7 @@
                             <p>&nbsp;</p>
                             @*<a href="@Url.Content("~/account/register")" class="btn btn-default">Register</a>*@
                             <p> <a href="@Url.Content("~/forgotpassword")">Forgot your password? </a> 
-                                &nbsp;&nbsp;|&nbsp;&nbsp;<a href="@Url.Content("~/register")">Need to register?</a></p>
+                                &nbsp;&nbsp;|&nbsp;&nbsp;<a href="@Url.Content("~/register/?returnUrl=" + ViewBag.ReturnURL)">Need to register?</a></p>
                         </div>
                     </div>
                 }

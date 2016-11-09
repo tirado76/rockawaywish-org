@@ -104,10 +104,11 @@ namespace RockawayWish.Web.Controllers
             return View(model);
 
         }
-        // GET: /Account/Register
+
         [Route("register")]
-        public ActionResult Register()
+        public ActionResult Register(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View(new RegisterViewModel{
                 YearJoined = DateTime.Now.Year
             });
@@ -119,20 +120,33 @@ namespace RockawayWish.Web.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         [Route("register")]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
                 model.YearJoined = DateTime.Now.Year;
+
+                bool isDonator = false;
+                if (!string.IsNullOrEmpty(returnUrl)  && returnUrl.ToLower().Contains("donate"))
+                    isDonator = true;
                 // register user
-                var result = await _userProvider.Create(new Guid(Config.ApplicationId), model.Email, Guid.NewGuid().ToString(), model.FirstName, model.LastName, true, false, false, false, false, model.YearJoined, model.Address, model.City, model.State, model.Country, model.Zip, model.Phone, model.CellPhone);
+                var result = await _userProvider.Create(new Guid(Config.ApplicationId), model.Email, Guid.NewGuid().ToString(), model.FirstName, model.LastName, true, false, isDonator, false, false, model.YearJoined, model.Address, model.City, model.State, model.Country, model.Zip, model.Phone, model.CellPhone);
 
                 if (result.Status == 0)
                 {
 
                     // send email to membership administrator with registration information
                     StringBuilder sb = new StringBuilder();
-                    sb.AppendLine("<p>The following user has registered on the WISH of Rockaway website and needs to be approved.</p>");
+                    if (isDonator)
+                    {
+                        sb.AppendLine("<p>The following user has registered as a donor on the WISH of Rockaway website and needs to be sent a welcome email.</p>");
+                        sb.AppendFormat("<p>Registered as: {0}</p>", "Donor");
+                    }
+                    else
+                    {
+                        sb.AppendLine("<p>The following user has registered as a member on the WISH of Rockaway website and needs to be approved and sent a welcome email.</p>");
+                        sb.AppendFormat("<p>Registered as: {0}</p>", "Member");
+                    }
                     sb.AppendFormat("<p>First Name: {0}</p>", model.FirstName);
                     sb.AppendFormat("<p>Last Name: {0}</p>", model.LastName);
                     sb.AppendFormat("<p>Email: {0}</p>", model.Email);
@@ -148,8 +162,20 @@ namespace RockawayWish.Web.Controllers
                     sb.AppendLine("<p>&nbsp;</p>");
                     sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
                     sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
-                    var emailResult = this.SendEmail(this.MembershipAuditEmail, this.MembershipAuditName, "A user has registered on the WISH of Rockaway website", sb.ToString());
+                    if (isDonator)
+                    {
+                        var emailResult = this.SendEmail(this.MembershipAuditEmail, this.MembershipAuditName, "A user has registered as a donor on the WISH of Rockaway website", sb.ToString());
+                    }
+                    else
+                    {
+                        var emailResult = this.SendEmail(this.MembershipAuditEmail, this.MembershipAuditName, "A user has registered as a member on the WISH of Rockaway website", sb.ToString());
+                    }
 
+
+                    //if (!string.IsNullOrEmpty(returnUrl))
+                    //    return RedirectPermanent(returnUrl);
+                    //else
+                    //    return Redirect("~/members");
 
                     // redirect user to home page
                     return RedirectPermanent("~/RegisterConfirmation");

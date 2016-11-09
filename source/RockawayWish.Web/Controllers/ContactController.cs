@@ -35,7 +35,7 @@ namespace RockawayWish.Web.Controllers
             sb.AppendLine("<p>&nbsp;</p>");
             sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
             sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
-            var emailResult = this.SendEmail(this.MembershipAdminEmail, this.MembershipAdminName, "Question submitted on the WISH of Rockaway website", sb.ToString());
+            var emailResult = this.SendEmail(this.ContactUsEmail, "WISH of Rockaway", "Question submitted on the WISH of Rockaway website", sb.ToString());
 
             if (emailResult.Status == 0)
                 return RedirectPermanent("~/contact-wish/confirmation");

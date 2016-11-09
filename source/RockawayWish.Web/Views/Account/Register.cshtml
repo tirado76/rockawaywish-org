@@ -12,7 +12,7 @@
 
                 @if (!Request.IsAuthenticated)
                 {
-                    using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                     {
                         @Html.AntiForgeryToken()
                         <h4>We are always looking for motivated women who would like to do what they can to support and help the Rockaway community. If you would like to join WISH of Rockaway, please fill out the form below, we would love to have you!</h4>
