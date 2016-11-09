@@ -182,14 +182,9 @@ namespace RockawayWish.Web.Controllers
                 if (requestToken.Status == 0)
                 {
                 }
-                // sign user out of Purina API
-                FormsAuthentication.SignOut();
-
-                var user = await _userProvider.GetById(new Guid(Config.ApplicationId), this.UserId);
-
                 StringBuilder sb = new StringBuilder();
                 sb.AppendLine("<p>The following user has signed out of the WISH of Rockaway website.</p>");
-                sb.AppendFormat("<p>Name: {0}</p>", user.FullName);
+                sb.AppendFormat("<p>Name: {0}</p>", this.UserFullName);
                 sb.AppendFormat("<p>Date: {0}</p>", DateTime.Now.ToShortTimeString());
                 sb.AppendLine("<p>&nbsp;</p>");
                 sb.AppendLine("<p><a href=\"" + this.MembershipAdminUrl + "\">Click here</a> to go to the admin panel.</p>");
@@ -197,7 +192,11 @@ namespace RockawayWish.Web.Controllers
                 sb.AppendLine("<p>Regards</p>");
                 sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
                 sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
-                var emailAdminResult = this.SendEmail(this.MembershipAuditEmail, this.MembershipAuditName, string.Format("{0} has logged on to the WISH of Rockaway website.", user.FullName), sb.ToString());
+                var emailAdminResult = this.SendEmail(this.MembershipAuditEmail, this.MembershipAuditName, string.Format("{0} has logged on to the WISH of Rockaway website.", this.UserFullName), sb.ToString());
+
+                // sign user out of Purina API
+                FormsAuthentication.SignOut();
+
 
             }
             // get pageof user
@@ -350,7 +349,7 @@ namespace RockawayWish.Web.Controllers
                     sb.AppendLine("<p>Regards</p>");
                     sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
                     sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
-                    var emailAdminResult = this.SendEmail(this.MembershipAuditEmail, this.MembershipAuditName, string.Format("{0} has successfully reset their password on th their password on the WISH of Rockaway website.", user), sb.ToString());
+                    var emailAdminResult = this.SendEmail(this.MembershipAuditEmail, this.MembershipAuditName, string.Format("{0} has successfully reset their password on th their password on the WISH of Rockaway website.", user.FullName), sb.ToString());
 
                     // delete token
                     //var deleteToken = new UsersProvider().DeleteToken(this.ApplicationId, model.UserId, (int)TokenType.ResetPasswordAccess).Result;
