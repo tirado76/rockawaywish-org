@@ -156,6 +156,7 @@ namespace RockawayWish.Web.Controllers
         internal string ContactUsEmail { get { return ConfigurationManager.AppSettings["ContactUs-Email"]; } }
         internal string PayPalDonateButtonId { get { return ConfigurationManager.AppSettings["PayPal-Donate-Button-Id"]; } }
         internal Guid DonationPaymentId { get { return new Guid(ConfigurationManager.AppSettings["Donation-PaymentId"]); } }
-
+        internal string InstagramAccessToken { get { return ConfigurationManager.AppSettings["Instagram-Access-Token"]; } }
+ 
     }
 }
