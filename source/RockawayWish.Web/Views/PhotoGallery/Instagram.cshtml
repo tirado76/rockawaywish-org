@@ -1,0 +1,11 @@
+﻿@using InteractiveMembership.Core.Models.Instagram;
+@model RockawayWish.Web.Models.PhotoGalleryVM
+@{
+    ViewBag.Title = "Instagram";
+}
+
+<h2>Instagram</h2>
+@foreach (var item in Model.InstagramList)
+{
+    <li><img src="@item.images.low_resolution.url" /></li>
+}

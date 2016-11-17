@@ -253,6 +253,7 @@
     <Content Include="Views\Donate\CompletePayment.cshtml" />
     <Content Include="Views\Donate\CancelPayment.cshtml" />
     <Content Include="Views\Error\NoAccess.cshtml" />
+    <Content Include="Views\PhotoGallery\Instagram.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
