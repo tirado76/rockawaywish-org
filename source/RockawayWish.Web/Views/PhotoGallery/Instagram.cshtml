@@ -5,7 +5,34 @@
 }
 
 <h2>Instagram</h2>
-@foreach (var item in Model.InstagramList)
-{
-    <li><img src="@item.images.low_resolution.url" /></li>
-}
+
+<section id="portfolio">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-sm-8 col-sm-offset-2">
+                <h2 class="title-one">Photo Gallery</h2>
+                <p></p>
+            </div>
+        </div>
+        <div class="portfolio-items">
+            @foreach (var item in Model.InstagramList)
+            {
+                <div class="col-sm-3 col-xs-12 portfolio-item html">
+                    <div class="view efffect">
+                        <div class="portfolio-image">
+                            <img src="@item.images.standard_resolution.url" alt="">
+                        </div>
+                        <div class="mask text-center">
+                            <h3>Instagram</h3>
+                            <h4>@item.caption.text</h4>
+                            @*<a href="#"><i class="fa fa-link"></i></a>*@
+                            <a href="@item.images.low_resolution.url" data-gallery="prettyPhoto"><i class="fa fa-search-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+</section> <!--/#portfolio-->

@@ -17,6 +17,7 @@ namespace RockawayWish.Web
             routes.IgnoreRoute("members/favicon.ico");
             routes.IgnoreRoute("account/favicon.ico");
             routes.IgnoreRoute("error/favicon.ico");
+            routes.IgnoreRoute("photos/favicon.ico");
 
             routes.MapMvcAttributeRoutes();
 

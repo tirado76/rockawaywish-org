@@ -8,6 +8,7 @@
     <meta name="keywords" content="Rockaway Wish" />
     <meta name="author" content="">
     <link href="@Url.Content("~/Content/css/bootstrap.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/css/prettyPhoto.css")" rel="stylesheet">
     <link href="@Url.Content("~/Content/css/font-awesome.css")" rel="stylesheet">
     <link href="@Url.Content("~/Content/css/animate.css")" rel="stylesheet">
     <link href="@Url.Content("~/Content/css/site.css")" rel="stylesheet">
@@ -52,11 +53,12 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="@Url.Content("~/")">Home</a></li>
                         <li><a href="@Url.Content("~/about-wish")">About Us</a></li>
+                        <li><a href="@Url.Content("~/photos/instagram")">Photos</a></li>
                         <li><a href="@Url.Content("~/donate")">Donate</a></li>
                         <li><a href="@Url.Content("~/contact-wish")">Contact Us</a></li>
 
                         @if (!Request.IsAuthenticated)
-                        { 
+                        {
                             <li><a href="@Url.Content("~/register")">Join</a></li>
                             <li><a href="@Url.Content("~/signin")">Sign In</a></li>
                         }
@@ -73,18 +75,28 @@
 
     @RenderBody()
 
-    
+
     @Html.Partial("_Footer")
 
     <script type="text/javascript" src="@Url.Content("~/js/jquery.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/js/jquery.validate.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/js/jquery.validate.unobtrusive.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/js/bootstrap.min.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/js/jquery.isotope.min.js" )"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/jquery.isotope.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/js/jquery.prettyPhoto.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/js/main.js")"></script>
+
+    @*<script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/smoothscroll.js"></script>
+    <script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="js/jquery.parallax.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>*@
+
 
     @*@Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)*@
-></body>
+>></body>
 </html>
