@@ -20,6 +20,10 @@
         font-size: 13px;
     }
 
+    .navbar-brand img {
+        width: 80px;
+    }
+
     /* Resize home carousel */
     #main-carousel .carousel-inner p {
         font-size: 20px;
@@ -54,13 +58,13 @@
 	.navbar-header{
 		width: 0;
 	}
-	.navbar-brand {
-    	height: 48px;
-	}
 	ul.navbar-nav a {
 	    padding: 0px;
 	}
-	
+	.navbar-brand img {
+        width: 65px;
+    }
+
 	/*main Slider*/
 	#slider_part {
     	height: 530px;
