@@ -114,9 +114,10 @@ namespace RockawayWish.Web.Controllers
                 // TODO: Add insert logic here
 
                 if (_userModel.Status == 0)
-                    return Redirect("~/members/profile");
-
-                ModelState.AddModelError("", _userModel.Message);
+                    ModelState.AddModelError("", "Profile updated successfully");
+                    //return Redirect("~/members/profile");
+                else
+                    ModelState.AddModelError("", _userModel.Message);
 
 
 
@@ -124,7 +125,7 @@ namespace RockawayWish.Web.Controllers
             catch
             {
             }
-            return View(_userModel);
+            return View(model);
         }
         public ActionResult Payments()
         {
