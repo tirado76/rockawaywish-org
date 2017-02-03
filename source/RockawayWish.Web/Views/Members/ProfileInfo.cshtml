@@ -44,10 +44,10 @@
                         <td>@Html.DisplayNameFor(model => model.CellPhone)</td>
                         <td>@Html.DisplayFor(model => model.CellPhone)</td>
                     </tr>
-                    <tr>
+                    @*<tr>
                         <td>@Html.DisplayNameFor(model => model.YearJoined)</td>
                         <td>@Html.DisplayFor(model => model.YearJoined)</td>
-                    </tr>
+                    </tr>*@
                     @*<tr>
                         <td>@Html.DisplayNameFor(model => model.Password)</td>
                         <td><a href="@Url.Content("~/members/resetpassword")">Click here to reset password</a></td>
@@ -57,7 +57,11 @@
                         <td>@Html.DisplayFor(model => model.IsActive)</td>
                     </tr>*@
                 </table>
-                <h5><a href="@Url.Content("~/members/payments")" class="btn btn-default">Go to Dues and Payments</a> @*| <a href="@Url.Content("~/members/info")">Profile Information</a>*@</h5>
+                <p>
+                    <a href="@Url.Content("~/members/profile/edit")" class="btn btn-default" style="margin-right: 20px;">Edit Profile</a>
+
+                    <a href="@Url.Content("~/members/payments")" class="btn btn-default">Dues and payments</a>
+                </p>
             </div>
         </div>
     </div>

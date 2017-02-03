@@ -176,6 +176,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\MembersViewModels.cs" />
     <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\PhotoGalleryVM.cs" />
@@ -294,6 +295,8 @@
     <Content Include="Views\Donate\CancelPayment.cshtml" />
     <Content Include="Views\Error\NoAccess.cshtml" />
     <Content Include="Views\PhotoGallery\Instagram.cshtml" />
+    <Content Include="Views\Members\_UserFields.cshtml" />
+    <Content Include="Views\Members\EditProfile.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
@@ -325,7 +328,9 @@
   <ItemGroup>
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\fonts\fontawesome-webfont.ttf" />
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="app.prod.config">
       <SubType>Designer</SubType>
     </Content>
@@ -345,7 +350,7 @@
     </None>
     <Content Include="Views\Members\Index.cshtml" />
     <Content Include="Views\Members\Payments.cshtml" />
-    <Content Include="Views\Members\Info.cshtml" />
+    <Content Include="Views\Members\ProfileInfo.cshtml" />
     <Content Include="Views\Members\CancelPayment.cshtml" />
     <Content Include="Views\Shared\_PayPalSubsribeButton.cshtml" />
     <Content Include="Views\Members\Payment.cshtml" />

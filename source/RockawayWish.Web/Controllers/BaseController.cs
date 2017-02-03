@@ -104,6 +104,45 @@ namespace RockawayWish.Web.Controllers
                 return false;
             }
         }
+        internal bool UserIsSuperAdmin
+        {
+            get
+            {
+                if (Request.IsAuthenticated)
+                {
+                    char[] delimitter = { '|' };
+                    string[] authTicket = HttpContext.User.Identity.Name.Split(delimitter);
+                    if (authTicket.Length > 0)
+                        return Convert.ToBoolean(authTicket[7].ToString());
+                }
+                return false;
+            }
+        }
+        internal bool UserIsDonator
+        {
+            get
+            {
+                if (Request.IsAuthenticated)
+                {
+                    char[] delimitter = { '|' };
+                    string[] authTicket = HttpContext.User.Identity.Name.Split(delimitter);
+                    if (authTicket.Length > 0)
+                        return Convert.ToBoolean(authTicket[8].ToString());
+                }
+                return false;
+            }
+        }
+        internal enum AuthTicketElements
+        {
+            FullName = 0,
+            UserId = 1,
+            Email = 3,
+            IsActive = 4,
+            IsUser = 5,
+            IsAdmin = 6,
+            IsSuperAdmin = 7,
+            IsDonator = 8
+        }
         internal Guid ApplicationId
         {
             get

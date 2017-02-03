@@ -83,8 +83,20 @@ namespace RockawayWish.Web.Controllers
                     // 4. User Is Active
                     // 5. User Is User
                     // 6. User Is Admin
-                    string ticketName = string.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}", string.Format("{0} {1}", validateToken.FirstName, validateToken.LastName), validateToken.UserId.ToString(), requestToken.AccessToken, validateToken.Email, validateToken.IsActive.ToString(), validateToken.IsUser.ToString(), validateToken.IsAdmin.ToString());
-                    SetAuthenticatation(ticketName, true);
+                    // 7. User Is Super Admin
+                    // 8. User Is Donator
+                    StringBuilder ticketName  = new StringBuilder();
+                    ticketName.AppendFormat("{0}", string.Format("{0} {1}", validateToken.FirstName, validateToken.LastName));
+                    ticketName.AppendFormat("|{0}", validateToken.UserId.ToString());
+                    ticketName.AppendFormat("|{0}", requestToken.AccessToken);
+                    ticketName.AppendFormat("|{0}", validateToken.Email);
+                    ticketName.AppendFormat("|{0}", validateToken.IsActive.ToString());
+                    ticketName.AppendFormat("|{0}", validateToken.IsUser.ToString());
+                    ticketName.AppendFormat("|{0}", validateToken.IsAdmin.ToString());
+                    ticketName.AppendFormat("|{0}", validateToken.IsSuperAdmin.ToString());
+                    ticketName.AppendFormat("|{0}", validateToken.IsDonator.ToString());
+
+                    SetAuthenticatation(ticketName.ToString(), true);
 
                     if (!string.IsNullOrEmpty(returnUrl))
                         return RedirectPermanent(returnUrl);
@@ -365,7 +377,7 @@ namespace RockawayWish.Web.Controllers
                 {
                     // send membership audit email
                     StringBuilder sb = new StringBuilder();
-                    sb.AppendLine("<p>The following user has successfully reset their password on th their password on the WISH of Rockaway website.</p>");
+                    sb.AppendLine("<p>The following user has successfully reset their password on the WISH of Rockaway website.</p>");
                     sb.AppendFormat("<p>Name: {0}</p>", user.FullName);
                     sb.AppendFormat("<p>Email: {0}</p>", user.Email);
                     sb.AppendFormat("<p>Date: {0}</p>", DateTime.Now.ToShortTimeString());

@@ -39,6 +39,7 @@ namespace RockawayWish.Web.Controllers
         }
         private UserPaymentsProvider _provider;
         private UserPaymentsModel _model;
+        private UserModel _userModel;
 
         // GET: Members
         public ActionResult Index()
@@ -46,12 +47,84 @@ namespace RockawayWish.Web.Controllers
             return View();
         }
 
-        public ActionResult Info()
+
+        [Route("members/profile")]
+        public ActionResult ProfileInfo()
         {
             UserModel model = new UsersProvider().GetById(this.ApplicationId, this.UserId).Result;
 
             return View(model);
 
+        }
+        [Route("members/profile/edit")]
+        public ActionResult EditProfile()
+        {
+            EditProfileViewModel vm = new EditProfileViewModel();
+            try
+            {
+                // register user
+
+                var result = new UsersProvider().GetById(this.ApplicationId, this.UserId);
+
+                // Get the actual result from the task
+                _userModel = result.Result;
+
+                vm.FirstName = _userModel.FirstName;
+                vm.LastName = _userModel.LastName;
+                vm.Email = _userModel.Email;
+                vm.ConfirmEmail = _userModel.Email;
+                vm.Password = _userModel.Password;
+                vm.ConfirmPassword = _userModel.Password;
+                vm.Address = _userModel.Address;
+                vm.City = _userModel.City;
+                vm.State = _userModel.State;
+                vm.Zip = _userModel.Zip;
+                vm.Country = _userModel.Country;
+                vm.Phone = _userModel.Phone;
+                vm.CellPhone = _userModel.CellPhone;
+                vm.YearJoined = _userModel.YearJoined;
+
+                if (_userModel.Status == 1)
+                    return RedirectToAction("Index", new { appId = this.ApplicationId });
+
+
+            }
+            catch
+            {
+            }
+            return View(vm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("members/profile/edit")]
+        public ActionResult EditProfile(EditProfileViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            try
+            {
+                var result = new UsersProvider().Update(this.ApplicationId, this.UserId, this.UserIsActive, this.UserIsUser, this.UserIsDonator, this.UserIsAdmin, this.UserIsSuperAdmin, model.YearJoined, model.Email, model.Password, model.FirstName, model.LastName, model.Address, model.City, model.State, model.Country, model.Zip, model.Phone, model.CellPhone);
+
+                // Get the actual result from the task
+                _userModel = result.Result;
+
+                // TODO: Add insert logic here
+
+                if (_userModel.Status == 0)
+                    return Redirect("~/members/profile");
+
+                ModelState.AddModelError("", _userModel.Message);
+
+
+
+            }
+            catch
+            {
+            }
+            return View(_userModel);
         }
         public ActionResult Payments()
         {
@@ -60,7 +133,9 @@ namespace RockawayWish.Web.Controllers
             vm.ApplicationId = new Guid(Config.ApplicationId);
 
             // get user dues list
-            List<UserDuesModel> userDuesList = (List<UserDuesModel>)new UserDuesProvider().Get(vm.ApplicationId).Result.Where(x => x.UserId.Equals(vm.UserId)).OrderByDescending(x => x.DuesModel.Title).ToList();
+            //List<UserDuesModel> userDuesList = (List<UserDuesModel>)new UserDuesProvider().Get(vm.ApplicationId).Result.Where(x => x.UserId.Equals(vm.UserId)).OrderByDescending(x => x.DuesModel.Title).ToList();
+            List<UserDuesModel> userDuesList = (List<UserDuesModel>)new UserDuesProvider().GetByUserId(vm.ApplicationId, vm.UserId).Result.OrderByDescending(x => x.DuesModel.Title).ToList();
+
 
             // get user payments list
             List<UserPaymentsModel> lsUserPayments = (List<UserPaymentsModel>)_provider.Get(vm.ApplicationId).Result.Where(x => x.UserId == vm.UserId).ToList();

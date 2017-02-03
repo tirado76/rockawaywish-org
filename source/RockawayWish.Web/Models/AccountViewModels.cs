@@ -71,7 +71,7 @@ namespace RockawayWish.Web.Models
         [Display(Name = "Zip")]
         public string Zip { get; set; }
 
-        [Display(Name = "Phone")]
+        [Display(Name = "Home Phone")]
         public string Phone { get; set; }
 
         [Display(Name = "Cell Phone")]
