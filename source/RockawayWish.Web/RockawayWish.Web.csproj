@@ -270,6 +270,7 @@
     <Content Include="Content\fonts\FontAwesome.otf" />
     <Content Include="js\vendor\jquery-1.10.2.min.js" />
     <Content Include="js\vendor\modernizr-2.6.2.min.js" />
+    <Content Include="robots.prod.txt" />
     <Content Include="robots.txt" />
     <Content Include="Views\Account\ForgotPassword.cshtml">
       <SubType>Code</SubType>
