@@ -298,6 +298,7 @@
     <Content Include="Views\PhotoGallery\Instagram.cshtml" />
     <Content Include="Views\Members\_UserFields.cshtml" />
     <Content Include="Views\Members\EditProfile.cshtml" />
+    <Content Include="Views\Donate\Register.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
@@ -317,7 +318,7 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="aspnet_client\App_Data\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

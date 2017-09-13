@@ -426,7 +426,7 @@ namespace RockawayWish.Web.Controllers
         }
 
         #region Private Methods
-        private void SetAuthenticatation(string authTicketName, bool blPersistant)
+        internal void SetAuthenticatation(string authTicketName, bool blPersistant)
         {
             FormsAuthentication.SetAuthCookie(authTicketName, blPersistant);
         }
