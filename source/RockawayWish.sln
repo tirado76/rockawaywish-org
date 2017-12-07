@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WEb", "WEb", "{DCEE6C6A-96BA-4367-AF5C-93BC95F0ECE8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Web", "RockawayWish.Web\RockawayWish.Web.csproj", "{87AF22FF-555D-4A5E-B693-ED262800B797}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Web.Tests", "RockawayWish.Web.Tests\RockawayWish.Web.Tests.csproj", "{30DC0981-79C9-49F6-B581-D2B28F0FBA97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,11 +17,12 @@ Global
 		{87AF22FF-555D-4A5E-B693-ED262800B797}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87AF22FF-555D-4A5E-B693-ED262800B797}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87AF22FF-555D-4A5E-B693-ED262800B797}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30DC0981-79C9-49F6-B581-D2B28F0FBA97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30DC0981-79C9-49F6-B581-D2B28F0FBA97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30DC0981-79C9-49F6-B581-D2B28F0FBA97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30DC0981-79C9-49F6-B581-D2B28F0FBA97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{87AF22FF-555D-4A5E-B693-ED262800B797} = {DCEE6C6A-96BA-4367-AF5C-93BC95F0ECE8}
 	EndGlobalSection
 EndGlobal
