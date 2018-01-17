@@ -7,7 +7,9 @@
 
     }
 
-
+   #main-carousel .carousel-inner p {
+        font-weight: bold;
+    }
 
 }
 
@@ -26,7 +28,8 @@
 
     /* Resize home carousel */
     #main-carousel .carousel-inner p {
-        font-size: 20px;
+        font-size: 22px;
+        font-weight: bold;
     }
 
 	/*ul.navbar-nav a {
@@ -52,7 +55,10 @@
 
     /* Resize home carousel */
     #main-carousel .carousel-inner p {
-        font-size: 16px;
+        font-size: 18px;
+        font-weight: bold;
+        padding-left: 75px;
+        padding-right: 75px;
     }
 
 	.navbar-header{
@@ -171,7 +177,10 @@
 
     /* Resize home carousel */
     #main-carousel .carousel-inner p {
-        font-size: 14px;
+        font-size: 16px;
+        font-weight: bold;
+        padding-left: 50px;
+        padding-right: 50px;
     }
 	.carousel-caption h3 {
 	    font-size: 20px;
