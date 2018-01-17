@@ -18,13 +18,13 @@ namespace RockawayWish.Web.Controllers
         public ActionResult Index()
         {
             // Stop Caching in IE
-            HttpContext.Response.Cache.SetCacheability(System.Web.HttpCacheability.NoCache);
+            //HttpContext.Response.Cache.SetCacheability(System.Web.HttpCacheability.NoCache);
 
             // Stop Caching in Firefox
-            HttpContext.Response.Cache.SetNoStore();
+            //HttpContext.Response.Cache.SetNoStore();
 
             // get set site model
-            var siteModel = new SiteRepository().Get().ConfigureAwait(false);
+            //var siteModel = new SiteRepository().Get().ConfigureAwait(false);
 
             return View();
         }
