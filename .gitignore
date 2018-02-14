@@ -183,13 +183,13 @@ UpgradeLog*.htm
 FakesAssemblies/
 
 #Dog Chow CMS
-source/RockawayWish.CMS.Web/App_Data/preview/*
-source/RockawayWish.CMS.Web/App_Data/cache/*
-source/RockawayWish.CMS.Web/App_Data/Logs/*
-source/RockawayWish.CMS.Web/App_Data/Temp/*
-source/RockawayWish.CMS.Web/App_Data/NuGetBackup/*
-source/RockawayWish.CMS.Web/App_Data/umbraco.config
-source/RockawayWish.CMS.Web/media/*
+source/RockawayWishCMS.Web/App_Data/preview/*
+source/RockawayWishCMS.Web/App_Data/cache/*
+source/RockawayWishCMS.Web/App_Data/Logs/*
+source/RockawayWishCMS.Web/App_Data/Temp/*
+source/RockawayWishCMS.Web/App_Data/NuGetBackup/*
+source/RockawayWishCMS.Web/App_Data/umbraco.config
+source/RockawayWishCMS.Web/media/*
 
 #Mac
 .DS_Store
