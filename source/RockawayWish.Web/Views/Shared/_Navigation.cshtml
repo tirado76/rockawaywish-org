@@ -11,7 +11,6 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="@Url.Content("~/about-wish")">About Us</a></li>
                         @*<li><a href="@Url.Content("~/photos/instagram")">Photos</a></li>*@
-                        <li><a href="@Url.Content("~/donate")">Donate</a></li>
                         <li><a href="@Url.Content("~/contact-wish")">Contact Us</a></li>
 
                         @if (!Request.IsAuthenticated)
@@ -24,6 +23,7 @@
                             <li><a href="@Url.Content("~/members")">Members</a></li>
                             <li><a href="@Url.Content("~/signout")">Sign Out</a></li>
                         }
+                        <li><a href="@Url.Content("~/donate")">Donate</a></li>
                     </ul>
                 </div>
             </div>
