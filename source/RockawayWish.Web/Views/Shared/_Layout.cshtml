@@ -27,23 +27,12 @@
 
 </head>
 <body>
-    <div class="preloader">
-        <div class="preloder-wrap">
-            <div class="preloder-inner">
-                <div class="ball"></div>
-                <div class="ball"></div>
-                <div class="ball"></div>
-                <div class="ball"></div>
-                <div class="ball"></div>
-                <div class="ball"></div>
-                <div class="ball"></div>
-            </div>
-        </div>
-    </div><!--/.preloader-->
+
+    @Html.Partial("_Preloader")
+        
     @Html.Partial("_Navigation")
 
     @RenderBody()
-
 
     @Html.Partial("_Footer")
 

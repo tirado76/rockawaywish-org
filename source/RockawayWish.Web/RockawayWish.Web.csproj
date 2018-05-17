@@ -307,6 +307,7 @@
     <Content Include="Content\pdf\slide5.pdf" />
     <Content Include="Content\pdf\slide2.pdf" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
+    <Content Include="Views\Shared\_Preloader.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
