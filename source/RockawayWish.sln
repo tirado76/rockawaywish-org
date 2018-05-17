@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Web", "RockawayWish.Web\RockawayWish.Web.csproj", "{87AF22FF-555D-4A5E-B693-ED262800B797}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Web.Tests", "RockawayWish.Web.Tests\RockawayWish.Web.Tests.csproj", "{30DC0981-79C9-49F6-B581-D2B28F0FBA97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWishCMS.Web", "RockawayWishCMS.Web\RockawayWishCMS.Web.csproj", "{56E9E471-356E-4434-B516-C0C5C5BD2581}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWishCMS.Data", "RockawayWishCMS.Data\RockawayWishCMS.Data.csproj", "{90016871-81CC-48A4-8B06-C6CA6A5FF9AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Events.Web", "RockawayWish.Events.Web\RockawayWish.Events.Web.csproj", "{2C810727-42A9-4921-99DA-18E99421DED6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,18 @@ Global
 		{30DC0981-79C9-49F6-B581-D2B28F0FBA97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30DC0981-79C9-49F6-B581-D2B28F0FBA97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30DC0981-79C9-49F6-B581-D2B28F0FBA97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56E9E471-356E-4434-B516-C0C5C5BD2581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E9E471-356E-4434-B516-C0C5C5BD2581}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E9E471-356E-4434-B516-C0C5C5BD2581}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E9E471-356E-4434-B516-C0C5C5BD2581}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90016871-81CC-48A4-8B06-C6CA6A5FF9AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90016871-81CC-48A4-8B06-C6CA6A5FF9AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90016871-81CC-48A4-8B06-C6CA6A5FF9AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90016871-81CC-48A4-8B06-C6CA6A5FF9AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C810727-42A9-4921-99DA-18E99421DED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C810727-42A9-4921-99DA-18E99421DED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C810727-42A9-4921-99DA-18E99421DED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C810727-42A9-4921-99DA-18E99421DED6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
