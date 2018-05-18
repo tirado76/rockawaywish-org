@@ -187,6 +187,7 @@ source/RockawayWishCMS.Web/App_Data/preview/*
 source/RockawayWishCMS.Web/App_Data/cache/*
 source/RockawayWishCMS.Web/App_Data/Logs/*
 source/RockawayWishCMS.Web/App_Data/Temp/*
+source/RockawayWishCMS.Web/App_Data/Models/*
 source/RockawayWishCMS.Web/App_Data/NuGetBackup/*
 source/RockawayWishCMS.Web/App_Data/umbraco.config
 source/RockawayWishCMS.Web/media/*
