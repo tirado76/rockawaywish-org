@@ -307,6 +307,8 @@
     <Content Include="Views\Donate\Register.cshtml" />
     <Content Include="Content\pdf\slide5.pdf" />
     <Content Include="Content\pdf\slide2.pdf" />
+    <Content Include="Views\Shared\_Navigation.cshtml" />
+    <Content Include="Views\Shared\_Preloader.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
@@ -351,7 +353,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Error\PageNotFound.cshtml" />
-    <Content Include="Web.prod.config" />
+    <Content Include="Web.prod.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Web.prod.Debug.config">
       <DependentUpon>Web.prod.config</DependentUpon>
     </None>
