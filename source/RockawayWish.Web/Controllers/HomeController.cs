@@ -15,6 +15,7 @@ namespace RockawayWish.Web.Controllers
     {
         public ActionResult Index()
         {
+            var homePageVM = _SiteVM.HomePageVM;
             // Stop Caching in IE
             //HttpContext.Response.Cache.SetCacheability(System.Web.HttpCacheability.NoCache);
 
@@ -24,7 +25,7 @@ namespace RockawayWish.Web.Controllers
             // get set site model
             //var siteModel = new SiteRepository().Get().ConfigureAwait(false);
 
-            return View();
+            return View(homePageVM);
         }
 
         [Route("about-wish")]

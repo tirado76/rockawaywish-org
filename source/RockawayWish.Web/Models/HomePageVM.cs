@@ -1,21 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace RockawayWishCMS.Data.Entities
+namespace RockawayWish.Web.Models
 {
-    public class CarouselEntity
+    public class HomePageVM : BasePageVM
     {
-        public CarouselEntity()
+        public HomePageVM()
         {
-            CarouselSlideEntities = new List<CarouselSlideEntity>();
+            Carousel = new CarouselVM();
         }
-        public List<CarouselSlideEntity> CarouselSlideEntities { get; set; }
+
+        public CarouselVM Carousel { get; set; }
     }
-    public class CarouselSlideEntity
+
+    public class CarouselVM
     {
+        public CarouselVM()
+        {
+            Slides = new List<CarouselSlideVM>();
+        }
+
+        public List<CarouselSlideVM> Slides { get; set; }
+
+    }
+    public class CarouselSlideVM
+    {
+
         public string headerText { get; set; }
         public string subheaderText { get; set; }
         public string sliderImage { get; set; }

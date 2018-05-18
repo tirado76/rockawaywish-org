@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RockawayWishCMS.Data.Entities
+namespace RockawayWish.Core.Entities
 {
     public class WebsiteEntity
     {

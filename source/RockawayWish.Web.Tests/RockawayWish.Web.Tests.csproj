@@ -65,6 +65,10 @@
     <Compile Include="ControllerTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RockawayWish.Core\RockawayWish.Core.csproj">
+      <Project>{0b2c0a37-ee17-4885-bfc6-5dc228253127}</Project>
+      <Name>RockawayWish.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RockawayWish.Web\RockawayWish.Web.csproj">
       <Project>{87af22ff-555d-4a5e-b693-ed262800b797}</Project>
       <Name>RockawayWish.Web</Name>

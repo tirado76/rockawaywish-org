@@ -1,7 +1,8 @@
-﻿@{
+﻿@model RockawayWish.Web.Models.HomePageVM
+@{
     ViewBag.Title = "Home Page";
 }
 
-@Html.Partial("_HomeCarousel")
+@Html.Partial("_HomeCarousel", Model.Carousel)
 
 

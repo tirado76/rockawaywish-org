@@ -10,8 +10,8 @@ using Umbraco.Core;
 using Umbraco.Web;
 using Umbraco.Web.Models;
 
+using RockawayWish.Core.Entities;
 using RockawayWishCMS.Data.Helpers;
-using RockawayWishCMS.Data.Entities;
 
 namespace RockawayWishCMS.Data.Repositories
 {

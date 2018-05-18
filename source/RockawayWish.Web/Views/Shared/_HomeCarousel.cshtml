@@ -1,4 +1,5 @@
-﻿<section id="home">
+﻿@model RockawayWish.Web.Models.CarouselVM
+<section id="home">
     <div class="home-pattern"></div>
     <div id="main-carousel" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -9,69 +10,37 @@
             <li data-target="#main-carousel" data-slide-to="4"></li>
         </ol><!--/.carousel-indicators-->
         <div class="carousel-inner" style="text-shadow: 4px 4px #000;">
-
-
-            <div class="item responsive-image active" style="background-image: url('@Url.Content("~/Content/images/slider/slide1.jpg")'); background-size: contain;">
-                <div class="carousel-caption" style="text-shadow: 2px 2px #000;">
-                    <div>
-                        <h2 class="heading animated bounceInDown">WISH of Rockaway</h2>
-                        <br />
-                        <a class="btn btn-default slider-btn animated fadeIn" href="@Url.Content("~/about-wish")">Learn More</a>
+            @if (Model.Slides != null)
+            {
+                foreach (var slide in Model.Slides)
+                {
+                    <div class="@Convert.ToString(slide.sliderImageCSSClass)" style="background-image: url('@Url.Content(Convert.ToString(slide.sliderImage))');">
+                        <div class="carousel-caption" style="text-shadow: 2px 2px #000;">
+                            <div>
+                                <h2 class="@Convert.ToString(slide.headerTextCSSClass)">@Convert.ToString(slide.headerText)</h2>
+                                @if (!string.IsNullOrEmpty(slide.subheaderText))
+                                {
+                                    <p class="@Convert.ToString(slide.subHeaderTextCSSClass)">
+                                        @Html.Raw(Convert.ToString(slide.subheaderText))
+                                    </p>
+                                }
+                                @if (slide.showButton)
+                                {
+                                    <br />
+                                    if (slide.buttonALinkToAURL)
+                                    {
+                                        <a class="@Convert.ToString(slide.buttonCSSClass)" href="@Url.Content(Convert.ToString(slide.buttonLinkURL))">@Convert.ToString(slide.buttonText)</a>
+                                    }
+                                    else if (slide.buttonLinkToAFile)
+                                    {
+                                        <a class="@Convert.ToString(slide.buttonCSSClass)" href="@Url.Content(Convert.ToString(slide.buttonFileDownload))">@Convert.ToString(slide.buttonText)</a>
+                                    }
+                                }
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="item responsive-image" style="background-image: url('@Url.Content("~/Content/images/slider/slide2.jpg")')">
-                <div class="carousel-caption">
-                    <div>
-                        <h2 class="heading animated bounceInDown">Women</h2>
-                        <p class="animated bounceInUp">
-                            Red, WISH, & Blue is Friday, May, 25th.
-                            <br /><br />
-                            Tickets are still available for sale from any board member.
-                            <br /><br />
-                            Click below for more info.
-                            
-                        </p>
-                        <a class="btn btn-default slider-btn animated fadeIn" href="@Url.Content("~/Content/pdf/slide2.pdf")" target="_blank">Blue Fundraiser</a>
-                    </div>
-                </div>
-            </div>
-            <div class="item responsive-image" style="background-image: url('@Url.Content("~/Content/images/slider/slide3.jpg")')">
-                <div class="carousel-caption">
-                    <div>
-                        <h2 class="heading animated bounceInDown">Inspired</h2>
-                        <p class="animated bounceInUp">
-                            This year WISH honored Kathy Roberts, Margot McGinn, and Eileen Cuomo for all
-                            <br /> of the amazing things they do to support the Rockaway community.
-                            
-                        </p>
-                        @*<a class="btn btn-default slider-btn animated bounceInUp" href="http://www.rockapulcorun.com" target="_blank">Catch a Cure</a>*@
-                    </div>
-                </div>
-            </div>
-            <div class="item responsive-image" style="background-image: url('@Url.Content("~/Content/images/slider/slide4.jpg")')">
-                <div class="carousel-caption">
-                    <div>
-                        <h2 class="heading animated bounceInRight">Support</h2>
-                        <p class="animated bounceInUp">WISH of Rockaway can use your support.</p>
-                        <a class="btn btn-default slider-btn animated bounceInUp" href="@Url.Content("~/donate")">Donate</a>
-                    </div>
-                </div>
-            </div>
-            <div class="item responsive-image" style="background-image: url('@Url.Content("~/Content/images/slider/slide5.jpg")')">
-                <div class="carousel-caption">
-                    <div>
-                        <h2 class="heading animated bounceInRight">Help</h2>
-                        <p class="animated bounceInUp">
-                            We are always looking for dedicated women who are looking to help the Rockaway community. 
-                            <br /><br />
-                            If you would like to join WISH, click the link below.
-                        </p>
-                        <a class="btn btn-default slider-btn animated bounceInUp" href="@Url.Content("~/register")">Join</a>
-                    </div>
-                </div>
-            </div>
-
+                }
+            }
         </div><!--/.carousel-inner-->
 
         <a class="carousel-left member-carousel-control hidden-xs" href="#main-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>

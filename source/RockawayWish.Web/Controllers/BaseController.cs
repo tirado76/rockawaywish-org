@@ -10,10 +10,20 @@ using InteractiveMembership.Core.Constants;
 using InteractiveMembership.Core.Models;
 using InteractiveMembership.Data.Providers;
 
+using RockawayWish.Web.Models;
+using RockawayWish.Web.Repositories;
+
 namespace RockawayWish.Web.Controllers
 {
     public class BaseController : Controller
     {
+        internal SiteRepository _SiteVM;
+
+        public BaseController()
+        {
+            _SiteVM = new SiteRepository();
+        }
+
         protected override void OnException(ExceptionContext filterContext)
         {
             base.OnException(filterContext);

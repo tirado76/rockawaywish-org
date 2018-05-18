@@ -64,7 +64,9 @@
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Extensions">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -177,6 +179,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HTTPHelper.cs" />
+    <Compile Include="Models\BasePageVM.cs" />
+    <Compile Include="Models\HomePageVM.cs" />
     <Compile Include="Models\MembersViewModels.cs" />
     <Compile Include="Models\ContactViewModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -361,6 +365,12 @@
     <Content Include="Views\Shared\_PayPalSubsribeButton.cshtml" />
     <Content Include="Views\Members\Payment.cshtml" />
     <Content Include="Views\Members\CompletePayment.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RockawayWish.Core\RockawayWish.Core.csproj">
+      <Project>{0b2c0a37-ee17-4885-bfc6-5dc228253127}</Project>
+      <Name>RockawayWish.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

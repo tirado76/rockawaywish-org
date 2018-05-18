@@ -13,7 +13,7 @@ using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.WebApi;
 
-using RockawayWishCMS.Data.Entities;
+using RockawayWish.Core.Entities;
 using RockawayWishCMS.Data.Helpers;
 using RockawayWishCMS.Data.Repositories;
 
