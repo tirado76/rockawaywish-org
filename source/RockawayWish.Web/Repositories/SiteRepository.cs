@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -13,7 +14,7 @@ namespace RockawayWish.Web.Repositories
 {
     public class SiteRepository : ISiteRepository
     {
-        const string _UmbracoApiEndpoint = "https://rockawaywishcms-local.tiradointeractive.com/umbraco/api/site/get";
+        private string _UmbracoApiEndpoint { get { return ConfigurationManager.AppSettings["CMS-Endpoint"]; } }
         readonly Uri _baseUri;
         readonly IDictionary<string, string> _headers;
         WebsiteEntity _WebSiteEntity;
