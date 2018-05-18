@@ -116,9 +116,14 @@ namespace RockawayWishCMS.Data.Repositories
                                            websiteEntity.PagesEntity.HomePageEntity = new HomePageEntity();
                                            var homePageEntity = (HomePageEntity)MapDocumentTypeEntity(pagesItemChild.Id, new HomePageEntity());
                                            websiteEntity.PagesEntity.HomePageEntity.headerText = homePageEntity.headerText;
-                                           //websiteEntity.PagesEntity.HomePageEntity.pageTitle = homePageEntity.pageTitle;
-                                           //websiteEntity.PagesEntity.HomePageEntity.metaKeywords = homePageEntity.metaKeywords;
-                                           //websiteEntity.PagesEntity.HomePageEntity.metaDescription = homePageEntity.metaDescription;
+                                           websiteEntity.PagesEntity.HomePageEntity.pageTitle = homePageEntity.pageTitle;
+                                           websiteEntity.PagesEntity.HomePageEntity.metaKeywords = homePageEntity.metaKeywords;
+                                           websiteEntity.PagesEntity.HomePageEntity.metaDescription = homePageEntity.metaDescription;
+                                           websiteEntity.PagesEntity.HomePageEntity.metaDescription = homePageEntity.metaDescription;
+                                           websiteEntity.PagesEntity.HomePageEntity.metaDescription = homePageEntity.metaDescription;
+                                           websiteEntity.PagesEntity.HomePageEntity.metaDescription = homePageEntity.metaDescription;
+                                           websiteEntity.PagesEntity.HomePageEntity.metaDescription = homePageEntity.metaDescription;
+                                           websiteEntity.PagesEntity.HomePageEntity.metaDescription = homePageEntity.metaDescription;
 
                                            foreach (var homePageItemChild in pagesItemChild.Children)
                                            {

@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWishCMS.Web", "Rock
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWishCMS.Data", "RockawayWishCMS.Data\RockawayWishCMS.Data.csproj", "{90016871-81CC-48A4-8B06-C6CA6A5FF9AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Events.Web", "RockawayWish.Events.Web\RockawayWish.Events.Web.csproj", "{2C810727-42A9-4921-99DA-18E99421DED6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,10 +31,6 @@ Global
 		{90016871-81CC-48A4-8B06-C6CA6A5FF9AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90016871-81CC-48A4-8B06-C6CA6A5FF9AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90016871-81CC-48A4-8B06-C6CA6A5FF9AB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2C810727-42A9-4921-99DA-18E99421DED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C810727-42A9-4921-99DA-18E99421DED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C810727-42A9-4921-99DA-18E99421DED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C810727-42A9-4921-99DA-18E99421DED6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
