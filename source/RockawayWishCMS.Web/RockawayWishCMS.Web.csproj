@@ -1663,7 +1663,6 @@
     <Content Include="Config\tinyMceConfig.config" />
     <Content Include="Config\trees.config" />
     <Content Include="Config\umbracoSettings.config" />
-    <Content Include="Media\Web.config" />
     <Content Include="Umbraco\assets\fonts\helveticons\helveticons.eot" />
     <Content Include="Umbraco\assets\fonts\helveticons\helveticons.ttf" />
     <Content Include="Umbraco\assets\fonts\helveticons\helveticons.woff" />
@@ -1820,6 +1819,7 @@
     <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
     <Content Include="Views\Web.config" />
+    <None Include="Properties\PublishProfiles\rockawaywishcms-local.tiradointeractive.com.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1829,6 +1829,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Media\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RockawayWish.Core\RockawayWish.Core.csproj">
