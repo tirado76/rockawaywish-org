@@ -10,7 +10,7 @@ namespace RockawayWishCMS.Data.Entities
     {
         public HomePageEntity()
         {
-
+            CarouselEntity = new CarouselEntity();
         }
         public string pageTitle { get; set; }
         public string headerText { get; set; }

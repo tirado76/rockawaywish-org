@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
-using tiradointeractive.Services.Models;
-using tiradointeractive.Services.Models.ViewModels;
 
 using RockawayWish.Web.Helpers;
 using RockawayWish.Web.Repositories;

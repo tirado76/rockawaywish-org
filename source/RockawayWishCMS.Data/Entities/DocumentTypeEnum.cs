@@ -8,6 +8,6 @@ namespace RockawayWishCMS.Data.Entities
 {
     public enum DocumentTypeEnum
     {
-        Website, Pages, HomePage, Carousel, CarouselSlide
+        Website, Pages, HomePage, HomePage2, Carousel, CarouselSlide
     }
 }

@@ -10,9 +10,9 @@ namespace RockawayWishCMS.Data.Entities
     {
         public CarouselEntity()
         {
-            //CarouselSlideEntities = new List<CarouselSlideEntity>();
+            CarouselSlideEntities = new List<CarouselSlideEntity>();
         }
-        //public List<CarouselSlideEntity> CarouselSlideEntities { get; set; }
+        public List<CarouselSlideEntity> CarouselSlideEntities { get; set; }
     }
     public class CarouselSlideEntity
     {
@@ -20,11 +20,11 @@ namespace RockawayWishCMS.Data.Entities
         public string subheaderText { get; set; }
         public string sliderImage { get; set; }
         public string buttonText { get; set; }
-        public string showButton { get; set; }
-        public string buttonALinkToAURL { get; set; }
+        public bool showButton { get; set; }
+        public bool buttonALinkToAURL { get; set; }
         public string buttonLinkURL { get; set; }
-        public string buttonLinkOpenNewWindow { get; set; }
-        public string buttonLinkToAFile { get; set; }
+        public bool buttonLinkOpenNewWindow { get; set; }
+        public bool buttonLinkToAFile { get; set; }
         public string buttonFileDownload { get; set; }
         public string headerTextCSSClass { get; set; }
         public string subHeaderTextCSSClass { get; set; }

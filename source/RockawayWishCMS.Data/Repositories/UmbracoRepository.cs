@@ -110,19 +110,14 @@ namespace RockawayWishCMS.Data.Repositories
 
                                    foreach (var pagesItemChild in websiteItemChild.Children)
                                    {
-                                       if (pagesItemChild.DocumentTypeAlias.ToLower() == DocumentTypeEnum.HomePage.ToString().ToLower())
+                                       if (pagesItemChild.DocumentTypeAlias.ToLower() == DocumentTypeEnum.HomePage2.ToString().ToLower())
                                        {
                                            // Map Website DocumentType to Website Object
-                                           websiteEntity.PagesEntity.HomePageEntity = new HomePageEntity();
+                                           //websiteEntity.PagesEntity.HomePageEntity = new HomePageEntity();
                                            var homePageEntity = (HomePageEntity)MapDocumentTypeEntity(pagesItemChild.Id, new HomePageEntity());
                                            websiteEntity.PagesEntity.HomePageEntity.headerText = homePageEntity.headerText;
                                            websiteEntity.PagesEntity.HomePageEntity.pageTitle = homePageEntity.pageTitle;
                                            websiteEntity.PagesEntity.HomePageEntity.metaKeywords = homePageEntity.metaKeywords;
-                                           websiteEntity.PagesEntity.HomePageEntity.metaDescription = homePageEntity.metaDescription;
-                                           websiteEntity.PagesEntity.HomePageEntity.metaDescription = homePageEntity.metaDescription;
-                                           websiteEntity.PagesEntity.HomePageEntity.metaDescription = homePageEntity.metaDescription;
-                                           websiteEntity.PagesEntity.HomePageEntity.metaDescription = homePageEntity.metaDescription;
-                                           websiteEntity.PagesEntity.HomePageEntity.metaDescription = homePageEntity.metaDescription;
                                            websiteEntity.PagesEntity.HomePageEntity.metaDescription = homePageEntity.metaDescription;
 
                                            foreach (var homePageItemChild in pagesItemChild.Children)
@@ -130,15 +125,15 @@ namespace RockawayWishCMS.Data.Repositories
                                                if (homePageItemChild.DocumentTypeAlias.ToLower() == DocumentTypeEnum.Carousel.ToString().ToLower())
                                                {
                                                    // Map Website DocumentType to Website Object
-                                                  websiteEntity.PagesEntity.HomePageEntity.CarouselEntity = (CarouselEntity)MapDocumentTypeEntity(homePageItemChild.Id, websiteEntity.PagesEntity.HomePageEntity.CarouselEntity);
-
                                                    foreach (var carouselItemChild in homePageItemChild.Children)
                                                    {
-                                                       int carouselSlideCount = 0;
                                                        if (carouselItemChild.DocumentTypeAlias.ToLower() == DocumentTypeEnum.CarouselSlide.ToString().ToLower())
                                                        {
                                                            // Map Website DocumentType to Website Object
-                                                           //websiteEntity.PagesEntity.HomePageEntity.CarouselEntity.CarouselSlideEntities[carouselSlideCount] = (CarouselSlideEntity)MapDocumentTypeEntity(carouselItemChild.Id, websiteEntity.PagesEntity.HomePageEntity.CarouselEntity.CarouselSlideEntities[carouselSlideCount]);
+                                                           var carouselSlideEntity = (CarouselSlideEntity)MapDocumentTypeEntity(carouselItemChild.Id, new CarouselSlideEntity());
+                                                           //CarouselSlideEntity cSlideEntitty = new CarouselSlideEntity();
+                                                           //cSlideEntitty.subheaderText = carouselSlideEntity.headerText;
+                                                           websiteEntity.PagesEntity.HomePageEntity.CarouselEntity.CarouselSlideEntities.Add(carouselSlideEntity);
 
                                                        }
 
