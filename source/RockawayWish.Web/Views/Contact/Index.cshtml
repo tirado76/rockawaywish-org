@@ -1,4 +1,7 @@
-﻿@model RockawayWish.Web.Models.ContactViewModel
+﻿@using CaptchaMvc.HtmlHelpers
+@using CaptchaMvc;
+
+@model RockawayWish.Web.Models.ContactViewModel
 
 <section id="contact">
     <div class="container">
@@ -21,8 +24,8 @@
                                 <a href="https://www.facebook.com/Rockaway-WISH-305408352848897" target="_blank"><i class="fa fa-facebook"></i></a>
                                 <a href="https://twitter.com/RockawayWISH" target="_blank"><i class="fa fa-twitter"></i></a>
                                 @*<a href="#"><i class="fa fa-google-plus"></i></a>
-                                <a href="#"><i class="fa fa-dribbble"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>*@
+                                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a>*@
                             </div>
                         </div>
                     </div>
@@ -32,7 +35,7 @@
                             @using (Html.BeginForm(new { @class = "contact", role = "form" }))
                             {
                                 @Html.AntiForgeryToken()
-                                
+
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                                 @*<form id="contact-form" class="contact" name="contact-form" method="post" action="send-mail.php">*@
@@ -51,13 +54,23 @@
                                     @Html.TextAreaFor(m => m.Message, new { @class = "form-control", @required = "required", @rows = "8", @placeholder = "Message" })
                                     @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
                                 </div>
+
+                                <div class="form-group">
+                                    @Html.MathCaptcha()
+                                </div>
+
+                                @*@Html.Captcha(3)*@
+                                <br />
+                                <div class="form-group">
+                                    <p class="Error">  @ViewBag.ErrMessage </p>
+                                </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary">Send</button>
                                 </div>
                                 @*</form>*@
                             }
                         </div>
-                    </div>
+                            </div>
                 </div>
             </div>
         </div>
