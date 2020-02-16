@@ -1,4 +1,6 @@
-﻿@model RockawayWish.Web.Models.RegisterViewModel
+﻿@using CaptchaMvc.HtmlHelpers
+@using CaptchaMvc;
+@model RockawayWish.Web.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
 }
@@ -18,7 +20,7 @@
                         <h4>We are so grateful for your donations as they help us to assist families throughout the Rockaways who are experiencing so difficult times.</h4>
                         <h5>*** WISH of Rockaway is currently accepting donations for the victims of Hurricane Irma &amp; Harvey. In our time of need after Hurricane Sandy, we benefited immensely from the kindness of strangers near and far. We now want to assist the people of Houston during the most trying days ahead. If you would like to donate to the Hurricane Irma &amp; Harvey fund please write that in the comments section of the paypal donation site. 100% of the money collected will be directly distributed to locals on the ground in Houston, via partners we worked with during Sandy. </h5>
                         <hr />
-                    
+
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group">
                             @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
@@ -42,19 +44,19 @@
                             </div>
                         </div>
                         @*<div class="form-group">
-                            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                            <div class="col-md-10">
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-                            <div class="col-md-10">
-                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
-                            </div>
-                        </div>*@
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
@@ -109,6 +111,9 @@
                                 @Html.EditorFor(model => model.CellPhone, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.CellPhone, "", new { @class = "text-danger" })
                             </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.MathCaptcha()
                         </div>
 
                         <div class="form-group">

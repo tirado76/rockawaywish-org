@@ -14,6 +14,9 @@ using InteractiveMembership.Core.Enums;
 using InteractiveMembership.Core.Constants;
 using InteractiveMembership.Data.Providers;
 
+using CaptchaMvc.HtmlHelpers;
+
+
 namespace RockawayWish.Web.Controllers
 {
     public class DonateController : BaseController
@@ -51,6 +54,12 @@ namespace RockawayWish.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (!this.IsCaptchaValid("Captcha is not valid"))
+                {
+                    ModelState.AddModelError("", "Error: Captcha is not valid");
+                    return View(model);
+                }
+
                 model.YearJoined = DateTime.Now.Year;
 
                 bool isDonator = true;

@@ -31,9 +31,11 @@ namespace RockawayWish.Web.Controllers
             // Code for validating the CAPTCHA  
             if (this.IsCaptchaValid("Captcha is not valid"))
             {
+                ModelState.AddModelError("", "Error: Captcha is not valid");
+                return View(model);
+            }
 
-
-                StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
                 sb.AppendLine("<p>The following user has submitted a question on the WISH of Rockaway website.</p>");
                 sb.AppendFormat("<p>Name: {0}</p>", model.Name);
                 sb.AppendFormat("<p>Email: {0}</p>", model.Email);
@@ -48,9 +50,6 @@ namespace RockawayWish.Web.Controllers
                 else
                     ModelState.AddModelError("", emailResult.Message);
 
-            }
-            else
-                ModelState.AddModelError("","Error: captcha is not valid.");
 
             return View(model);
         }
