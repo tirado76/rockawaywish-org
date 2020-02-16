@@ -14,6 +14,9 @@ using InteractiveMembership.Core.Enums;
 using InteractiveMembership.Core.Models;
 using InteractiveMembership.Data.Providers;
 
+using CaptchaMvc.HtmlHelpers;
+
+
 namespace RockawayWish.Web.Controllers
 {
     public class AccountController : BaseController
@@ -136,70 +139,79 @@ namespace RockawayWish.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.YearJoined = DateTime.Now.Year;
-
-                bool isDonator = false;
-                if (!string.IsNullOrEmpty(returnUrl)  && returnUrl.ToLower().Contains("donate"))
-                    isDonator = true;
-                // register user
-                var result = await _userProvider.Create(new Guid(Config.ApplicationId), model.Email, Guid.NewGuid().ToString(), model.FirstName, model.LastName, true, false, isDonator, false, false, model.YearJoined, model.Address, model.City, model.State, model.Country, model.Zip, model.Phone, model.CellPhone);
-
-                if (result.Status == 0)
-                {
-
-                    // send email to membership administrator with registration information
-                    StringBuilder sb = new StringBuilder();
-                    if (isDonator)
-                    {
-                        sb.AppendLine("<p>The following user has registered as a donor on the WISH of Rockaway website and needs to be sent a welcome email.</p>");
-                        sb.AppendFormat("<p>Registered as: {0}</p>", "Donor");
-                    }
-                    else
-                    {
-                        sb.AppendLine("<p>The following user has registered as a member on the WISH of Rockaway website and needs to be approved and sent a welcome email.</p>");
-                        sb.AppendFormat("<p>Registered as: {0}</p>", "Member");
-                    }
-                    sb.AppendFormat("<p>First Name: {0}</p>", model.FirstName);
-                    sb.AppendFormat("<p>Last Name: {0}</p>", model.LastName);
-                    sb.AppendFormat("<p>Email: {0}</p>", model.Email);
-                    sb.AppendFormat("<p>Address: {0}</p>", model.Address);
-                    sb.AppendFormat("<p>City: {0}</p>", model.City);
-                    sb.AppendFormat("<p>State: {0}</p>", model.State);
-                    sb.AppendFormat("<p>Zip: {0}</p>", model.Zip);
-                    sb.AppendFormat("<p>Country: {0}</p>", model.Country);
-                    sb.AppendFormat("<p>Phone: {0}</p>", model.Phone);
-                    sb.AppendFormat("<p>Cell Phone: {0}</p>", model.CellPhone);
-                    sb.AppendLine("<p>&nbsp;</p>");
-                    sb.AppendLine("<p><a href=\"" + this.MembershipAdminUrl  + "\">Click here</a> to go to the admin panel to approve the user.</p>");
-                    sb.AppendLine("<p>&nbsp;</p>");
-                    sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
-                    sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
-                    if (isDonator)
-                    {
-                        var emailResult = this.SendEmail(this.MembershipAuditEmail, this.MembershipAuditName, "A user has registered as a donor on the WISH of Rockaway website", sb.ToString());
-                    }
-                    else
-                    {
-                        var emailResult = this.SendEmail(this.MembershipAuditEmail, this.MembershipAuditName, "A user has registered as a member on the WISH of Rockaway website", sb.ToString());
-                    }
-
-
-                    //if (!string.IsNullOrEmpty(returnUrl))
-                    //    return RedirectPermanent(returnUrl);
-                    //else
-                    //    return Redirect("~/members");
-
-                    // redirect user to home page
-                    return RedirectPermanent("~/RegisterConfirmation");
-
-                }
+                if (!this.IsCaptchaValid("Captcha is not valid"))
+                    ModelState.AddModelError("", "Error: Captcha is not valid");
                 else
                 {
-                    ModelState.AddModelError("", result.Message);
+                    model.YearJoined = DateTime.Now.Year;
 
+                    bool isDonator = false;
+                    if (!string.IsNullOrEmpty(returnUrl) && returnUrl.ToLower().Contains("donate"))
+                        isDonator = true;
+                    // register user
+                    var result = await _userProvider.Create(new Guid(Config.ApplicationId), model.Email, Guid.NewGuid().ToString(), model.FirstName, model.LastName, true, false, isDonator, false, false, model.YearJoined, model.Address, model.City, model.State, model.Country, model.Zip, model.Phone, model.CellPhone);
+
+                    if (result.Status == 0)
+                    {
+
+                        // send email to membership administrator with registration information
+                        StringBuilder sb = new StringBuilder();
+                        if (isDonator)
+                        {
+                            sb.AppendLine("<p>The following user has registered as a donor on the WISH of Rockaway website and needs to be sent a welcome email.</p>");
+                            sb.AppendFormat("<p>Registered as: {0}</p>", "Donor");
+                        }
+                        else
+                        {
+                            sb.AppendLine("<p>The following user has registered as a member on the WISH of Rockaway website and needs to be approved and sent a welcome email.</p>");
+                            sb.AppendFormat("<p>Registered as: {0}</p>", "Member");
+                        }
+                        sb.AppendFormat("<p>First Name: {0}</p>", model.FirstName);
+                        sb.AppendFormat("<p>Last Name: {0}</p>", model.LastName);
+                        sb.AppendFormat("<p>Email: {0}</p>", model.Email);
+                        sb.AppendFormat("<p>Address: {0}</p>", model.Address);
+                        sb.AppendFormat("<p>City: {0}</p>", model.City);
+                        sb.AppendFormat("<p>State: {0}</p>", model.State);
+                        sb.AppendFormat("<p>Zip: {0}</p>", model.Zip);
+                        sb.AppendFormat("<p>Country: {0}</p>", model.Country);
+                        sb.AppendFormat("<p>Phone: {0}</p>", model.Phone);
+                        sb.AppendFormat("<p>Cell Phone: {0}</p>", model.CellPhone);
+                        sb.AppendLine("<p>&nbsp;</p>");
+                        sb.AppendLine("<p><a href=\"" + this.MembershipAdminUrl + "\">Click here</a> to go to the admin panel to approve the user.</p>");
+                        sb.AppendLine("<p>&nbsp;</p>");
+                        sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
+                        sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
+                        if (isDonator)
+                        {
+                            var emailResult = this.SendEmail(this.MembershipAuditEmail, this.MembershipAuditName, "A user has registered as a donor on the WISH of Rockaway website", sb.ToString());
+                        }
+                        else
+                        {
+                            var emailResult = this.SendEmail(this.MembershipAuditEmail, this.MembershipAuditName, "A user has registered as a member on the WISH of Rockaway website", sb.ToString());
+                        }
+
+
+                        //if (!string.IsNullOrEmpty(returnUrl))
+                        //    return RedirectPermanent(returnUrl);
+                        //else
+                        //    return Redirect("~/members");
+
+                        // redirect user to home page
+                        return RedirectPermanent("~/RegisterConfirmation");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", result.Message);
+
+                    }
                 }
             }
 
+            else
+            {
+                ModelState.AddModelError("", "");
+
+            }
             // If we got this far, something failed, redisplay form
             return View(model);
         }
