@@ -11,6 +11,7 @@ using InteractiveMembership.Core.Constants;
 using InteractiveMembership.Core.Enums;
 using InteractiveMembership.Core.Models;
 using InteractiveMembership.Data.Providers;
+using CaptchaMvc.HtmlHelpers;
 
 namespace RockawayWish.Web.Controllers
 {
@@ -27,20 +28,29 @@ namespace RockawayWish.Web.Controllers
         [Route("contact-wish")]
         public ActionResult Index(ContactViewModel model)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("<p>The following user has submitted a question on the WISH of Rockaway website.</p>");
-            sb.AppendFormat("<p>Name: {0}</p>", model.Name);
-            sb.AppendFormat("<p>Email: {0}</p>", model.Email);
-            sb.AppendFormat("<p>Message: {0}</p>", model.Message);
-            sb.AppendLine("<p>&nbsp;</p>");
-            sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
-            sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
-            var emailResult = this.SendEmail(this.ContactUsEmail, "WISH of Rockaway", "Question submitted on the WISH of Rockaway website", sb.ToString());
+            // Code for validating the CAPTCHA  
+            if (this.IsCaptchaValid("Captcha is not valid"))
+            {
 
-            if (emailResult.Status == 0)
-                return RedirectPermanent("~/contact-wish/confirmation");
+
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("<p>The following user has submitted a question on the WISH of Rockaway website.</p>");
+                sb.AppendFormat("<p>Name: {0}</p>", model.Name);
+                sb.AppendFormat("<p>Email: {0}</p>", model.Email);
+                sb.AppendFormat("<p>Message: {0}</p>", model.Message);
+                sb.AppendLine("<p>&nbsp;</p>");
+                sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
+                sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
+                var emailResult = this.SendEmail(this.ContactUsEmail, "WISH of Rockaway", "Question submitted on the WISH of Rockaway website", sb.ToString());
+
+                if (emailResult.Status == 0)
+                    return RedirectPermanent("~/contact-wish/confirmation");
+                else
+                    ModelState.AddModelError("", emailResult.Message);
+
+            }
             else
-                ModelState.AddModelError("", emailResult.Message);
+                ModelState.AddModelError("","Error: captcha is not valid.");
 
             return View(model);
         }

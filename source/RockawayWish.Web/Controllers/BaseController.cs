@@ -180,7 +180,7 @@ namespace RockawayWish.Web.Controllers
                     this.SmtpFromName,
                     string.Empty).Result;
             }
-            catch (Exception ex)
+            catch
             {
 
             }
