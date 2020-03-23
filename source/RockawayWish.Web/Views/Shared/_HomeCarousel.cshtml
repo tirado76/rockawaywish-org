@@ -1,51 +1,84 @@
 ﻿@model RockawayWish.Web.Models.CarouselVM
 <section id="home">
-    <div class="home-pattern"></div>
-    <div id="main-carousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#main-carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#main-carousel" data-slide-to="1"></li>
-            <li data-target="#main-carousel" data-slide-to="2"></li>
-            <li data-target="#main-carousel" data-slide-to="3"></li>
-            <li data-target="#main-carousel" data-slide-to="4"></li>
-        </ol><!--/.carousel-indicators-->
-        <div class="carousel-inner" style="text-shadow: 4px 4px #000;">
-            @if (Model.Slides != null)
-            {
-                foreach (var slide in Model.Slides)
+    @if (Model.Slides != null)
+    {
+        int slideCount = Model.Slides.Count;
+        if (slideCount > 0)
+        {
+
+            <div class="home-pattern"></div>
+
+            <!-- Carousel -->
+            <div id="main-carousel" class="carousel slide" data-ride="carousel">
+
+                <!-- Carousel Indicators-->
+                @if (slideCount > 1)
                 {
-                    <div class="@Convert.ToString(slide.sliderImageCSSClass)" style="background-image: url('@Url.Content(Convert.ToString(slide.sliderImage))');">
-                        <div class="carousel-caption" style="text-shadow: 2px 2px #000;">
-                            <div>
-                                <h2 class="@Convert.ToString(slide.headerTextCSSClass)">@Convert.ToString(slide.headerText)</h2>
-                                @if (!string.IsNullOrEmpty(slide.subheaderText))
-                                {
-                                    <p class="@Convert.ToString(slide.subHeaderTextCSSClass)">
-                                        @Html.Raw(Convert.ToString(slide.subheaderText))
-                                    </p>
-                                }
-                                @if (slide.showButton)
-                                {
-                                    <br />
-                                    if (slide.buttonALinkToAURL)
+                    <ol class="carousel-indicators">
+                        @for (int x = 0; x < slideCount; x++)
+                        {
+                            if (x == 0)
+                            {
+                                <li data-target="#main-carousel" data-slide-to="@x" class="active"></li>
+                            }
+                            else
+                            {
+                                <li data-target="#main-carousel" data-slide-to="@slideCount"></li>
+                            }
+                        }
+                    </ol>
+                }
+
+                <!-- Carousel Slides -->
+                <div class="carousel-inner" style="text-shadow: 4px 4px #000;">
+                    @foreach (var slide in Model.Slides)
+                    {
+                        <div class="@Convert.ToString(slide.sliderImageCSSClass)" style="background-image: url('@Url.Content(Convert.ToString(slide.sliderImage))');">
+                            <div class="carousel-caption" style="text-shadow: 2px 2px #000;">
+                                <div>
+                                    <h2 class="@Convert.ToString(slide.headerTextCSSClass)">@Convert.ToString(slide.headerText)</h2>
+                                    @if (!string.IsNullOrEmpty(slide.subheaderText))
                                     {
-                                        <a class="@Convert.ToString(slide.buttonCSSClass)" href="@Url.Content(Convert.ToString(slide.buttonLinkURL))">@Convert.ToString(slide.buttonText)</a>
+                                        <p class="@Convert.ToString(slide.subHeaderTextCSSClass)">
+                                            @Html.Raw(Convert.ToString(slide.subheaderText))
+                                        </p>
                                     }
-                                    else if (slide.buttonLinkToAFile)
+                                    @if (slide.showButton)
                                     {
-                                        <a class="@Convert.ToString(slide.buttonCSSClass)" href="@Url.Content(Convert.ToString(slide.buttonFileDownload))">@Convert.ToString(slide.buttonText)</a>
+                                        <br />
+                                        if (slide.buttonALinkToAURL)
+                                        {
+                                            <a class="@Convert.ToString(slide.buttonCSSClass)" href="@Url.Content(Convert.ToString(slide.buttonLinkURL))">@Convert.ToString(slide.buttonText)</a>
+                                        }
+                                        else if (slide.buttonLinkToAFile)
+                                        {
+                                            <a class="@Convert.ToString(slide.buttonCSSClass)" href="@Url.Content(Convert.ToString(slide.buttonFileDownload))">@Convert.ToString(slide.buttonText)</a>
+                                        }
                                     }
-                                }
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
+                </div>
+
+                <!-- Navigation Arrows -->
+                @if (slideCount > 1)
+                {
+                    <a class="carousel-left member-carousel-control hidden-xs" href="#main-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+                    <a class="carousel-right member-carousel-control hidden-xs" href="#main-carousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
                 }
-            }
-        </div><!--/.carousel-inner-->
 
-        <a class="carousel-left member-carousel-control hidden-xs" href="#main-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a>
-        <a class="carousel-right member-carousel-control hidden-xs" href="#main-carousel" data-slide="next"><i class="fa fa-angle-right"></i></a>
-    </div>
-
+            </div>
+        }
+        else
+        {
+            <!-- No slides -->
+            <div>There are no slides</div>
+        }
+        <!-- No slides -->
+        <div>There are no slides</div>
+    }
+    <!-- No slides -->
+    <div>There are no slides</div>
 </section>
 
