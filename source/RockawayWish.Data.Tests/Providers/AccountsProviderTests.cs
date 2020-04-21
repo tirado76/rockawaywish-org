@@ -96,6 +96,12 @@ namespace RockawayWish.Data.Tests
             #region Assert
             // test status
             Assert.IsTrue(_UserModel != null && _UserModel.Status == 0);
+
+            // test if user is returned
+            Assert.IsTrue(_UserModel.UserId != null && _UserModel.UserId != _EmptyGuid);
+
+            // test if user is returned
+            Assert.IsTrue(_UserModel.AccessToken != null && _UserModel.AccessToken != _EmptyGuid);
             #endregion
         }
 
