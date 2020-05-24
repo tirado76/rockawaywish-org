@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using InteractiveMembership.Core.Constants;
 using InteractiveMembership.Core.Interfaces;
@@ -46,9 +48,20 @@ namespace RockawayWish.Web.Repositories
         /// <returns>RegisterVM</returns>
         public async Task<RegisterVM> Register(RegisterVM vm)
         {
-            // set awaitable
-            await Task.Delay(0);
-            throw new NotImplementedException();
+            // create user account
+            _UserModel = await _AccountsDataProvider.Create(vm.Email,
+                vm.Password, vm.FirstName, vm.LastName, false,
+                DateTime.Now.Year, vm.Address, vm.City, vm.State, vm.Country, vm.Zip, vm.Phone, vm.CellPhone);
+
+            // set return vm properties
+            vm = new RegisterVM
+            {
+                Status = _UserModel.Status,
+                Message = _UserModel.Message
+            };
+
+            // return
+            return vm;
         }
 
         /// <summary>
@@ -60,12 +73,17 @@ namespace RockawayWish.Web.Repositories
         {
             // set awaitable
             await Task.Delay(0);
-            throw new NotImplementedException();
+
+            // return
+            return new RegisterCompleteVM();
         }
 
         /// <summary>
-        /// Activates a user account
+        /// Activates a user account, sets user account to active
         /// Validates user activation access token and deletes it
+        /// pD = applicationId
+        /// sD = userId
+        /// tP = tokenId
         /// </summary>
         /// <param name="pD"></param>
         /// <param name="sD"></param>
@@ -73,9 +91,18 @@ namespace RockawayWish.Web.Repositories
         /// <returns>ActivateVM</returns>
         public async Task<ActivateVM> Activate(Guid pD, Guid sD, Guid tP)
         {
-            // set awaitable
-            await Task.Delay(0);
-            throw new NotImplementedException();
+            // activate user account
+            _UserModel = await _AccountsDataProvider.Activate(sD, tP);
+
+            // set return vm properties
+            ActivateVM vm = new ActivateVM
+            {
+                Status = _UserModel.Status,
+                Message = _UserModel.Message
+            };
+
+            // return
+            return vm;
         }
 
         /// <summary>
@@ -86,7 +113,9 @@ namespace RockawayWish.Web.Repositories
         {
             // set awaitable
             await Task.Delay(0);
-            throw new NotImplementedException();
+
+            // return vm
+            return new ForgotPasswordVM();
         }
 
         /// <summary>
@@ -96,9 +125,18 @@ namespace RockawayWish.Web.Repositories
         /// <returns>ForgotPasswordVM</returns>
         public async Task<ForgotPasswordVM> ForgotPassword(ForgotPasswordVM vm)
         {
-            // set awaitable
-            await Task.Delay(0);
-            throw new NotImplementedException();
+            // execute forgot password
+            _UserModel = await _AccountsDataProvider.ForgotPassword(vm.Email);
+
+            // set return vm properties
+            vm = new ForgotPasswordVM
+            {
+                Status = _UserModel.Status,
+                Message = _UserModel.Message
+            };
+
+            // return
+            return vm;
         }
 
         /// <summary>
@@ -109,7 +147,9 @@ namespace RockawayWish.Web.Repositories
         {
             // set awaitable
             await Task.Delay(0);
-            throw new NotImplementedException();
+
+            // return vm
+            return new ForgotPasswordCompleteVM();
         }
 
         /// <summary>
@@ -119,9 +159,11 @@ namespace RockawayWish.Web.Repositories
         /// <returns>UserModel</returns>
         public async Task<UserModel> IsAuthenticated(Guid userId)
         {
-            // set awaitable
-            await Task.Delay(0);
-            throw new NotImplementedException();
+            // check if user is authenticated
+            _UserModel = await _AccountsDataProvider.isAuthenticated(userId);
+
+            // return
+            return _UserModel;
         }
 
         /// <summary>
