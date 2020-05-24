@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Web.Tests", "RockawayWish.Web.Tests\RockawayWish.Web.Tests.csproj", "{30DC0981-79C9-49F6-B581-D2B28F0FBA97}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWishCMS.Web", "RockawayWishCMS.Web\RockawayWishCMS.Web.csproj", "{56E9E471-356E-4434-B516-C0C5C5BD2581}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWishCMS.Data", "RockawayWishCMS.Data\RockawayWishCMS.Data.csproj", "{90016871-81CC-48A4-8B06-C6CA6A5FF9AB}"
@@ -17,11 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web Applications", "Web App
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", "{C7AF06B2-65B8-457F-B07C-B6FEBCE60048}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Web", "RockawayWish.Web\RockawayWish.Web.csproj", "{DECAA44D-0F44-42C4-A931-193364290CF8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Data", "RockawayWish.Data\RockawayWish.Data.csproj", "{178CB81E-FF91-4D49-AF85-2A71CBB82C0B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Data.Tests", "RockawayWish.Data.Tests\RockawayWish.Data.Tests.csproj", "{21614423-B5BE-4CE6-BE5B-5068797F2036}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Web", "RockawayWish.Web\RockawayWish.Web.csproj", "{71B1C6F5-8139-4B4F-BDC6-4BE9C0D21259}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{30DC0981-79C9-49F6-B581-D2B28F0FBA97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{30DC0981-79C9-49F6-B581-D2B28F0FBA97}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{30DC0981-79C9-49F6-B581-D2B28F0FBA97}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{30DC0981-79C9-49F6-B581-D2B28F0FBA97}.Release|Any CPU.Build.0 = Release|Any CPU
 		{56E9E471-356E-4434-B516-C0C5C5BD2581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{56E9E471-356E-4434-B516-C0C5C5BD2581}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56E9E471-356E-4434-B516-C0C5C5BD2581}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,30 +35,19 @@ Global
 		{0B2C0A37-EE17-4885-BFC6-5DC228253127}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B2C0A37-EE17-4885-BFC6-5DC228253127}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B2C0A37-EE17-4885-BFC6-5DC228253127}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DECAA44D-0F44-42C4-A931-193364290CF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DECAA44D-0F44-42C4-A931-193364290CF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DECAA44D-0F44-42C4-A931-193364290CF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DECAA44D-0F44-42C4-A931-193364290CF8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{178CB81E-FF91-4D49-AF85-2A71CBB82C0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{178CB81E-FF91-4D49-AF85-2A71CBB82C0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{178CB81E-FF91-4D49-AF85-2A71CBB82C0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{178CB81E-FF91-4D49-AF85-2A71CBB82C0B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{21614423-B5BE-4CE6-BE5B-5068797F2036}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21614423-B5BE-4CE6-BE5B-5068797F2036}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21614423-B5BE-4CE6-BE5B-5068797F2036}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21614423-B5BE-4CE6-BE5B-5068797F2036}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71B1C6F5-8139-4B4F-BDC6-4BE9C0D21259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71B1C6F5-8139-4B4F-BDC6-4BE9C0D21259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71B1C6F5-8139-4B4F-BDC6-4BE9C0D21259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71B1C6F5-8139-4B4F-BDC6-4BE9C0D21259}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{30DC0981-79C9-49F6-B581-D2B28F0FBA97} = {C7AF06B2-65B8-457F-B07C-B6FEBCE60048}
 		{56E9E471-356E-4434-B516-C0C5C5BD2581} = {FE8E4B3B-3841-479C-B7A7-D3C77290E144}
 		{90016871-81CC-48A4-8B06-C6CA6A5FF9AB} = {A4D0E3A0-D1AC-4798-AAB6-2914B3205302}
 		{0B2C0A37-EE17-4885-BFC6-5DC228253127} = {A4D0E3A0-D1AC-4798-AAB6-2914B3205302}
-		{DECAA44D-0F44-42C4-A931-193364290CF8} = {FE8E4B3B-3841-479C-B7A7-D3C77290E144}
-		{178CB81E-FF91-4D49-AF85-2A71CBB82C0B} = {A4D0E3A0-D1AC-4798-AAB6-2914B3205302}
-		{21614423-B5BE-4CE6-BE5B-5068797F2036} = {C7AF06B2-65B8-457F-B07C-B6FEBCE60048}
+		{71B1C6F5-8139-4B4F-BDC6-4BE9C0D21259} = {FE8E4B3B-3841-479C-B7A7-D3C77290E144}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0DF64FD1-8B7F-4470-AF9E-B46DE91B87E3}

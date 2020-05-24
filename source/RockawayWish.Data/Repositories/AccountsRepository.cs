@@ -8,7 +8,7 @@ using InteractiveMembership.Data.Providers;
 
 namespace RockawayWish.Data.Repositories
 {
-    internal class AccountsRepository : IUser
+    internal class AccountsRepository : IUserRepository
     {
         #region Constructor
         public AccountsRepository()
