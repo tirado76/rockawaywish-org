@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+
 using InteractiveMembership.Core.Constants;
+using InteractiveMembership.Core.Enums;
 using InteractiveMembership.Core.Interfaces;
 using InteractiveMembership.Core.Models;
 using InteractiveMembership.Core.ViewModels;
@@ -175,27 +175,42 @@ namespace RockawayWish.Web.Repositories
         {
             // set awaitable
             await Task.Delay(0);
-            throw new NotImplementedException();
+
+            // return vm
+            return new LoginVM();
         }
 
         /// <summary>
-        /// User submits sign in form
-        /// Creates user site access token if successful
+        /// 1. User submits sign in form
+        /// 2. Validate email and password
+        /// 3. Creates user site access token if successful
         /// </summary>
         /// <param name="vm"></param>
         /// <param name="returnUrl"></param>
         /// <returns></returns>
         public async Task<LoginVM> Login(LoginVM vm, string returnUrl)
         {
-            // set awaitable
-            await Task.Delay(0);
-            throw new NotImplementedException();
+            // create user site access token
+            _UserModel = await _AccountsDataProvider.RequestToken(vm.Email, vm.Password);
+
+            // set return vm properties
+            vm = new LoginVM
+            {
+                Status = _UserModel.Status,
+                Message = _UserModel.Message
+            };
+
+            // return vm
+            return vm;
         }
 
         /// <summary>
         /// 1. Check if user reset password access token exists
         /// 2. Show reset password form
         /// 3. Delete user reset password access token
+        /// tD = applicationId
+        /// sD = userId
+        /// gD = tokenId
         /// </summary>
         /// <param name="tD"></param>
         /// <param name="sD"></param>
@@ -203,9 +218,18 @@ namespace RockawayWish.Web.Repositories
         /// <returns>ResetPasswordVM</returns>
         public async Task<ResetPasswordVM> ResetPassword(Guid tD, Guid sD, Guid gD)
         {
-            // set awaitable
-            await Task.Delay(0);
-            throw new NotImplementedException();
+            // Check if user reset password access token exists
+            _UserModel = await _AccountsDataProvider.ValidateToken(sD, gD, (int)TokenType.ResetPasswordAccess);
+
+            // set return vm properties
+            ResetPasswordVM vm = new ResetPasswordVM
+            {
+                Status = _UserModel.Status,
+                Message = _UserModel.Message
+            };
+
+            // return vm
+            return vm;
         }
 
         /// <summary>
@@ -216,9 +240,18 @@ namespace RockawayWish.Web.Repositories
         /// <returns>ResetPasswordVM</returns>
         public async Task<ResetPasswordVM> ResetPassword(ResetPasswordVM vm)
         {
-            // set awaitable
-            await Task.Delay(0);
-            throw new NotImplementedException();
+            // reset usert password
+            _UserModel = await _AccountsDataProvider.ResetPassword(vm.UserId, vm.Password, vm.AccessToken);
+
+            // set return vm properties
+            vm = new ResetPasswordVM
+            {
+                Status = _UserModel.Status,
+                Message = _UserModel.Message
+            };
+
+            // return vm
+            return vm;
         }
 
         /// <summary>
@@ -230,7 +263,15 @@ namespace RockawayWish.Web.Repositories
         {
             // set awaitable
             await Task.Delay(0);
-            throw new NotImplementedException();
+
+            // set return vm properties
+            ResetPasswordCompleteVM vm = new ResetPasswordCompleteVM
+            {
+                Message = msg
+            };
+
+            // return vm
+            return vm;
         }
 
         /// <summary>
@@ -238,11 +279,20 @@ namespace RockawayWish.Web.Repositories
         /// 2. Delete user site acces token
         /// </summary>
         /// <returns>SignOutCompleteVM</returns>
-        public async Task<SignOutCompleteVM> SignOut()
+        public async Task<SignOutCompleteVM> SignOut(Guid userId)
         {
-            // set awaitable
-            await Task.Delay(0);
-            throw new NotImplementedException();
+            // reset user password
+            _UserModel = await _AccountsDataProvider.SignOut(userId);
+
+            // set return vm properties
+            SignOutCompleteVM vm = new SignOutCompleteVM
+            {
+                Status = _UserModel.Status,
+                Message = _UserModel.Message
+            };
+
+            // return vm
+            return vm;
         }
 
         /// <summary>
@@ -253,7 +303,9 @@ namespace RockawayWish.Web.Repositories
         {
             // set awaitable
             await Task.Delay(0);
-            throw new NotImplementedException();
+
+            // return vm
+            return new SignOutCompleteVM();
         }
         #endregion
     }
