@@ -195,3 +195,4 @@ source/RockawayWishCMS.Web/media/*
 #Mac
 .DS_Store
 source/BvSeoSdk_binaries/BvSeoSdk.dll
+source/.vs/RockawayWish/v16/TestStore/0/000.testlog
