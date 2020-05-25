@@ -118,6 +118,7 @@ namespace RockawayWish.Web.Controllers
             else
             {
                 vm.Status = forgotPassword.Status;
+                vm.Message = forgotPassword.Message;
             }
 
             // return
@@ -141,10 +142,10 @@ namespace RockawayWish.Web.Controllers
         /// <param name="userId"></param>
         /// <returns>UserModel</returns>
         [Route(SiteEndPointsConfig.IsAuthenticated)]
-        public async Task<ActionResult> IsAuthenticated(Guid userId)
+        public async Task<UserModel> IsAuthenticated(Guid userId)
         {
             // return
-            return View(await _Repository.IsAuthenticated(userId));
+            return await _Repository.IsAuthenticated(userId);
         }
 
         /// <summary>
@@ -172,8 +173,27 @@ namespace RockawayWish.Web.Controllers
         [Route(SiteEndPointsConfig.Login)]
         public async Task<ActionResult> Login(LoginVM vm, string returnUrl)
         {
-            // return
-            return View(await _Repository.Login(vm, returnUrl));
+            // validate login ancd create user site access token
+            var result = await _Repository.Login(vm, returnUrl);
+
+            // check if successfully
+            if (result != null && result.Status == 0)
+            {
+                // a user reset password access token was created
+                // redirect to complete page
+                if (!string.IsNullOrEmpty(returnUrl))
+                    return RedirectPermanent(string.Format("~/{0}", returnUrl));
+                else
+                    return RedirectPermanent("~/");
+            }
+            else
+            {
+                vm.Status = result.Status;
+                vm.Message = result.Message;
+
+                // return
+                return View(vm);
+            }
         }
 
         /// <summary>
