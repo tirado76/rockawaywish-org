@@ -143,6 +143,9 @@
     <Content Include="Views\Account\ForgotPasswordComplete.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordComplete.cshtml" />
+    <Content Include="Views\Account\SignOut.cshtml" />
+    <Content Include="Views\Account\SignOutComplete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

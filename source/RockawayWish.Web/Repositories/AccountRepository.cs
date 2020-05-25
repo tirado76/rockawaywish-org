@@ -75,7 +75,7 @@ namespace RockawayWish.Web.Repositories
             await Task.Delay(0);
 
             // return
-            return new RegisterCompleteVM { SiteTitle = this.AppSettings.SiteAppSettings.SiteTitle };
+            return new RegisterCompleteVM();
         }
 
         /// <summary>
@@ -279,16 +279,16 @@ namespace RockawayWish.Web.Repositories
         /// 2. Delete user site acces token
         /// </summary>
         /// <returns>SignOutCompleteVM</returns>
-        public async Task<SignOutCompleteVM> SignOut(Guid userId)
+        public async Task<SignOutVM> SignOut(Guid userId)
         {
             // reset user password
             _UserModel = await _AccountsDataProvider.SignOut(userId);
 
             // set return vm properties
-            SignOutCompleteVM vm = new SignOutCompleteVM
+            SignOutVM vm = new SignOutVM
             {
                 Status = _UserModel.Status,
-                Message = _UserModel.Message
+                Message = _UserModel.Message,
             };
 
             // return vm
@@ -305,7 +305,9 @@ namespace RockawayWish.Web.Repositories
             await Task.Delay(0);
 
             // return vm
-            return new SignOutCompleteVM();
+            return new SignOutCompleteVM
+            {
+            };
         }
         #endregion
     }

@@ -226,8 +226,24 @@ namespace RockawayWish.Web.Controllers
         [Route(SiteEndPointsConfig.ResetPassword)]
         public async Task<ActionResult> ResetPassword(ResetPasswordVM vm)
         {
-            // return
-            return View(await _Repository.ResetPassword(vm));
+            // execute 
+            var result = await _Repository.ResetPassword(vm);
+
+            // check if successfully
+            if (result != null && result.Status == 0)
+            {
+                // a user reset password access token was created
+                // redirect to complete page
+                return RedirectPermanent(string.Format("~/{0}", SiteEndPointsConfig.ResetPasswordComplete));
+            }
+            else
+            {
+                vm.Status = result.Status;
+                vm.Message = result.Message;
+
+                // return
+                return View(vm);
+            }
         }
 
         /// <summary>
@@ -246,12 +262,24 @@ namespace RockawayWish.Web.Controllers
         /// 1. User signs out
         /// 2. Delete user site acces token
         /// </summary>
+        /// <param name="userId"></param>
         /// <returns>SignOutCompleteVM</returns>
         [Route(SiteEndPointsConfig.SignOut)]
         public async Task<ActionResult> SignOut(Guid userId)
         {
+            // execute 
+            SignOutVM vm = await _Repository.SignOut(userId);
+
+            // check if successfully
+            if (vm != null && vm.Status == 0)
+            {
+                // a user reset password access token was created
+                // redirect to complete page
+                return RedirectPermanent(string.Format("~/{0}", SiteEndPointsConfig.SignOutComplete));
+            }
+
             // return
-            return View(await _Repository.SignOut(userId));
+            return View(vm);
         }
 
         /// <summary>

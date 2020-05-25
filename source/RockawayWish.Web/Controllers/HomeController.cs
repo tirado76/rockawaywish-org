@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
 
+using InteractiveMembership.Core.ViewModels;
+
 
 namespace RockawayWish.Web.Controllers
 {
@@ -7,17 +9,7 @@ namespace RockawayWish.Web.Controllers
     {
         public ActionResult Index()
         {
-            //var homePageVM = new  _SiteVM.HomePageVM;
-            // Stop Caching in IE
-            //HttpContext.Response.Cache.SetCacheability(System.Web.HttpCacheability.NoCache);
-
-            // Stop Caching in Firefox
-            //HttpContext.Response.Cache.SetNoStore();
-
-            // get set site model
-            //var siteModel = new SiteRepository().Get().ConfigureAwait(false);
-
-            return View();
+            return View(new HomeVM());
         }
 
 
