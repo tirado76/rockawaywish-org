@@ -9,6 +9,9 @@ namespace RockawayWish.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            // enable mvc route attributes
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
