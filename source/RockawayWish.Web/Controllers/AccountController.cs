@@ -33,10 +33,10 @@ namespace RockawayWish.Web.Controllers
         /// </summary>
         /// <returns>RegisterVM</returns>
         [Route(SiteEndPointsConfig.Register)]
-        public async Task<RegisterVM> Register()
+        public async Task<ActionResult> Register()
         {
             // return
-            return await _Repository.Register();
+            return View(await _Repository.Register());
         }
 
         /// <summary>
@@ -48,10 +48,10 @@ namespace RockawayWish.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route(SiteEndPointsConfig.Register)]
-        public async Task<RegisterVM> Register(RegisterVM vm)
+        public async Task<ActionResult> Register(RegisterVM vm)
         {
             // return
-            return await _Repository.Register(vm);
+            return View(await _Repository.Register(vm));
         }
 
         /// <summary>
@@ -60,10 +60,10 @@ namespace RockawayWish.Web.Controllers
         /// <param name="vm"></param>
         /// <returns>RegisterCompleteVM</returns>
         [Route(SiteEndPointsConfig.RegisterComplete)]
-        public async Task<RegisterCompleteVM> RegisterComplete()
+        public async Task<ActionResult> RegisterComplete()
         {
             // return
-            return await _Repository.RegisterComplete();
+            return View(await _Repository.RegisterComplete());
         }
 
         /// <summary>
@@ -78,10 +78,10 @@ namespace RockawayWish.Web.Controllers
         /// <param name="tP"></param>
         /// <returns>ActivateVM</returns>
         [Route(SiteEndPointsConfig.Activate)]
-        public async Task<ActivateVM> Activate(Guid pD, Guid sD, Guid tP)
+        public async Task<ActionResult> Activate(Guid pD, Guid sD, Guid tP)
         {
             // return
-            return await _Repository.Activate(pD, sD, tP);
+            return View(await _Repository.Activate(pD, sD, tP));
         }
 
         /// <summary>
@@ -89,10 +89,10 @@ namespace RockawayWish.Web.Controllers
         /// </summary>
         /// <returns>ForgotPasswordVM</returns>
         [Route(SiteEndPointsConfig.ForgotPassword)]
-        public async Task<ForgotPasswordVM> ForgotPassword()
+        public async Task<ActionResult> ForgotPassword()
         {
             // return
-            return await _Repository.ForgotPassword();
+            return View(await _Repository.ForgotPassword());
         }
 
         /// <summary>
@@ -103,10 +103,25 @@ namespace RockawayWish.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route(SiteEndPointsConfig.ForgotPassword)]
-        public async Task<ForgotPasswordVM> ForgotPassword(ForgotPasswordVM vm)
+        public async Task<ActionResult> ForgotPassword(ForgotPasswordVM vm)
         {
+            // execute user forgot password
+            var forgotPassword = await _Repository.ForgotPassword(vm);
+
+            // check if successfully
+            if (forgotPassword != null && forgotPassword.Status == 0)
+            {
+                // a user reset password access token was created
+                // redirect to complete page
+                return RedirectPermanent(string.Format("~/{0}", SiteEndPointsConfig.ForgotPasswordComplete));
+            }
+            else
+            {
+                vm.Status = forgotPassword.Status;
+            }
+
             // return
-            return await _Repository.ForgotPassword(vm);
+            return View(vm);
         }
 
         /// <summary>
@@ -114,10 +129,10 @@ namespace RockawayWish.Web.Controllers
         /// </summary>
         /// <returns>ForgotPasswordCompleteVM</returns>
         [Route(SiteEndPointsConfig.ForgotPasswordComplete)]
-        public async Task<ForgotPasswordCompleteVM> ForgotPasswordComplete()
+        public async Task<ActionResult> ForgotPasswordComplete()
         {
             // return
-            return await _Repository.ForgotPasswordComplete();
+            return View(await _Repository.ForgotPasswordComplete());
         }
 
         /// <summary>
@@ -126,10 +141,10 @@ namespace RockawayWish.Web.Controllers
         /// <param name="userId"></param>
         /// <returns>UserModel</returns>
         [Route(SiteEndPointsConfig.IsAuthenticated)]
-        public async Task<UserModel> IsAuthenticated(Guid userId)
+        public async Task<ActionResult> IsAuthenticated(Guid userId)
         {
             // return
-            return await _Repository.IsAuthenticated(userId);
+            return View(await _Repository.IsAuthenticated(userId));
         }
 
         /// <summary>
@@ -138,10 +153,10 @@ namespace RockawayWish.Web.Controllers
         /// <param name="returnUrl"></param>
         /// <returns></returns>
         [Route(SiteEndPointsConfig.Login)]
-        public async Task<LoginVM> Login(string returnUrl)
+        public async Task<ActionResult> Login(string returnUrl)
         {
             // return
-            return await _Repository.Login(returnUrl);
+            return View(await _Repository.Login(returnUrl));
         }
 
         /// <summary>
@@ -155,10 +170,10 @@ namespace RockawayWish.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route(SiteEndPointsConfig.Login)]
-        public async Task<LoginVM> Login(LoginVM vm, string returnUrl)
+        public async Task<ActionResult> Login(LoginVM vm, string returnUrl)
         {
             // return
-            return await _Repository.Login(vm, returnUrl);
+            return View(await _Repository.Login(vm, returnUrl));
         }
 
         /// <summary>
@@ -174,10 +189,10 @@ namespace RockawayWish.Web.Controllers
         /// <param name="gD"></param>
         /// <returns>ResetPasswordVM</returns>
         [Route(SiteEndPointsConfig.ResetPassword)]
-        public async Task<ResetPasswordVM> ResetPassword(Guid tD, Guid sD, Guid gD)
+        public async Task<ActionResult> ResetPassword(Guid tD, Guid sD, Guid gD)
         {
             // return
-            return await _Repository.ResetPassword(tD, sD, gD);
+            return View(await _Repository.ResetPassword(tD, sD, gD));
         }
 
         /// <summary>
@@ -189,10 +204,10 @@ namespace RockawayWish.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route(SiteEndPointsConfig.ResetPassword)]
-        public async Task<ResetPasswordVM> ResetPassword(ResetPasswordVM vm)
+        public async Task<ActionResult> ResetPassword(ResetPasswordVM vm)
         {
             // return
-            return await _Repository.ResetPassword(vm);
+            return View(await _Repository.ResetPassword(vm));
         }
 
         /// <summary>
@@ -201,10 +216,10 @@ namespace RockawayWish.Web.Controllers
         /// <param name="msg"></param>
         /// <returns>ResetPasswordCompleteVM</returns>
         [Route(SiteEndPointsConfig.ResetPasswordComplete)]
-        public async Task<ResetPasswordCompleteVM> ResetPasswordComplete(string msg)
+        public async Task<ActionResult> ResetPasswordComplete(string msg)
         {
             // return
-            return await _Repository.ResetPasswordComplete(msg);
+            return View(await _Repository.ResetPasswordComplete(msg));
         }
 
         /// <summary>
@@ -213,10 +228,10 @@ namespace RockawayWish.Web.Controllers
         /// </summary>
         /// <returns>SignOutCompleteVM</returns>
         [Route(SiteEndPointsConfig.SignOut)]
-        public async Task<SignOutCompleteVM> SignOut(Guid userId)
+        public async Task<ActionResult> SignOut(Guid userId)
         {
             // return
-            return await _Repository.SignOut(userId);
+            return View(await _Repository.SignOut(userId));
         }
 
         /// <summary>
@@ -224,10 +239,10 @@ namespace RockawayWish.Web.Controllers
         /// </summary>
         /// <returns>SignOutCompleteVM</returns>
         [Route(SiteEndPointsConfig.SignOutComplete)]
-        public async Task<SignOutCompleteVM> SignOutComplete()
+        public async Task<ActionResult> SignOutComplete()
         {
             // return
-            return await _Repository.SignOutComplete();
+            return View(await _Repository.SignOutComplete());
         }
         #endregion
     }
