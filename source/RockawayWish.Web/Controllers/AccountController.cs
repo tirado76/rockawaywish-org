@@ -16,6 +16,10 @@ namespace RockawayWish.Web.Controllers
     public class AccountController : BaseController
     {
         #region Constructor
+        public AccountController()
+        {
+            _Repository = new AccountRepository(this.apiKey, this.applicationId, this.appSettings);
+        }
         public AccountController(Guid apiKey, Guid applicationId, AppSettingsConfig appSettings)
         {
             _Repository = new AccountRepository(apiKey, applicationId, appSettings);
