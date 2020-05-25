@@ -10,7 +10,7 @@ using InteractiveMembership.Data.Providers;
 
 namespace RockawayWish.Web.Repositories
 {
-    internal class AccountRepository : BaseRepository, IAccountsRepository
+    internal class AccountRepository : BaseRepository, IAccountsWebRepository
     {
         #region Constructor
         public AccountRepository(Guid apiKey, Guid applicationId,  AppSettingsConfig appSettings)
