@@ -1,15 +1,19 @@
-﻿using System.Web.Mvc;
-
+﻿using System.Threading.Tasks;
+using System.Web.Mvc;
+using System.Web.WebSockets;
 using InteractiveMembership.Core.ViewModels;
 
 
 namespace RockawayWish.Web.Controllers
 {
-    public class HomeController : AsyncController
+    public class HomeController : BaseController
     {
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(new HomeVM());
+            await Task.Delay(0);
+
+            var homeVM = new HomeVM();
+            return View(homeVM);
         }
 
 
