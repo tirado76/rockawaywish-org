@@ -1,0 +1,20 @@
+﻿@using InteractiveMembership.Core.Constants;
+@model InteractiveMembership.Core.ViewModels.ActivateVM
+@{
+    ViewBag.Title = "Activate your account";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+@if (Model.Status == 1)
+{
+    <h4>We're sorry.</h4>
+    <p>@Model.Message</p>
+    <p>Please take a minute to tell us about your experience with us.  <a href="@Url.Content(new AppSettingsConfig().SiteAppSettings.ContactUsUrl)">Click here to contact us</a></p>
+}
+else
+{
+    <h4>@Convert.ToString(Model.Message)</h4>
+    <p><a href="@Url.Content("~/users/sign/in")">Click here to sign in</a></p>
+}
+

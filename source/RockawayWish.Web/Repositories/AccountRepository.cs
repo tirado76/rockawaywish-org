@@ -75,7 +75,7 @@ namespace RockawayWish.Web.Repositories
             await Task.Delay(0);
 
             // return
-            return new RegisterCompleteVM();
+            return new RegisterCompleteVM { SiteTitle = this.AppSettings.SiteAppSettings.SiteTitle };
         }
 
         /// <summary>

@@ -13,10 +13,10 @@ using RockawayWish.Web.Repositories;
 
 namespace RockawayWish.Web.Controllers
 {
-    public class AccountsController : BaseController
+    public class AccountController : BaseController
     {
         #region Constructor
-        public AccountsController(Guid apiKey, Guid applicationId, AppSettingsConfig appSettings)
+        public AccountController(Guid apiKey, Guid applicationId, AppSettingsConfig appSettings)
         {
             _Repository = new AccountRepository(apiKey, applicationId, appSettings);
         }
@@ -77,7 +77,6 @@ namespace RockawayWish.Web.Controllers
         /// <param name="sD"></param>
         /// <param name="tP"></param>
         /// <returns>ActivateVM</returns>
-        [HttpPost]
         [Route(SiteEndPointsConfig.Activate)]
         public async Task<ActivateVM> Activate(Guid pD, Guid sD, Guid tP)
         {
