@@ -1,25 +1,31 @@
-﻿@model RockawayWish.Web.ViewModels.NavigationVM
+﻿@using InteractiveMembership.Core.Constants.EndPointSettings
+@model RockawayWish.Web.ViewModels.NavigationVM
+
 <!-- Top Navigation bar -->
 <nav class="navbar navbar-dark site-pink sticky-top">
 
     <!-- Site brand-->
-    <img src="@Url.Content("~/Content/img/white-star.png")" alt="Logo" style="width:50px; margin-right: 10px;" />
-    <a class="navbar-brand" href="#">Wish of Rockaway</a>
+    <a href="@Url.Content("~/")">
+        <img src="@Url.Content("~/Content/img/white-star.png")" alt="Logo" style="width:50px; margin-right: 10px;" />
+    </a>
+    <a class="navbar-brand" href="@Url.Content("~/")">Wish of Rockaway</a>
 
 
-    <!-- Navbar links -->
-    <ul class="nav nav-pills ml-auto">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><span class="navbar-toggler-icon"></span></a>
-            <div class="dropdown-menu" style="background-color: lightpink">
-                <a class="dropdown-item " href="#">Sign In</a>
-                <a class="dropdown-item" href="#">About WISH</a>
-                <a class="dropdown-item" href="#">Contact WISH</a>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active button-donate" href="#">Donate</a>
-        </li>
-    </ul>
+        <!-- Navbar links -->
+        <ul class="nav nav-pills ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><span class="navbar-toggler-icon"></span></a>
+                <div class="dropdown-menu" style="background-color: lightpink">
+                    <a class="dropdown-item " href="@Url.Content(string.Format("~/{0}", SiteEndPointsConfig.Donate))">Donate</a>
+                    <a class="dropdown-item " href="@Url.Content(string.Format("~/{0}", SiteEndPointsConfig.Register))">Join WISH</a>
+                    <a class="dropdown-item " href="@Url.Content(string.Format("~/{0}", SiteEndPointsConfig.About))">About Us</a>
+                    <a class="dropdown-item " href="@Url.Content(string.Format("~/{0}", SiteEndPointsConfig.ContactUs))">Contact Us</a>
+                    <a class="dropdown-item " href="@Url.Content(string.Format("~/{0}", SiteEndPointsConfig.Login))">Sign In</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active button-donate" href="@Url.Content("~/donate")">Donate</a>
+            </li>
+        </ul>
 </nav>
 

@@ -21,7 +21,6 @@ namespace RockawayWish.Web.Controllers
             return View(new HomeVM());
         }
 
-
         /// <summary>
         /// About Page
         /// </summary>
@@ -33,7 +32,7 @@ namespace RockawayWish.Web.Controllers
 
             return View(new AboutVM());
         }
-        #endregion
 
+        #endregion
     }
 }

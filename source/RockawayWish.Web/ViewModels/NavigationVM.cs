@@ -1,6 +1,8 @@
-﻿namespace RockawayWish.Web.ViewModels
+﻿using InteractiveMembership.Core.ViewModels;
+
+namespace RockawayWish.Web.ViewModels
 {
-    public class NavigationVM
+    public class NavigationVM : BaseVM
     {
         public NavigationVM ()
         {
