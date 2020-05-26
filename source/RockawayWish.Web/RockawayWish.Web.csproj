@@ -92,6 +92,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\img\white-star.png" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -125,6 +126,7 @@
     <Content Include="Views\Account\ResetPasswordComplete.cshtml" />
     <Content Include="Views\Account\SignOut.cshtml" />
     <Content Include="Views\Account\SignOutComplete.cshtml" />
+    <Content Include="Views\Shared\_Carousel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
