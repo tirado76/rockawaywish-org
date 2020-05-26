@@ -1,9 +1,19 @@
 ﻿@model InteractiveMembership.Core.ViewModels.RegisterCompleteVM
 
-<h2>Register</h2>
-<hr />
-<h4>Thank you for registering with @Convert.ToString(Model.SiteAppSettings.SiteTitle)!</h4>
-<p>1. You have completed the first step. </p>
-<p>2. The next step is to activate your account.</p>
-<p>&nbsp;</p>
-<p>Please check your email and click on the activation link that was sent to you.</p>
+<div class="container">
+    <div class="page-header">Register</div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="alert alert-success">
+                <strong>Thank you for registering with @Convert.ToString(Model.SiteAppSettings.SiteTitle)!</strong>
+            </div>
+            <p>
+                <i class='fas fa-user-check' style='font-size:24px'></i>&nbsp; Congratulations, you have completed the 1st step.
+            </p>
+            <p>
+                <i class='fas fa-user-lock' style='font-size:24px'></i>&nbsp; The next step is to activate your account.
+            </p>
+            <p>Please check your email and click on the activation link that was sent to you.</p>
+        </div>
+    </div>
+</div>

@@ -99,11 +99,19 @@ namespace RockawayWish.Web.Repositories
             }
 
 
-            // create user account
-            _UserModel = await _AccountsDataProvider.Create(vm.Email,
-                vm.Password, string.Empty, string.Empty, false,
-                DateTime.Now.Year, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
+            try
+            {
+                // create user account
+                _UserModel = await _AccountsDataProvider.Create(vm.Email,
+                    vm.Password, "John", "Doe", false,
+                    DateTime.Now.Year, "fake", "fake", "fake", "fake", "fake", "fake", "fake");
 
+            }
+            catch (Exception ex)
+            {
+                _UserModel.Status = 1;
+                _UserModel.Message = ex.Message;
+            }
             // set return vm properties
             vm = new RegisterVM
             {
