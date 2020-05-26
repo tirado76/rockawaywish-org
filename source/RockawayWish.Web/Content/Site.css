@@ -39,37 +39,10 @@
     border-bottom: 1px dotted hotpink;
     padding-bottom: 10px;
 }
-.contact-address .social-icons a i {
-    border-radius: 0;
-    height: 30px;
-    line-height: inherit;
-    width: 30px;
-    border-width: 0;
-    transition: all 1s ease 0s;
-    -moz-transition: all 1s ease 0s;
-    -webkit-transition: all 1s ease 0s;
-    -o-transition: all 1s ease 0s;
-    margin-right: 10px
+
+
+.social-icon {
+    width: 100px !important;
+    height: 100px;
 }
 
-.social-icons i:hover {
-    transform: scale(.9);
-}
-
-.social-icons a {
-    color: #FE99CC;
-    font-size: 20px;
-    border: 1px solid #000;
-    border-radius: 50%;
-    text-align: center;
-    padding: 6px;
-    width: 44px;
-    height: 44px;
-    display: inline-block;
-    margin: 2px;
-}
-
-.social-icons a:hover {
-    color: #fff;
-    border: 1px solid #fff;
-}

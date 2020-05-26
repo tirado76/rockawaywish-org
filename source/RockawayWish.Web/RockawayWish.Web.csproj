@@ -95,8 +95,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\facebook-icon.png" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\logo1.png" />
     <Content Include="Content\images\pink-star.png" />
+    <Content Include="Content\images\twitter-icon.png" />
     <Content Include="Content\images\white-star.png" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />

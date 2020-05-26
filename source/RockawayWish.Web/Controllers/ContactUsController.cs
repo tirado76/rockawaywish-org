@@ -1,9 +1,11 @@
 ﻿using System.Text;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 using CaptchaMvc.HtmlHelpers;
-
+using InteractiveMembership.Core.Constants;
 using InteractiveMembership.Core.Constants.EndPointSettings;
+using InteractiveMembership.Data.Providers;
 
 using RockawayWish.Web.ViewModels;
 
@@ -20,36 +22,71 @@ namespace RockawayWish.Web.Controllers
         [Route("contact/us")]
         public ActionResult Index()
         {
-
+            // return vm
             return View(new ContactUsVM());
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route(SiteEndPointsConfig.ContactUs)]
-        public ActionResult Index(ContactUsVM model)
+        public async Task<ActionResult> Index(ContactUsVM model)
         {
-            // Code for validating the CAPTCHA  
-            if (this.IsCaptchaValid("Captcha is not valid"))
+            // check if captcha is valid
+            if (!this.IsCaptchaValid("Captcha is not valid"))
             {
-                ModelState.AddModelError("", "Error: Captcha is not valid");
+                model.Status = 1;
+                model.Message = "Captcha is not valid";
+                return View(model);
+            }
+            // check if name is valid
+            if (string.IsNullOrEmpty(model.Name))
+            {
+                model.Status = 1;
+                model.Message = "Name is not valid";
                 return View(model);
             }
 
-            StringBuilder sb = new StringBuilder();
-                sb.AppendLine("<p>The following user has submitted a question on the WISH of Rockaway website.</p>");
-                sb.AppendFormat("<p>Name: {0}</p>", model.Name);
-                sb.AppendFormat("<p>Email: {0}</p>", model.Email);
-                sb.AppendFormat("<p>Message: {0}</p>", model.Message);
-                sb.AppendLine("<p>&nbsp;</p>");
-                sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
-                sb.AppendFormat("<img src=\"{0}://{1}/content/images/logo.png\">", Request.Url.Scheme, "rockawaywish.org");
-                //var emailResult = this.SendEmail(this.ContactUsEmail, "WISH of Rockaway", "Question submitted on the WISH of Rockaway website", sb.ToString());
+            // check if email is valid
+            if (string.IsNullOrEmpty(model.Email))
+            {
+                model.Status = 1;
+                model.Message = "Email is not valid";
+                return View(model);
+            }
 
-                //if (emailResult.Status == 0)
-                //    return RedirectPermanent("~/contact-wish/confirmation");
-                //else
-                //    ModelState.AddModelError("", emailResult.Message);
+            // check if email is valid
+            if (string.IsNullOrEmpty(model.ContactMessage))
+            {
+                model.Status = 1;
+                model.Message = "Message is not valid";
+                return View(model);
+            }
+
+            // generate email message
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("<p>The following user has submitted a question on the WISH of Rockaway website.</p>");
+            sb.AppendFormat("<p>Name: {0}</p>", model.Name);
+            sb.AppendFormat("<p>Email: {0}</p>", model.Email);
+            sb.AppendFormat("<p>Message: {0}</p>", model.ContactMessage);
+            sb.AppendLine("<p>&nbsp;</p>");
+            sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
+            sb.AppendFormat("<img src=\"{0}\" />", this.appSettings.SiteAppSettings.LogoUrl);
+
+            // send email
+            var emailResult = await new EmailDataProvider(this.apiKey, this.applicationId, this.appSettings).Send(this.appSettings.SiteAppSettings.SmtpHost,
+                this.appSettings.SiteAppSettings.SmtpFromAddress, this.appSettings.MembershipAppSettings.AdminEmail, string.Format(this.appSettings.SiteAppSettings.ContactUsNotificationSubjectToAdmin, this.appSettings.SiteAppSettings.SiteTitle),
+                Server.HtmlEncode(sb.ToString()), this.appSettings.SiteAppSettings.SmtpPort, this.appSettings.SiteAppSettings.SmtpUseDefaultCredentials,
+                this.appSettings.SiteAppSettings.SmtpEnableSSL, this.appSettings.SiteAppSettings.SmtpUserName,
+                this.appSettings.SiteAppSettings.SmtpPassword, this.appSettings.SiteAppSettings.SmtpFromName,model.Name);
+
+            if (emailResult.Status == 0)
+                return RedirectPermanent(string.Format("~/{0}", SiteEndPointsConfig.ContactUsComplete));
+            else
+            {
+                model.Status = 1;
+                model.Message = "There was a problem sending the email.";
+                return View(model);
+            }
 
 
             return View(model);
