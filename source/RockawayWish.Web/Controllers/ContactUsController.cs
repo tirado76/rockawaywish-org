@@ -82,13 +82,13 @@ namespace RockawayWish.Web.Controllers
                 return RedirectPermanent(string.Format("~/{0}", SiteEndPointsConfig.ContactUsComplete));
             else
             {
+                // set error status
                 model.Status = 1;
                 model.Message = "There was a problem sending the message.";
+                
+                // return
                 return View(model);
             }
-
-
-            return View(model);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace RockawayWish.Web.Controllers
         [Route(SiteEndPointsConfig.ContactUsComplete)]
         public ActionResult Complete()
         {
-
+            // return
             return View(new ContactUsCompleteVM());
         }
         #endregion

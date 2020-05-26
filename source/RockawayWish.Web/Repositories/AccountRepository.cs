@@ -58,18 +58,51 @@ namespace RockawayWish.Web.Repositories
                 return vm;
             }
 
+            // check if confirm email is valid
+            if (string.IsNullOrEmpty(vm.ConfirmEmail))
+            {
+                vm.Status = 1;
+                vm.Message = "Confirm email is not valid";
+                return vm;
+            }
+
             // check if password is valid
             if (string.IsNullOrEmpty(vm.Password))
             {
                 vm.Status = 1;
-                vm.Message = "Email is not valid";
+                vm.Message = "Password is not valid";
                 return vm;
             }
-            
+
+            // check if confirm password is valid
+            if (string.IsNullOrEmpty(vm.ConfirmPassword))
+            {
+                vm.Status = 1;
+                vm.Message = "Confirm password is not valid";
+                return vm;
+            }
+
+            // check if email = confirm email 
+            if (vm.Email != vm.ConfirmEmail)
+            {
+                vm.Status = 1;
+                vm.Message = "Email and confirm email must match.";
+                return vm;
+            }
+
+            // check if passord = confirm password
+            if (vm.Password != vm.ConfirmPassword)
+            {
+                vm.Status = 1;
+                vm.Message = "Password and confirm password must match.";
+                return vm;
+            }
+
+
             // create user account
             _UserModel = await _AccountsDataProvider.Create(vm.Email,
-                vm.Password, vm.FirstName, vm.LastName, false,
-                DateTime.Now.Year, vm.Address, vm.City, vm.State, vm.Country, vm.Zip, vm.Phone, vm.CellPhone);
+                vm.Password, string.Empty, string.Empty, false,
+                DateTime.Now.Year, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
 
             // set return vm properties
             vm = new RegisterVM
