@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Routing;
 
+using CaptchaMvc.HtmlHelpers;
+
 using InteractiveMembership.Core.Constants;
 using InteractiveMembership.Core.Constants.EndPointSettings;
 using InteractiveMembership.Core.Interfaces;
@@ -52,10 +54,18 @@ namespace RockawayWish.Web.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route(SiteEndPointsConfig.Register)]
-        public async Task<ActionResult> Register(RegisterVM vm)
+        public async Task<ActionResult> Register(RegisterVM model)
         {
+            // check if captcha is valid
+            if (!this.IsCaptchaValid("Captcha is not valid"))
+            {
+                model.Status = 1;
+                model.Message = "Captcha is not valid";
+                return View(model);
+            }
+
             // return
-            return View(await _Repository.Register(vm));
+            return View(await _Repository.Register(model));
         }
 
         /// <summary>

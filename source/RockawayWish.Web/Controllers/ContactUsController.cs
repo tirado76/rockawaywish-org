@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 
 using CaptchaMvc.HtmlHelpers;
-using InteractiveMembership.Core.Constants;
 using InteractiveMembership.Core.Constants.EndPointSettings;
 using InteractiveMembership.Data.Providers;
 
@@ -68,8 +67,8 @@ namespace RockawayWish.Web.Controllers
             sb.AppendFormat("<p>Name: {0}</p>", model.Name);
             sb.AppendFormat("<p>Email: {0}</p>", model.Email);
             sb.AppendFormat("<p>Message: {0}</p>", model.ContactMessage);
-            sb.AppendLine("<p>&nbsp;</p>");
-            sb.AppendLine("<p>Wish of Rockaway Membership Administration</p>");
+            //sb.AppendLine("<hr width=\"40%\"/>");
+            sb.AppendFormat("<p><b>This message was sent to you by {0}</b></p>", this.appSettings.MembershipAppSettings.AdminSiteTitle);
             sb.AppendFormat("<img src=\"{0}\" />", this.appSettings.SiteAppSettings.LogoUrl);
 
             // send email
@@ -84,7 +83,7 @@ namespace RockawayWish.Web.Controllers
             else
             {
                 model.Status = 1;
-                model.Message = "There was a problem sending the email.";
+                model.Message = "There was a problem sending the message.";
                 return View(model);
             }
 

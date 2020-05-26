@@ -8,6 +8,7 @@ using InteractiveMembership.Core.Models;
 using InteractiveMembership.Core.ViewModels;
 using InteractiveMembership.Data.Providers;
 
+
 namespace RockawayWish.Web.Repositories
 {
     internal class AccountRepository : BaseRepository, IAccountsWebRepository
@@ -48,6 +49,24 @@ namespace RockawayWish.Web.Repositories
         /// <returns>RegisterVM</returns>
         public async Task<RegisterVM> Register(RegisterVM vm)
         {
+
+            // check if captcha is valid
+            // check if name is valid
+            if (string.IsNullOrEmpty(vm.Email))
+            {
+                vm.Status = 1;
+                vm.Message = "Email is not valid";
+                return vm;
+            }
+
+            // check if email is valid
+            if (string.IsNullOrEmpty(vm.Password))
+            {
+                vm.Status = 1;
+                vm.Message = "Email is not valid";
+                return vm;
+            }
+            
             // create user account
             _UserModel = await _AccountsDataProvider.Create(vm.Email,
                 vm.Password, vm.FirstName, vm.LastName, false,
