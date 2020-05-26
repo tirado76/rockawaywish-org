@@ -1856,10 +1856,6 @@
       <Project>{0b2c0a37-ee17-4885-bfc6-5dc228253127}</Project>
       <Name>RockawayWish.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RockawayWishCMS.Data\RockawayWishCMS.Data.csproj">
-      <Project>{90016871-81cc-48a4-8b06-c6ca6a5ff9ab}</Project>
-      <Name>RockawayWishCMS.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

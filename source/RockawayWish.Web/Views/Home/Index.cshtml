@@ -1,3 +1,5 @@
-﻿@model InteractiveMembership.Core.ViewModels.HomeVM
+﻿@using RockawayWish.Web.ViewModels;
+@model InteractiveMembership.Core.ViewModels.HomeVM
 
-@Html.Partial("_Carousel")
+<!-- Carousel -->
+@Html.Partial("_Carousel", new CarouselVM())

@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWishCMS.Web", "RockawayWishCMS.Web\RockawayWishCMS.Web.csproj", "{56E9E471-356E-4434-B516-C0C5C5BD2581}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWishCMS.Data", "RockawayWishCMS.Data\RockawayWishCMS.Data.csproj", "{90016871-81CC-48A4-8B06-C6CA6A5FF9AB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockawayWish.Core", "RockawayWish.Core\RockawayWish.Core.csproj", "{0B2C0A37-EE17-4885-BFC6-5DC228253127}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{A4D0E3A0-D1AC-4798-AAB6-2914B3205302}"
@@ -23,14 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{56E9E471-356E-4434-B516-C0C5C5BD2581}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56E9E471-356E-4434-B516-C0C5C5BD2581}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56E9E471-356E-4434-B516-C0C5C5BD2581}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56E9E471-356E-4434-B516-C0C5C5BD2581}.Release|Any CPU.Build.0 = Release|Any CPU
-		{90016871-81CC-48A4-8B06-C6CA6A5FF9AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{90016871-81CC-48A4-8B06-C6CA6A5FF9AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{90016871-81CC-48A4-8B06-C6CA6A5FF9AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{90016871-81CC-48A4-8B06-C6CA6A5FF9AB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0B2C0A37-EE17-4885-BFC6-5DC228253127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0B2C0A37-EE17-4885-BFC6-5DC228253127}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B2C0A37-EE17-4885-BFC6-5DC228253127}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -44,8 +32,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{56E9E471-356E-4434-B516-C0C5C5BD2581} = {FE8E4B3B-3841-479C-B7A7-D3C77290E144}
-		{90016871-81CC-48A4-8B06-C6CA6A5FF9AB} = {A4D0E3A0-D1AC-4798-AAB6-2914B3205302}
 		{0B2C0A37-EE17-4885-BFC6-5DC228253127} = {A4D0E3A0-D1AC-4798-AAB6-2914B3205302}
 		{71B1C6F5-8139-4B4F-BDC6-4BE9C0D21259} = {FE8E4B3B-3841-479C-B7A7-D3C77290E144}
 	EndGlobalSection

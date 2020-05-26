@@ -1,88 +1,37 @@
-﻿
-
-@using InteractiveMembership.Core.Constants;
-@{
-    string siteTitle = new AppSettingsConfig().SiteAppSettings.SiteTitle;
-}
+﻿@using RockawayWish.Web.ViewModels;
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Head -->
 <head>
-    <meta charset="utf-8">
-
+    <!-- Meta -->
     <!-- Enable responsive to mobile devices -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Title -->
     <title>Welcome to Wish of Rockaway</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-
-    <style type="text/css">
-        .site-pink {
-            background-color: hotpink !important;
-        }
-
-        .button-donate {
-            background-color: deeppink !important;
-            color: white !important;
-        }
-
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: hotpink !important;
-            color: #000;
-            text-align: center;
-            padding-top: 10px;
-            /*border-top: 1px solid #000;*/
-        }
-    </style>
+    
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/Site.css")">
 </head>
 
+<!-- Body -->
 <body>
-
-
     <!-- Top Navigation bar -->
-    <nav class="navbar navbar-dark site-pink sticky-top">
-
-        <!-- Site brand-->
-        <img src="@Url.Content("~/Content/img/white-star.png")" alt="Logo" style="width:50px; margin-right: 10px;" />
-        <a class="navbar-brand" href="#">Wish of Rockaway</a>
-
-
-        <!-- Navbar links -->
-        <ul class="nav nav-pills ml-auto">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><span class="navbar-toggler-icon"></span></a>
-                <div class="dropdown-menu" style="background-color: lightpink">
-                    <a class="dropdown-item " href="#">Sign In</a>
-                    <a class="dropdown-item" href="#">About WISH</a>
-                    <a class="dropdown-item" href="#">Contact WISH</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active button-donate" href="#">Donate</a>
-            </li>
-        </ul>
-    </nav>
-
+    @Html.Partial("_Navigation", new NavigationVM())
 
     <!-- Main Content -->
     @RenderBody()
 
     <!-- Bottom Footer  -->
-    <div class="footer sticky-bottom">
-        <p>Copyright &copy; @DateTime.Now.Year.ToString() - WISH of Rockaway Inc. | All Rights Reserved</p>
-    </div>
+    @Html.Partial("_Footer", new FooterVM())
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- Javasccipt Libraries  -->
+    @Html.Partial("_JsLibraries")
 </body>
+
 </html>
