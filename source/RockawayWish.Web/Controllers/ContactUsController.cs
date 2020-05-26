@@ -67,7 +67,7 @@ namespace RockawayWish.Web.Controllers
             sb.AppendFormat("<p>Name: {0}</p>", model.Name);
             sb.AppendFormat("<p>Email: {0}</p>", model.Email);
             sb.AppendFormat("<p>Message: {0}</p>", model.ContactMessage);
-            //sb.AppendLine("<hr width=\"40%\"/>");
+            sb.AppendLine("<p>---------------------------------------------------------------------------------------------------------------------------</p>");
             sb.AppendFormat("<p><b>This message was sent to you by {0}</b></p>", this.appSettings.MembershipAppSettings.AdminSiteTitle);
             sb.AppendFormat("<img src=\"{0}\" />", this.appSettings.SiteAppSettings.LogoUrl);
 

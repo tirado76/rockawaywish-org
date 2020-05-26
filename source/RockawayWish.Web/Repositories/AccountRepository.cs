@@ -50,8 +50,7 @@ namespace RockawayWish.Web.Repositories
         public async Task<RegisterVM> Register(RegisterVM vm)
         {
 
-            // check if captcha is valid
-            // check if name is valid
+            // check if email is valid
             if (string.IsNullOrEmpty(vm.Email))
             {
                 vm.Status = 1;
@@ -59,7 +58,7 @@ namespace RockawayWish.Web.Repositories
                 return vm;
             }
 
-            // check if email is valid
+            // check if password is valid
             if (string.IsNullOrEmpty(vm.Password))
             {
                 vm.Status = 1;

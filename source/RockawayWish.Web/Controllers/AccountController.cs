@@ -64,8 +64,24 @@ namespace RockawayWish.Web.Controllers
                 return View(model);
             }
 
+            // execute user forgot password
+            var result = await _Repository.Register(model);
+
+            // check if successfully
+            if (result != null && result.Status == 0)
+            {
+                // a user reset password access token was created
+                // redirect to complete page
+                return RedirectPermanent(string.Format("~/{0}", SiteEndPointsConfig.RegisterComplete));
+            }
+            else
+            {
+                model.Status = result.Status;
+                model.Message = result.Message;
+            }
+
             // return
-            return View(await _Repository.Register(model));
+            return View(model);
         }
 
         /// <summary>
