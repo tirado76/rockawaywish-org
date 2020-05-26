@@ -95,8 +95,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\img\logo.png" />
-    <Content Include="Content\img\white-star.png" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\pink-star.png" />
+    <Content Include="Content\images\white-star.png" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -113,6 +114,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\HomeVM.cs" />
+    <Compile Include="ViewModels\ContactUsCompleteVM.cs" />
     <Compile Include="ViewModels\ContactUsVM.cs" />
     <Compile Include="ViewModels\NavigationVM.cs" />
     <Compile Include="ViewModels\FooterVM.cs" />
@@ -147,9 +150,8 @@
     <Content Include="Views\Error\NoAccess.cshtml" />
     <Content Include="Views\Shared\_Carousel.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\Home\Confirmation.cshtml" />
     <Content Include="Views\ContactUs\Index.cshtml" />
-    <Content Include="Views\ContactUs\Confirmation.cshtml" />
+    <Content Include="Views\ContactUs\Complete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

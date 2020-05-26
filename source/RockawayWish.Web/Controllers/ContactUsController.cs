@@ -3,6 +3,8 @@ using System.Web.Mvc;
 
 using CaptchaMvc.HtmlHelpers;
 
+using InteractiveMembership.Core.Constants.EndPointSettings;
+
 using RockawayWish.Web.ViewModels;
 
 namespace RockawayWish.Web.Controllers
@@ -10,19 +12,21 @@ namespace RockawayWish.Web.Controllers
     public class ContactUsController : BaseController
     {
         #region Public Methods
+
         /// <summary>
         /// Contact Us page
         /// </summary>
         /// <returns></returns>
-        [Route("contact/wish")]
+        [Route("contact/us")]
         public ActionResult Index()
         {
 
-            return View();
+            return View(new ContactUsVM());
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("contact/wish")]
+        [Route(SiteEndPointsConfig.ContactUs)]
         public ActionResult Index(ContactUsVM model)
         {
             // Code for validating the CAPTCHA  
@@ -50,11 +54,16 @@ namespace RockawayWish.Web.Controllers
 
             return View(model);
         }
-        [Route("contact/wish/confirmation")]
-        public ActionResult Confirmation()
+
+        /// <summary>
+        /// Contact Us complete page
+        /// </summary>
+        /// <returns></returns>
+        [Route(SiteEndPointsConfig.ContactUsComplete)]
+        public ActionResult Complete()
         {
 
-            return View();
+            return View(new ContactUsCompleteVM());
         }
         #endregion
     }

@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Mvc;
 
-using InteractiveMembership.Core.ViewModels;
 using RockawayWish.Web.ViewModels;
 
 

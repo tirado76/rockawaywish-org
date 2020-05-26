@@ -1,11 +1,16 @@
-﻿<div class="container">
-    <div class="text-center">
-        <div class="col-sm-12">
-            <h1 class="title-one">About Wish</h1>
-            <p style="text-align: left;">
+﻿@model RockawayWish.Web.ViewModels.AboutVM
+<div class="container">
+    <div class="row">
+
+        <!-- About Wish section -->
+        <div class="col-sm-6">
+            <div class="page-header">About @Model.SiteAppSettings.SiteTitle</div>
+            <p>
                 Rockaway W.I.S.H. (Women Inspired to Support &amp; Help) was formed in 2006, from a simple
-                meeting amongst childhood friends looking to make a difference in the community. Our
-                motivation stemmed from other local civic organizations, mainly The Graybeards (senior
+                meeting amongst childhood friends looking to make a difference in the community.
+            </p>
+            <p>
+                Our motivation stemmed from other local civic organizations, mainly The Graybeards (senior
                 basketball league turned philanthropists) &amp; the R.I.B.S. ("Rockaway Irish Boys", who lost
                 several friends on 9/11). After a few discussions and recruitment sessions, W.I.S.H. was up &amp;
                 running. With an emphasis on causes affecting women &amp; children, our immediate efforts
@@ -13,13 +18,13 @@
                 presence in the Rockaways became more established, both membership and fundraising
                 quickly experienced substantial growth.
             </p>
-            <p style="text-align: left;">
+            <p>
                 Women are attracted to join W.I.S.H. because they have an innate desire to aid &amp; assist their
                 neighbors in times of need, or they themselves have been a beneficiary of our good deeds. The
                 group has become a beautiful, contagious, circle of giving that continues to attract new
                 members, volunteers, and efforts each year.
             </p>
-            <p style="text-align: left;">
+            <p>
                 From 2006-2012, highlights of WISH include:
                 <ul style=" text-align: left; list-style-type: disc">
                     <li>
@@ -39,7 +44,7 @@
                     <li>Financial assistance – for families going through difficult times</li>
                 </ul>
             </p>
-            <p style="text-align: left;">
+            <p>
                 In 2012, Rockaway bore the brunt of Hurricane Sandy’s wrath. We were on the receiving end of
                 donations from all over the country and quickly established a relief center to distribute supplies
                 to hundreds of local families. After receiving a grant from the Robin Hood Foundation, W.I.S.H.
@@ -47,7 +52,7 @@
                 storm was a turning point for the group and is when we became an official 501c3 charitable
                 organization.
             </p>
-            <p style="text-align: left;">
+            <p>
                 Sandy has long passed and we continue to refine and re-focus our efforts on new causes, while
                 staying true to our root mission. Since 2012, W.I.S.H. is proud of our continued efforts to
                 support the community through:
@@ -67,36 +72,23 @@
                     </li>
                 </ul>
             </p>
-            <p style="text-align: left;">
+            <p>
                 These are just a few of our initiatives and efforts W.I.S.H. has underway. As current events
                 unfold (most recently Hurricanes Harvey &amp; Irma), we will react accordingly and keep our
                 members aware of all donations &amp; platforms we assist.
             </p>
-            <p style="text-align: left;">Thank you for your continued support!</p>
+            <p>Thank you for your continued support!</p>
+        </div>
+
+        <!-- Mission Statement section -->
+        <div class="col-sm-6">
+            <div class="page-header">Mission Statement</div>
+            <p class="page-list-item">To recognize the needs of the community and volunteer our time and talents to assist our neighbors during difficult times.</p>
+            <p class="page-list-item">To promote participation in charitable events, particularly those that bring attention to and support causes that affect the lives of women and children.</p>
+            <p class="page-list-item">To encourage a sense of civil obligation and community service in the Rockaways.</p>
+            <p class="page-list-item">To foster new friendships and support networks amongst women in the Rockaways.</p>
+            <p class="page-list-item">To raise funds and provide financial assistance to members of the Rockaway community in need and to causes which promote positive development in the Rockaways.</p>
+            <p class="page-list-item">To inspire the young women of the Rockaways to be compassionate, understanding and active members of the community.</p>
         </div>
     </div>
-    <br /><br /><br />
-    <div class="about-us">
-        <div class="row">
-            <div class="text-center col-sm-12">
-                <h3>Mission Statement</h3>
-                <p>To recognize the needs of the community and volunteer our time and talents to assist our neighbors during difficult times.</p>
-                <p>To promote participation in charitable events, particularly those that bring attention to and support causes that affect the lives of women and children.</p>
-                <p>To encourage a sense of civil obligation and community service in the Rockaways.</p>
-                <p>To foster new friendships and support networks amongst women in the Rockaways.</p>
-                <p>To raise funds and provide financial assistance to members of the Rockaway community in need and to causes which promote positive development in the Rockaways.</p>
-                <p>To inspire the young women of the Rockaways to be compassionate, understanding and active members of the community.</p>
-            </div>
-        </div>
-        @*<div class="row text-center">
-                <div class="col-sm-8 col-sm-offset-2">
-                    <h2 class="title-one">Meet The Board</h2>
-                </div>
-            </div>*@
-
-
-
-
-    </div>
-
 </div>
