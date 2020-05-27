@@ -80,8 +80,16 @@ namespace RockawayWish.Web.Controllers
                 model.Message = result.Message;
             }
 
+            RegisterVM vm = new RegisterVM
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Email = model.Email,
+                ConfirmPassword = model.Password
+            };
+
             // return
-            return View(model);
+            return View(vm);
         }
 
         /// <summary>

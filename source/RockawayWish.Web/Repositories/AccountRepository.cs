@@ -50,6 +50,22 @@ namespace RockawayWish.Web.Repositories
         public async Task<RegisterVM> Register(RegisterVM vm)
         {
 
+            // check if first name is valid
+            if (string.IsNullOrEmpty(vm.FirstName))
+            {
+                vm.Status = 1;
+                vm.Message = "First name is not valid";
+                return vm;
+            }
+
+            // check if last name is valid
+            if (string.IsNullOrEmpty(vm.LastName))
+            {
+                vm.Status = 1;
+                vm.Message = "Last name is not valid";
+                return vm;
+            }
+
             // check if email is valid
             if (string.IsNullOrEmpty(vm.Email))
             {
@@ -103,7 +119,7 @@ namespace RockawayWish.Web.Repositories
             {
                 // create user account
                 _UserModel = await _AccountsDataProvider.Create(vm.Email,
-                    vm.Password, "John", "Doe", false,
+                    vm.Password, vm.FirstName, vm.LastName, false,
                     DateTime.Now.Year, "fake", "fake", "fake", "fake", "fake", "fake", "fake");
 
             }
